@@ -9,5 +9,5 @@ import java.util.List;
  * Created by 13718 on 2017/8/28.
  */
 public interface ProductDao {
-    List<Product> findProductByword(String condition, Object[] params) throws SQLException;
+    List<Product> findProductByword(String word) throws SQLException;
 }

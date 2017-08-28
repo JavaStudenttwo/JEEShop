@@ -24,6 +24,14 @@
         <servlet-name>ProductFindBywordServlet</servlet-name>
         <servlet-class>com.itheima.web.servlet.ProductFindBywordServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.itheima.web.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckImgServlet</servlet-name>
+        <servlet-class>com.itheima.web.servlet.CheckImgServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CheckUsernameServlet</servlet-name>
         <url-pattern>/checkUsername</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>ProductFindBywordServlet</servlet-name>
         <url-pattern>/productFindByword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/registeruser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckImgServlet</servlet-name>
+        <url-pattern>/checkimg</url-pattern>
     </servlet-mapping>
 
 

@@ -2,7 +2,67 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
+<script type="text/javascript">
+    $(function () {
+        $("#search").keyup(function () {
 
+            var url = "${pageContext.request.contextPath}/productFindByword";
+            var word = $(this).val();
+            var params = {"word":word};
+
+            if(word == ""){
+                $("#completeShow").slideUp(200);
+                return false;
+            }
+            $.post(
+                url,
+                params,
+                function (data) {
+                    $("#completeShow").html("<ul id='itemul' class='list-group'></ul>");
+                    for(var i=0 ;i<data.length;i++){
+                        var product = data[i];
+                        var str = ""+product.pname;
+                        str = highlight(word,str);
+                        $("#itemul").append("<li class='list-group-item'><a href='#'>"+str+"</a></li>")
+                        $("#completeShow").show();
+                    }
+                }),
+                "json"
+        }).focus(function () {
+            if($("#completeShow li").size()>0){
+                $("#completeShow").show();
+			}
+
+        }).click(function () {
+            return false;
+
+        })
+
+		function highlight(word,str) {
+            var start = "";
+            var end =str;
+            for(var i=0;i<word.length;i++){
+                var w = word.substring(i,i+1);
+                var index = end.indexOf(w);
+                start += end.substring(0,index);
+                start += "<font color='red'>"+w+"</font>";
+                end = end.substring(index +1,end.length);
+            }
+			start+=end;
+			return start;
+        }
+
+        $(document).click(function () {
+			$("#completeShow").slideUp(200);
+        });
+
+    });
+
+
+
+
+
+</script>
 
 
 

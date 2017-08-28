@@ -15,11 +15,11 @@ import java.util.List;
 public class ProductDaoImpl implements ProductDao{
 
     @Override
-    public List<Product> findProductByword(String conditon ,Object[] params) throws SQLException{
+    public List<Product> findProductByword(String word) throws SQLException{
 
         QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
-        String sql = "select * from Product where where 1=1  " + conditon;
-        List<Product> list = queryRunner.query(sql,new BeanListHandler<Product>(Product.class),params);
+        String sql = "select * from Product where pname like ? limit 0,8";
+        List<Product> list = queryRunner.query(sql,new BeanListHandler<Product>(Product.class),"%"+word+"%");
         return list;
 
     }
