@@ -4,7 +4,10 @@
       <root url="file://$PROJECT_DIR$/web/WEB-INF/lib" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/web/WEB-INF/lib" />
+    </SOURCES>
     <jarDirectory url="file://$PROJECT_DIR$/web/WEB-INF/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/web/WEB-INF/lib" recursive="false" type="SOURCES" />
   </library>
 </component>

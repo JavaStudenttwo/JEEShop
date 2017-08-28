@@ -17,12 +17,20 @@
 
 
     <servlet>
-        <servlet-name>checkUsernameServlet</servlet-name>
+        <servlet-name>CheckUsernameServlet</servlet-name>
         <servlet-class>com.itheima.web.servlet.CheckUsernameServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProductFindBywordServlet</servlet-name>
+        <servlet-class>com.itheima.web.servlet.ProductFindBywordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>checkUsernameServlet</servlet-name>
+        <servlet-name>CheckUsernameServlet</servlet-name>
         <url-pattern>/checkUsername</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductFindBywordServlet</servlet-name>
+        <url-pattern>/productFindByword</url-pattern>
     </servlet-mapping>
 
 

@@ -8,6 +8,45 @@
   <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
   <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
   <script src="js/bootstrap.min.js" type="text/javascript"></script>
+  <script>
+    $(function () {
+        $("#search").keyup(function () {
+
+            var url = "${pageContext.request.contextPath}/productFindByword";
+            var word = $(this).val();
+            var params = {"word":word};
+
+            if(word == ""){
+                $("#completeShow").slideUp(200);
+                return false;
+            }
+            $.get(
+                url,
+                params,
+                function (data) {
+
+                    $("#completeShow").html("<ul id='itemul' class='list-group'></ul>");
+                    for(var i=0 ;i<data.length;i++){
+                        var product = data[i];
+                        var str = ""+product.pname;
+                        $("#itemul").append("<li class='list-group-item'><a href='#'>"+str+"</a></li>")
+                        $("#completeShow").show();
+
+                    }
+
+
+
+                }),
+                "json"
+        })
+
+    })
+
+
+
+
+
+  </script>
 </head>
 
 <body>
