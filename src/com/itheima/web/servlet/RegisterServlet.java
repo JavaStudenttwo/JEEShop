@@ -3,9 +3,11 @@ package com.itheima.web.servlet;
 import com.itheima.domain.User;
 import com.itheima.service.UserService;
 import com.itheima.service.impl.UserServiceImpl;
+import com.itheima.utils.MailUtils;
 import com.itheima.utils.UUIDUtils;
 import com.itheima.utils.UserBeanUtils;
 
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,15 +43,29 @@ public class RegisterServlet extends HttpServlet {
         user.setState(0);
 
         UserService userService = new UserServiceImpl();
+        int i = 0;
         try {
-            userService.regist(user);
+            i = userService.regist(user);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        request.setAttribute("msg","注册成功，请邮件激活后登陆");
+        if (i>0){
+            request.setAttribute("msg","注册成功，请邮件激活后登陆");
 
-        response.sendRedirect(request.getContextPath()+"/registerSuccess.jsp");
+            try {
+                MailUtils.sendMail(user.getEmail(),user.getCode());
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
+
+            response.sendRedirect(request.getContextPath()+"/registerSuccess.jsp");
+
+        }else {
+            response.sendRedirect(request.getContextPath()+"/registerFail.jsp");
+        }
+
+
 
 //        return "/jsp/longin.jsp";
     }

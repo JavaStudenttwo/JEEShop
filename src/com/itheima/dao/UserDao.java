@@ -10,5 +10,9 @@ import java.sql.SQLException;
 public interface UserDao {
     User findByUsername(String username) throws SQLException;
 
-    User InsterUser(User user) throws SQLException;
+    int InsterUser(User user) throws SQLException;
+
+    User findByCode(String code) throws SQLException;
+
+    void update(User existUser) throws SQLException;
 }

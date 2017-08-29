@@ -21,12 +21,34 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User InsterUser(User user) throws SQLException {
+    public int InsterUser(User user) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "insert into user values(?,?,?,?,?,?,?,?,?,?)";
-        queryRunner.update(sql, user.getUid(),user.getUsername(),user.getPassword(),
-                user.getName(),user.getEmail(),user.getTelephone(),user.getBirthday(),
-                user.getSex(),user.getState(),user.getCode());
-        return null;
+        Object[] params = { user.getUid(),user.getUsername(),user.getPassword(),
+                            user.getName(),user.getEmail(),user.getTelephone(),user.getBirthday(),
+                            user.getSex(),user.getState(),user.getCode()
+        };
+        int i = queryRunner.update(sql,params);
+        return i;
+    }
+
+    @Override
+    public User findByCode(String code) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * form user where code = ?";
+        User existUser = queryRunner.query(sql,new BeanHandler<User>(User.class),code);
+        return existUser;
+    }
+
+    @Override
+    public void update(User user) throws SQLException {
+
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "update user set username=?,password=?,name=?,email=?,telephone=?," +
+                "birthday=?,sex=?,state=?,code=?where uid=?";
+        Object[] params = new Object[]{user.getUsername(), user.getPassword(),
+                user.getName(), user.getEmail(), user.getTelephone(), user.getBirthday(),
+                user.getSex(), user.getState(), user.getCode(), user.getUid()};
+        queryRunner.update(sql,params);
     }
 }

@@ -22,9 +22,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void regist(User user) throws SQLException {
+    public int regist(User user) throws SQLException {
 
         UserDao userDao = new UserDaoImpl();
-        User userInsert = userDao.InsterUser(user);
+        int i = userDao.InsterUser(user);
+        return i;
+    }
+
+    @Override
+    public Boolean activeUser(String code) throws SQLException {
+
+        UserDao userDao = new UserDaoImpl();
+        User existUser = userDao.findByCode(code);
+
+        if (existUser != null){
+            existUser.setState(1);
+            existUser.setCode(null);
+            userDao.update(existUser);
+            return true;
+        }else{
+            return false;
+        }
     }
 }
