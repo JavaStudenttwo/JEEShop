@@ -20,4 +20,11 @@ public class UserServiceImpl implements UserService {
         User user = userDao.findByUsername(username);
         return user;
     }
+
+    @Override
+    public void regist(User user) throws SQLException {
+
+        UserDao userDao = new UserDaoImpl();
+        User userInsert = userDao.InsterUser(user);
+    }
 }

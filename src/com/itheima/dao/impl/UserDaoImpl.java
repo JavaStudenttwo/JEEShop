@@ -19,4 +19,14 @@ public class UserDaoImpl implements UserDao {
         User existUser = queryRunner.query(sql,new BeanHandler<User>(User.class),username);
         return existUser;
     }
+
+    @Override
+    public User InsterUser(User user) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "insert into user values(?,?,?,?,?,?,?,?,?,?)";
+        queryRunner.update(sql, user.getUid(),user.getUsername(),user.getPassword(),
+                user.getName(),user.getEmail(),user.getTelephone(),user.getBirthday(),
+                user.getSex(),user.getState(),user.getCode());
+        return null;
+    }
 }

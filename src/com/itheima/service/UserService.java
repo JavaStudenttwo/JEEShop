@@ -10,4 +10,6 @@ import java.sql.SQLException;
 public interface UserService {
 
     User findByUsername(String username) throws SQLException;
+
+    void regist(User user) throws SQLException;
 }
