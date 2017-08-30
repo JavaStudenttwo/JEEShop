@@ -18,7 +18,7 @@ import java.sql.SQLException;
 public class UserActiveServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String code = request.getParameter("code");
+        String code = request.getParameter("activecode");
 
         UserService userService = new UserServiceImpl();
         Boolean bool = null;

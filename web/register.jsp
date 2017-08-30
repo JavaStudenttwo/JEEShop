@@ -40,10 +40,10 @@ font {
                     "${pageContext.request.contextPath}/checkUsername",
                     {"username":value},
 					function (data) {
-			        	if(data == 1){
+			        	if(data == "1"){
 							$("#s1").html("用户名可以使用").css("color","#0f0");
 							$("regBut").attr("disabled",false);
-						}else if(data == 2){
+						}else if(data == "2"){
 							$("#s1").html("用户名已经存在").css("color","f00");
 							$("regBut").attr("disabled",true);
 						}
@@ -140,7 +140,6 @@ font {
 						<label for="confirmimg" class="col-sm-2 control-label">验证码</label>
 						<div class="col-sm-3">
 							<input id="confirmimg" type="text" class="form-control" >
-
 						</div>
 						<div class="col-sm-2">
 							<img src="${pageContext.request.contextPath}/checkimg" onclick="changeimg(this)" />

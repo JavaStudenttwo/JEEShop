@@ -53,8 +53,11 @@ public class RegisterServlet extends HttpServlet {
         if (i>0){
             request.setAttribute("msg","注册成功，请邮件激活后登陆");
 
+            String mailMasg = "恭喜您注册成功，请点击下面的连接进行激活账户"
+                    + "<a href='http://localhost:8080/HeimaShop/useractive?activeCode="+user.getCode()+"'>"
+                    + "http://localhost:8080/HeimaShop/useractive?activeCode="+user.getCode()+"</a>";
             try {
-                MailUtils.sendMail(user.getEmail(),user.getCode());
+                MailUtils.sendMail(user.getEmail(),mailMasg);
             } catch (MessagingException e) {
                 e.printStackTrace();
             }

@@ -35,6 +35,44 @@ font {
 	padding-right: 17px;
 }
 </style>
+
+
+<script>
+
+		$(function () {
+		    $("#confirmimg").blur(function () {
+		        var value = $(this).val();
+		        $.post(
+		            "${pageContext.request.contextPath}/comfirmimg",
+					{"comfirmimg":value},
+					function (data) {
+						if (data == "1"){
+
+						    alert("验证码正确")
+						}else{
+
+						    alert("验证失败")
+						}
+                    },
+					"text"
+				)
+
+
+
+            })
+
+
+
+        })
+
+
+
+        function changeimg(obj) {
+            obj.src="${pageContext.request.contextPath}/checkimg?time="+new Date().getTime();
+
+        }
+
+</script>
 </head>
 <body>
 
@@ -54,29 +92,30 @@ font {
 					style="width: 440px; border: 1px solid #E7E7E7; padding: 20px 0 20px 30px; border-radius: 5px; margin-top: 60px; background: #fff;">
 					<font>会员登录</font>USER LOGIN
 					<div>&nbsp;</div>
-					<form class="form-horizontal">
+					<form class="form-horizontal" action="${pageContext.request.contextPath}/userlogin" method="post">
 						<div class="form-group">
 							<label for="username" class="col-sm-2 control-label">用户名</label>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" id="username"
+								<input type="text" class="form-control" id="username" name="username"
 									placeholder="请输入用户名">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+							<label for="inputPassword" class="col-sm-2 control-label">密码</label>
 							<div class="col-sm-6">
-								<input type="password" class="form-control" id="inputPassword3"
+								<input type="password" class="form-control" id="inputPassword" name="password"
 									placeholder="请输入密码">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="inputPassword3" class="col-sm-2 control-label">验证码</label>
+							<label for="confirmimg" class="col-sm-2 control-label">验证码</label>
 							<div class="col-sm-3">
-								<input type="text" class="form-control" id="inputPassword3"
+								<input type="text" class="form-control" id="confirmimg" name="comfirmimg"
 									placeholder="请输入验证码">
 							</div>
 							<div class="col-sm-3">
-								<img src="./image/captcha.jhtml" />
+
+								<img src="${pageContext.request.contextPath}/checkimg" onclick="changeimg(this)" />
 							</div>
 						</div>
 						<div class="form-group">
