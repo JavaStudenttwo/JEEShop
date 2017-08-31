@@ -33,6 +33,7 @@
         <servlet-class>com.itheima.web.servlet.CheckImgServlet</servlet-class>
     </servlet>
     <servlet>
+        <display-name>UserLoginServlet</display-name>
         <servlet-name>userLoginServlet</servlet-name>
         <servlet-class>com.itheima.web.servlet.UserLoginServlet</servlet-class>
     </servlet>
@@ -44,6 +45,7 @@
         <servlet-name>confirmImgServlet</servlet-name>
         <servlet-class>com.itheima.web.servlet.ConfirmImgServlet</servlet-class>
     </servlet>
+
 
 
     <servlet-mapping>
@@ -64,7 +66,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>userLoginServlet</servlet-name>
-        <url-pattern>/userlogin</url-pattern>
+        <url-pattern>/user</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserActiveServlet</servlet-name>

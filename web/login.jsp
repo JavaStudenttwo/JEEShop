@@ -92,7 +92,7 @@ font {
 					style="width: 440px; border: 1px solid #E7E7E7; padding: 20px 0 20px 30px; border-radius: 5px; margin-top: 60px; background: #fff;">
 					<font>会员登录</font>USER LOGIN
 					<div>&nbsp;</div>
-					<form class="form-horizontal" action="${pageContext.request.contextPath}/userlogin" method="post">
+					<form class="form-horizontal" action="${pageContext.request.contextPath}/user?method=login">
 						<div class="form-group">
 							<label for="username" class="col-sm-2 control-label">用户名</label>
 							<div class="col-sm-6">
@@ -114,14 +114,13 @@ font {
 									placeholder="请输入验证码">
 							</div>
 							<div class="col-sm-3">
-
 								<img src="${pageContext.request.contextPath}/checkimg" onclick="changeimg(this)" />
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<div class="checkbox">
-									<label> <input type="checkbox"> 自动登录
+									<label> <input type="checkbox" name="autoLogin" value="1"> 自动登录
 									</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
 										type="checkbox"> 记住用户名
 									</label>

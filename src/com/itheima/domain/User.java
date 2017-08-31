@@ -26,6 +26,14 @@ public class User {
     private int state;//是否激活
     private String code;//激活码
 
+    public User() {
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public String getUid() {
         return uid;
     }
