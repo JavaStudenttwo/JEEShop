@@ -23,7 +23,7 @@ public class BaseServlet extends HttpServlet {
             //1、获得请求的method的名称
             String methodName = req.getParameter("method");
             //2、获得当前被访问的对象的字节码对象
-            Class clazz = this.getClass();//ProductServlet.class ---- UserServlet.class
+            Class clazz = this.getClass();
             //3、获得当前字节码对象的中的指定方法
             Method method = clazz.getMethod(methodName, HttpServletRequest.class,HttpServletResponse.class);
             //4、执行相应功能方法
@@ -32,6 +32,7 @@ public class BaseServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
 }

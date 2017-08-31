@@ -7,7 +7,7 @@
     $(function () {
         $("#search").keyup(function () {
 
-            var url = "${pageContext.request.contextPath}/productFindByword";
+            var url = "${pageContext.request.contextPath}/productFindByword?method=checkName";
             var word = $(this).val();
             var params = {"word":word};
 

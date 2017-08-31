@@ -6,6 +6,7 @@ import com.itheima.utils.LoginUtils;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -14,8 +15,11 @@ import java.io.IOException;
  * Created by 13718 on 2017/8/30.
  */
 @WebServlet(name = "UserLoginServlet")
-public class UserLoginServlet extends BaseServlet {
-    public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class UserLoginServlet extends HttpServlet {
+
+
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
