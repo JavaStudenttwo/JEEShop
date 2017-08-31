@@ -5,6 +5,7 @@
          version="3.1">
 
 
+
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.htm</welcome-file>
@@ -45,7 +46,10 @@
         <servlet-name>confirmImgServlet</servlet-name>
         <servlet-class>com.itheima.web.servlet.ConfirmImgServlet</servlet-class>
     </servlet>
-
+    <servlet>
+        <servlet-name>logoutServlet</servlet-name>
+        <servlet-class>com.itheima.web.servlet.UserLogoutServlet</servlet-class>
+    </servlet>
 
 
     <servlet-mapping>
@@ -66,7 +70,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>userLoginServlet</servlet-name>
-        <url-pattern>/user</url-pattern>
+        <url-pattern>/userlogin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserActiveServlet</servlet-name>
@@ -75,6 +79,10 @@
     <servlet-mapping>
         <servlet-name>confirmImgServlet</servlet-name>
         <url-pattern>/confirmimg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logoutServlet</servlet-name>
+        <url-pattern>/userlogout</url-pattern>
     </servlet-mapping>
 
 
