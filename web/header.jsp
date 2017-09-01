@@ -39,6 +39,8 @@
 
         })
 
+
+
 		function highlight(word,str) {
             var start = "";
             var end =str;
@@ -60,6 +62,20 @@
     });
 
 
+    $(function () {
+		$.post(
+            "${pageContext.request.contextPath}/shopMenu",
+
+			function (data) {
+                $.each(data,function (i,n) {
+                    $("menu").append()("<li value=''><a href='#'>"+n.cname+"</a></li>")
+                })
+
+            },
+			"json"
+
+		)
+    })
 
 
 
@@ -85,7 +101,7 @@
 			<c:if test="${not empty loginUser}">
 				欢迎：${loginUser.name},
 				<li><a href="${pageContext.request.contextPath}/order_list.jsp">我的订单</a> </li>
-				<li><a href="${pageContext.request.contextPath}/user?method=logout">退出</a></li>
+				<li><a href="${pageContext.request.contextPath}/userlogout">退出</a></li>
 			</c:if>
 
 		</ol>
@@ -108,11 +124,8 @@
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="product_list.htm">手机数码<span class="sr-only">(current)</span></a></li>
-					<li><a href="#">电脑办公</a></li>
-					<li><a href="#">电脑办公</a></li>
-					<li><a href="#">电脑办公</a></li>
+				<ul class="nav navbar-nav" id="menu">
+
 				</ul>
 				<form class="navbar-form navbar-right" role="search">
 					<div class="form-group">

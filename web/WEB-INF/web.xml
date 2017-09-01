@@ -50,6 +50,10 @@
         <servlet-name>logoutServlet</servlet-name>
         <servlet-class>com.itheima.web.servlet.UserLogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>indexServlet</servlet-name>
+        <servlet-class>com.itheima.web.servlet.IndexServlet</servlet-class>
+    </servlet>
 
 
     <servlet-mapping>
@@ -83,6 +87,10 @@
     <servlet-mapping>
         <servlet-name>logoutServlet</servlet-name>
         <url-pattern>/userlogout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>indexServlet</servlet-name>
+        <url-pattern>/shopMenu</url-pattern>
     </servlet-mapping>
 
 

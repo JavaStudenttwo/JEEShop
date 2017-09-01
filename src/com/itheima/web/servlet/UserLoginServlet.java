@@ -18,44 +18,38 @@ import java.io.IOException;
 public class UserLoginServlet extends HttpServlet {
 
 
-
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
         String autoLogin = request.getParameter("autoLogin");
-        if ("1".equals(autoLogin)){
-            Cookie autoLoginCookie = new Cookie("autoLoginCookie" ,username+"@"+password);
+        if ("1".equals(autoLogin)) {
+            Cookie autoLoginCookie = new Cookie("autoLoginCookie", username + "@" + password);
             autoLoginCookie.setPath(request.getContextPath());
-            autoLoginCookie.setMaxAge(60*60*24*7);
+            autoLoginCookie.setMaxAge(60 * 60 * 24 * 7);
             response.addCookie(autoLoginCookie);
-        }else{
-            Cookie autoLoginCookie = new Cookie("autoLonginCookie","");
+        } else {
+            Cookie autoLoginCookie = new Cookie("autoLonginCookie", "");
             autoLoginCookie.setPath(request.getContextPath());
             autoLoginCookie.setMaxAge(0);
             response.addCookie(autoLoginCookie);
         }
 
 
-        User user = LoginUtils.login(username,password);
-        if (user != null){
-            request.getSession().setAttribute("loginUser",user);
-            response.sendRedirect(request.getContextPath()+"/");
-        }else {
-            request.setAttribute("msg","用户名或密码不匹配或未激活");
-            response.sendRedirect(request.getContextPath()+"/login.jsp");
+        User user = LoginUtils.login(username, password);
+        if (user != null) {
+            request.getSession().setAttribute("loginUser", user);
+            response.sendRedirect(request.getContextPath() + "/");
+        } else {
+            request.setAttribute("msg", "用户名或密码不匹配或未激活");
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
         }
     }
 
-    public void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getSession().removeAttribute("loginUser");
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Cookie cookie = new Cookie("autoLoginCookie","");
-        cookie.setMaxAge(0);
-        response.addCookie(cookie);
 
-        response.sendRedirect(request.getContextPath()+"/");
     }
 }
