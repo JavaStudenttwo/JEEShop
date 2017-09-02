@@ -6,9 +6,9 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>黑马商城信息展示</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-		<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
-		<script src="js/bootstrap.min.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+		<script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
+		<script src="../js/bootstrap.min.js" type="text/javascript"></script>
 	</head>
 
 	<body>
@@ -43,7 +43,7 @@
 		</div>
 		
 		<!-- 引入footer.jsp -->
-		<jsp:include page="/footer.jsp"></jsp:include>
+		<jsp:include page="footer.jsp"></jsp:include>
 
 	</body>
 

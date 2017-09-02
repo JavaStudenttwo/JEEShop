@@ -10,4 +10,8 @@ import java.util.List;
  */
 public interface ProductService {
     List<Product> findProductByword(String word) throws SQLException;
+
+    List<Product> findByHOt() throws SQLException;
+
+    List<Product> findByNew() throws SQLException;
 }

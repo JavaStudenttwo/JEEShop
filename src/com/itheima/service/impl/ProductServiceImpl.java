@@ -12,6 +12,9 @@ import java.util.List;
  * Created by 13718 on 2017/8/28.
  */
 public class ProductServiceImpl implements ProductService {
+
+    ProductDao productDao = new ProductDaoImpl();
+
     @Override
     public List<Product> findProductByword(String word) throws SQLException {
 
@@ -36,10 +39,22 @@ public class ProductServiceImpl implements ProductService {
 //
 //        ProductDao productDao = new ProductDaoImpl();
 //        return productDao.findProductByword(condition,params);
-        ProductDao productDao = new ProductDaoImpl();
+
         return productDao.findProductByword(word);
 
 
 
+    }
+
+    @Override
+    public List<Product> findByHOt() throws SQLException {
+        List<Product> list = productDao.findByHot();
+        return list;
+    }
+
+    @Override
+    public List<Product> findByNew() throws SQLException {
+        List<Product> list = productDao.findByNew();
+        return list;
     }
 }

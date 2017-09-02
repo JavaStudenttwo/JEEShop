@@ -10,4 +10,8 @@ import java.util.List;
  */
 public interface ProductDao {
     List<Product> findProductByword(String word) throws SQLException;
+
+    List<Product> findByHot() throws SQLException;
+
+    List<Product> findByNew() throws SQLException;
 }

@@ -23,4 +23,20 @@ public class ProductDaoImpl implements ProductDao{
         return list;
 
     }
+
+    @Override
+    public List<Product> findByHot() throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * form product where is_hot = ? and pflag = ? order by pdate desc limit ?";
+        List<Product> list = queryRunner.query(sql,new BeanListHandler<Product>(Product.class),1,0,9);
+        return list;
+    }
+
+    @Override
+    public List<Product> findByNew() throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * form product where is_hot = ? and pflag = ? order by pdate desc limit ?";
+        List<Product> list = queryRunner.query(sql,new BeanListHandler<Product>(Product.class),0,1,9);
+        return list;
+    }
 }

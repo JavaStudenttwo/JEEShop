@@ -6,9 +6,9 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>黑马商城首页</title>
-  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-  <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
-  <script src="js/bootstrap.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+  <script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
+  <script src="../js/bootstrap.min.js" type="text/javascript"></script>
   <script>
 
   </script>
@@ -18,7 +18,7 @@
 <div class="container-fluid">
 
   <!-- 引入header.jsp -->
-  <jsp:include page="/jsp/header.jsp"></jsp:include>
+  <jsp:include page="header.jsp"></jsp:include>
 
   <!-- 轮播图 -->
   <div class="container-fluid">
@@ -32,19 +32,19 @@
       <!-- 轮播图的轮播图片 -->
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img src="img/1.jpg">
+          <img src="../img/1.jpg">
           <div class="carousel-caption">
             <!-- 轮播图上的文字 -->
           </div>
         </div>
         <div class="item">
-          <img src="img/2.jpg">
+          <img src="../img/2.jpg">
           <div class="carousel-caption">
             <!-- 轮播图上的文字 -->
           </div>
         </div>
         <div class="item">
-          <img src="img/3.jpg">
+          <img src="../img/3.jpg">
           <div class="carousel-caption">
             <!-- 轮播图上的文字 -->
           </div>
@@ -75,10 +75,11 @@
 
 
   </c:forEach>
+
   <!--
   <div class="container-fluid">
     <div class="col-md-12">
-      <h2>热门商品&nbsp;&nbsp;<img src="img/title2.jpg"/></h2>
+      <h2>热门商品&nbsp;&nbsp;<img src="../img/title2.jpg"/></h2>
     </div>
     <div class="col-md-2" style="border:1px solid #E7E7E7;border-right:0;padding:0;">
       <img src="products/hao/big01.jpg" width="205" height="404" style="display: inline-block;"/>
@@ -166,7 +167,7 @@
 
   <!-- 广告条 -->
   <div class="container-fluid">
-    <img src="products/hao/ad.jpg" width="100%"/>
+    <img src="../products/hao/ad.jpg" width="100%"/>
   </div>
 
   <!-- 最新商品 -->
@@ -184,7 +185,7 @@
   <!--
   <div class="container-fluid">
     <div class="col-md-12">
-      <h2>最新商品&nbsp;&nbsp;<img src="img/title2.jpg"/></h2>
+      <h2>最新商品&nbsp;&nbsp;<img src="../img/title2.jpg"/></h2>
     </div>
     <div class="col-md-2" style="border:1px solid #E7E7E7;border-right:0;padding:0;">
       <img src="products/hao/big01.jpg" width="205" height="404" style="display: inline-block;"/>
@@ -270,7 +271,7 @@
   </div>
   -->
   <!-- 引入footer.jsp -->
-  <jsp:include page="/footer.jsp"></jsp:include>
+  <jsp:include page="footer.jsp"></jsp:include>
 
 </div>
 </body>

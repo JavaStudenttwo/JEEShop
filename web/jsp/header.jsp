@@ -62,19 +62,38 @@
     });
 
 
-    $(function () {
-		$.post(
-            "${pageContext.request.contextPath}/category",
+    <%--$(function () {--%>
+		<%--$.post(--%>
+            <%--"${pageContext.request.contextPath}/category",--%>
 
-			function (data) {
-                $.each(data,function (i,n) {
-                    $("menu").append()("<li value=''><a href='#'>"+n.cname+"</a></li>")
-                })
+			<%--function (data) {--%>
+                <%--$.each(data,function (i,n) {--%>
+                    <%--$("#menu").append("<li value=''><a href='#'>"+n.cname+"</a></li>");--%>
+                <%--})--%>
+
+            <%--},--%>
+			<%--"json"--%>
+
+		<%--)--%>
+
+    <%--})--%>
+	$(function () {
+        $.post(
+            "${pageContext.request.contextPath}/IndexServlet",
+
+            function (data){
+                var p = data.split("#");
+                var hotlist;
+                var newlist;
+                p[0] = hotlist;
+                p[1] = newlist;
+                alert(hotlist);
+                alert(newlist);
 
             },
-			"json"
+            "json"
+        )
 
-		)
     })
 
 
@@ -86,10 +105,10 @@
 <!-- 登录 注册 购物车... -->
 <div class="container-fluid">
 	<div class="col-md-4">
-		<img src="img/logo2.png" />
+		<img src="../img/logo2.png" />
 	</div>
 	<div class="col-md-5">
-		<img src="img/header.png" />
+		<img src="../img/header.png" />
 	</div>
 	<div class="col-md-3" style="padding-top:20px">
 		<ol class="list-inline">

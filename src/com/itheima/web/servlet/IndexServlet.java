@@ -1,29 +1,54 @@
 package com.itheima.web.servlet;
 
+import com.google.gson.Gson;
+import com.itheima.domain.Product;
+import com.itheima.service.ProductService;
+import com.itheima.service.impl.ProductServiceImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by 13718 on 2017/9/1.
  */
 @WebServlet(name = "IndexServlet")
 public class IndexServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        response.sendRedirect("/jsp/index.jsp");
-    }
-
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-        response.sendRedirect("/jsp/index.jsp");
+    }
+
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        ProductService productService = new ProductServiceImpl();
+        List<Product> hotList = null;
+        List<Product> newList = null;
+        try {
+            hotList = productService.findByHOt();
+            newList = productService.findByNew();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+//        request.setAttribute("hostList",hotList);
+//        request.setAttribute("newList",newList);
+
+        Gson gson = new Gson();
+        String hotjson = gson.toJson(hotList);
+        String newjson = gson.toJson(newList);
+        String json = hotjson + "#" + newjson;
+
+        response.setContentType("application/json;charset=UTF-8");
+        response.getWriter().print(json);
+
     }
 
 
