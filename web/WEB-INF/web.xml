@@ -90,7 +90,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>indexServlet</servlet-name>
-        <url-pattern>/shopMenu</url-pattern>
+        <url-pattern>/index</url-pattern>
     </servlet-mapping>
 
 

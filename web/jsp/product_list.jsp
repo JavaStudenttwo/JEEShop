@@ -29,7 +29,7 @@ body {
 
 
 	<!-- 引入header.jsp -->
-	<jsp:include page="/header.jsp"></jsp:include>
+	<jsp:include page="/jsp/header.jsp"></jsp:include>
 
 
 	<div class="row" style="width: 1210px; margin: 0 auto;">

@@ -64,7 +64,7 @@
 
     $(function () {
 		$.post(
-            "${pageContext.request.contextPath}/shopMenu",
+            "${pageContext.request.contextPath}/index",
 
 			function (data) {
                 $.each(data,function (i,n) {

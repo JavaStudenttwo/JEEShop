@@ -38,7 +38,7 @@ public class IndexServlet extends HttpServlet {
         response.getWriter().print(json);
 
 
-//        response.sendRedirect("/index.jsp");
+        response.sendRedirect("/jsp/index.jsp");
     }
 
 

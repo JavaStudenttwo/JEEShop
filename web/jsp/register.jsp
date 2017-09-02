@@ -70,7 +70,7 @@ font {
 <body>
 
 	<!-- 引入header.jsp -->
-	<jsp:include page="/header.jsp"></jsp:include>
+	<jsp:include page="/jsp/header.jsp"></jsp:include>
 
 	<div class="container"
 		style="width: 100%; background: url('image/regist_bg.jpg');">
