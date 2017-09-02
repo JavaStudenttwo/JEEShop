@@ -64,7 +64,7 @@
 
     $(function () {
 		$.post(
-            "${pageContext.request.contextPath}/index",
+            "${pageContext.request.contextPath}/category",
 
 			function (data) {
                 $.each(data,function (i,n) {

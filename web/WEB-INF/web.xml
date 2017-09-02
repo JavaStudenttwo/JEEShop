@@ -6,13 +6,9 @@
 
 
 
+    <display-name>HeimaShop</display-name>
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-        <welcome-file>index.htm</welcome-file>
         <welcome-file>index.jsp</welcome-file>
-        <welcome-file>default.html</welcome-file>
-        <welcome-file>default.htm</welcome-file>
-        <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
 
 
@@ -51,8 +47,12 @@
         <servlet-class>com.itheima.web.servlet.UserLogoutServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>indexServlet</servlet-name>
+        <servlet-name>IndexServlet</servlet-name>
         <servlet-class>com.itheima.web.servlet.IndexServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>categoryServlet</servlet-name>
+        <servlet-class>com.itheima.web.servlet.CategoryServlet</servlet-class>
     </servlet>
 
 
@@ -89,8 +89,12 @@
         <url-pattern>/userlogout</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>indexServlet</servlet-name>
-        <url-pattern>/index</url-pattern>
+        <servlet-name>IndexServlet</servlet-name>
+        <url-pattern>/IndexServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>categoryServlet</servlet-name>
+        <url-pattern>/category</url-pattern>
     </servlet-mapping>
 
 
