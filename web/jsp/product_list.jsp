@@ -40,7 +40,7 @@ body {
 		</div>
 
 		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10001.jpg"
+			<a href="product_info.jsp"> <img src="products/1/cs10001.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -52,7 +52,7 @@ body {
 		</div>
 
 		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10002.jpg"
+			<a href="product_info.jsp"> <img src="products/1/cs10002.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -64,7 +64,7 @@ body {
 		</div>
 
 		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10003.jpg"
+			<a href="product_info.jsp"> <img src="products/1/cs10003.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -76,7 +76,7 @@ body {
 		</div>
 
 		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10004.jpg"
+			<a href="product_info.jsp"> <img src="products/1/cs10004.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -87,7 +87,7 @@ body {
 			</p>
 		</div>
 		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10005.jpg"
+			<a href="product_info.jsp"> <img src="products/1/cs10005.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -99,7 +99,7 @@ body {
 		</div>
 
 		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10006.jpg"
+			<a href="product_info.jsp"> <img src="products/1/cs10006.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -111,7 +111,7 @@ body {
 		</div>
 
 		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10007.jpg"
+			<a href="product_info.jsp"> <img src="products/1/cs10007.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -122,7 +122,7 @@ body {
 			</p>
 		</div>
 		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10008.jpg"
+			<a href="product_info.jsp"> <img src="products/1/cs10008.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -133,7 +133,7 @@ body {
 			</p>
 		</div>
 		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10007.jpg"
+			<a href="product_info.jsp"> <img src="products/1/cs10007.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -144,7 +144,7 @@ body {
 			</p>
 		</div>
 		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10008.jpg"
+			<a href="product_info.jsp"> <img src="products/1/cs10008.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -155,7 +155,7 @@ body {
 			</p>
 		</div>
 		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10007.jpg"
+			<a href="product_info.jsp"> <img src="products/1/cs10007.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -166,7 +166,7 @@ body {
 			</p>
 		</div>
 		<div class="col-md-2">
-			<a href="product_info.htm"> <img src="products/1/cs10008.jpg"
+			<a href="product_info.jsp"> <img src="products/1/cs10008.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>

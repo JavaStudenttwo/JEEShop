@@ -62,39 +62,39 @@
     });
 
 
-    <%--$(function () {--%>
-		<%--$.post(--%>
-            <%--"${pageContext.request.contextPath}/category",--%>
+    $(function () {
+		$.post(
+            "${pageContext.request.contextPath}/category",
 
-			<%--function (data) {--%>
-                <%--$.each(data,function (i,n) {--%>
-                    <%--$("#menu").append("<li value=''><a href='#'>"+n.cname+"</a></li>");--%>
-                <%--})--%>
-
-            <%--},--%>
-			<%--"json"--%>
-
-		<%--)--%>
-
-    <%--})--%>
-	$(function () {
-        $.post(
-            "${pageContext.request.contextPath}/IndexServlet",
-
-            function (data){
-                var p = data.split("#");
-                var hotlist;
-                var newlist;
-                p[0] = hotlist;
-                p[1] = newlist;
-                alert(hotlist);
-                alert(newlist);
+			function (data) {
+                $.each(data,function (i,n) {
+                    $("#menu").append("<li value=''><a href='#'>"+n.cname+"</a></li>");
+                })
 
             },
-            "json"
-        )
+			"json"
+
+		)
 
     })
+	<%--$(function () {--%>
+        <%--$.post(--%>
+            <%--"${pageContext.request.contextPath}/IndexServlet",--%>
+
+            <%--function (data){--%>
+                <%--var p = data.split("#");--%>
+                <%--var hotlist;--%>
+                <%--var newlist;--%>
+                <%--p[0] = hotlist;--%>
+                <%--p[1] = newlist;--%>
+                <%--alert(hotlist);--%>
+                <%--alert(newlist);--%>
+
+            <%--},--%>
+            <%--"json"--%>
+        <%--)--%>
+
+    <%--})--%>
 
 
 
@@ -139,7 +139,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">首页</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/IndexServlet">首页</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

@@ -1,6 +1,5 @@
 package com.itheima.web.servlet;
 
-import com.google.gson.Gson;
 import com.itheima.domain.Product;
 import com.itheima.service.ProductService;
 import com.itheima.service.impl.ProductServiceImpl;
@@ -22,12 +21,6 @@ public class IndexServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-    }
-
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         ProductService productService = new ProductServiceImpl();
         List<Product> hotList = null;
         List<Product> newList = null;
@@ -38,16 +31,28 @@ public class IndexServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-//        request.setAttribute("hostList",hotList);
-//        request.setAttribute("newList",newList);
+        request.setAttribute("hostList",hotList);
+        request.setAttribute("newList",newList);
 
-        Gson gson = new Gson();
-        String hotjson = gson.toJson(hotList);
-        String newjson = gson.toJson(newList);
-        String json = hotjson + "#" + newjson;
+//        response.sendRedirect(request.getContextPath()+"/jsp/index.jsp");
 
-        response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().print(json);
+        request.getRequestDispatcher("/jsp/index.jsp").forward(request,response);
+    }
+
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+
+
+
+//        Gson gson = new Gson();
+//        String hotjson = gson.toJson(hotList);
+//        String newjson = gson.toJson(newList);
+//        String json = hotjson + "#" + newjson;
+//
+//        response.setContentType("application/json;charset=UTF-8");
+//        response.getWriter().print(json);
 
     }
 
