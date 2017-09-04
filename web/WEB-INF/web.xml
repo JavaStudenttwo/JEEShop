@@ -14,6 +14,16 @@
 
 
     <servlet>
+        <servlet-name>ProductInfoServlet</servlet-name>
+        <servlet-class>com.itheima.web.servlet.ProductInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductInfoServlet</servlet-name>
+        <url-pattern>/ProductInfoServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
         <servlet-name>CheckUsernameServlet</servlet-name>
         <servlet-class>com.itheima.web.servlet.CheckUsernameServlet</servlet-class>
     </servlet>
@@ -56,6 +66,7 @@
     </servlet>
 
 
+
     <servlet-mapping>
         <servlet-name>CheckUsernameServlet</servlet-name>
         <url-pattern>/checkUsername</url-pattern>
@@ -96,6 +107,7 @@
         <servlet-name>categoryServlet</servlet-name>
         <url-pattern>/category</url-pattern>
     </servlet-mapping>
+
 
 
 </web-app>

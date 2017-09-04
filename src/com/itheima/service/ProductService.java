@@ -14,4 +14,6 @@ public interface ProductService {
     List<Product> findByHOt() throws SQLException;
 
     List<Product> findByNew() throws SQLException;
+
+    Product findById(String pid) throws SQLException;
 }

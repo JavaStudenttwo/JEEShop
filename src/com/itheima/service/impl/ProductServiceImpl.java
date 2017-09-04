@@ -57,4 +57,10 @@ public class ProductServiceImpl implements ProductService {
         List<Product> list = productDao.findByNew();
         return list;
     }
+
+    @Override
+    public Product findById(String pid) throws SQLException {
+        Product product = productDao.findById(pid);
+        return product;
+    }
 }

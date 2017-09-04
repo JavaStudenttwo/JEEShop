@@ -4,6 +4,7 @@ import com.itheima.dao.ProductDao;
 import com.itheima.domain.Product;
 import com.itheima.utils.DataSourceUtils;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import java.sql.SQLException;
@@ -38,5 +39,14 @@ public class ProductDaoImpl implements ProductDao{
         String sql = "select * from product where is_hot = ? and pflag = ? order by pdate desc limit ?";
         List<Product> list = queryRunner.query(sql,new BeanListHandler<Product>(Product.class),0,1,9);
         return list;
+    }
+
+
+    @Override
+    public Product findById(String pid) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * from product where pid = ?";
+        Product product = queryRunner.query(sql,new BeanHandler<Product>(Product.class),pid);
+        return product;
     }
 }

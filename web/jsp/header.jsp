@@ -105,16 +105,16 @@
 <!-- 登录 注册 购物车... -->
 <div class="container-fluid">
 	<div class="col-md-4">
-		<img src="../img/logo2.png" />
+		<img src="${pageContext.request.contextPath}/img/logo2.png" />
 	</div>
 	<div class="col-md-5">
-		<img src="../img/header.png" />
+		<img src="${pageContext.request.contextPath}/img/header.png" />
 	</div>
 	<div class="col-md-3" style="padding-top:20px">
 		<ol class="list-inline">
 			<c:if test="${empty loginUser}">
-				<li><a href="login.jsp">登录</a></li>
-				<li><a href="register.jsp">注册</a></li>
+				<li><a href="${pageContext.request.contextPath}/jsp/login.jsp">登录</a></li>
+				<li><a href="${pageContext.request.contextPath}/jsp/register.jsp">注册</a></li>
 			</c:if>
 			<li><a href="cart.jsp">购物车</a></li>
 			<c:if test="${not empty loginUser}">

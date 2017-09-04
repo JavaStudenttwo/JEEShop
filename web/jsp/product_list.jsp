@@ -5,9 +5,9 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>会员登录</title>
-<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
-<script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
-<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" />
+<script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- 引入自定义css文件 style.css -->
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 
@@ -40,7 +40,7 @@ body {
 		</div>
 
 		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="products/1/cs10001.jpg"
+			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10001.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -52,7 +52,7 @@ body {
 		</div>
 
 		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="products/1/cs10002.jpg"
+			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10002.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -64,7 +64,7 @@ body {
 		</div>
 
 		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="products/1/cs10003.jpg"
+			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10003.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -76,7 +76,7 @@ body {
 		</div>
 
 		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="products/1/cs10004.jpg"
+			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10004.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -87,7 +87,7 @@ body {
 			</p>
 		</div>
 		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="products/1/cs10005.jpg"
+			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10005.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -99,7 +99,7 @@ body {
 		</div>
 
 		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="products/1/cs10006.jpg"
+			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10006.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -111,7 +111,7 @@ body {
 		</div>
 
 		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="products/1/cs10007.jpg"
+			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10007.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -122,7 +122,7 @@ body {
 			</p>
 		</div>
 		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="products/1/cs10008.jpg"
+			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10008.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -133,7 +133,7 @@ body {
 			</p>
 		</div>
 		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="products/1/cs10007.jpg"
+			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10007.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -144,7 +144,7 @@ body {
 			</p>
 		</div>
 		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="products/1/cs10008.jpg"
+			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10008.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -155,7 +155,7 @@ body {
 			</p>
 		</div>
 		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="products/1/cs10007.jpg"
+			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10007.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -166,7 +166,7 @@ body {
 			</p>
 		</div>
 		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="products/1/cs10008.jpg"
+			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10008.jpg"
 				width="170" height="170" style="display: inline-block;">
 			</a>
 			<p>
@@ -214,7 +214,7 @@ body {
 			<ul style="list-style: none;">
 				<li
 					style="width: 150px; height: 216; float: left; margin: 0 8px 0 0; padding: 0 18px 15px; text-align: center;"><img
-					src="products/1/cs10001.jpg" width="130px" height="130px" /></li>
+					src="${pageContext.request.contextPath}/products/1/cs10001.jpg" width="130px" height="130px" /></li>
 			</ul>
 
 		</div>

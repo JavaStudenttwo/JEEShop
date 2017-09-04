@@ -31,7 +31,7 @@ public class IndexServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        request.setAttribute("hostList",hotList);
+        request.setAttribute("hotList",hotList);
         request.setAttribute("newList",newList);
 
 //        response.sendRedirect(request.getContextPath()+"/jsp/index.jsp");
