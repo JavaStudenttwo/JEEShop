@@ -4,6 +4,7 @@ import com.itheima.domain.Product;
 import com.itheima.service.ProductService;
 import com.itheima.service.impl.ProductServiceImpl;
 
+import javax.jws.WebMethod;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,9 +16,12 @@ import java.sql.SQLException;
 /**
  * Created by 13718 on 2017/9/4.
  */
-@WebServlet(name = "ProductInfoServlet")
+@WebServlet(name = "ProductInfoServlet", urlPatterns = "/ProductInfoServlet" )
 public class ProductInfoServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    @WebMethod(action = "productInfo")
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String pid = request.getParameter("pid");
         ProductService productService = new ProductServiceImpl();
@@ -29,11 +33,12 @@ public class ProductInfoServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        request.setAttribute("product",product);
-        response.sendRedirect(request.getContextPath()+"/jsp/product_info.jsp");
+        request.setAttribute("product", product);
+        response.sendRedirect(request.getContextPath() + "/jsp/product_info.jsp");
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
     }
 }

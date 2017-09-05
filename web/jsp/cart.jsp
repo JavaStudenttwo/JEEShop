@@ -9,7 +9,7 @@
 		<script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js" type="text/javascript"></script>
 		<script src="${pageContext.request.contextPath}/js/bootstrap.min.js" type="text/javascript"></script>
 		<!-- 引入自定义css文件 style.css -->
-		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" />
 		<style>
 			body {
 				margin-top: 20px;
@@ -52,7 +52,7 @@
 							<tr class="active">
 								<td width="60" width="40%">
 									<input type="hidden" name="id" value="22">
-									<img src="./image/dadonggua.jpg" width="70" height="60">
+									<img src="${pageContext.request.contextPath}/image/dadonggua.jpg" width="70" height="60">
 								</td>
 								<td width="30%">
 									<a target="_blank"> 有机蔬菜      大冬瓜...</a>
@@ -84,7 +84,7 @@
 				<div style="text-align:right;margin-top:10px;margin-bottom:10px;">
 					<a href="order_info.htm" id="clear" class="clear">清空购物车</a>
 					<a href="order_info.htm">
-						<input type="submit" width="100" value="提交订单" name="submit" border="0" style="background: url('./images/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+						<input type="submit" width="100" value="提交订单" name="submit" border="0" style="background: url('${pageContext.request.contextPath}/image/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 						height:35px;width:100px;color:white;">
 					</a>
 				</div>

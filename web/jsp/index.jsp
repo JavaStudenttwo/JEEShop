@@ -10,6 +10,7 @@
   <script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js" type="text/javascript"></script>
   <script src="${pageContext.request.contextPath}/js/bootstrap.min.js" type="text/javascript"></script>
   <script>
+    $("#menu").append("<li href='${pageContext.request.contextPath}/ProductServlet?cid="+n.cid+"'>"+n.cname+"</li>");
 
   </script>
 </head>
@@ -79,10 +80,10 @@
       </div>
       <c:forEach var="p" items="${hotList}">
         <div class="col-md-2" style="text-align:center;height: 200px;padding: 10px 0px;">
-          <a href="${pageContext.request.contextPath}/ProductInfoServlet?pid=${p.pid}">
+          <a href="${pageContext.request.contextPath}/ProductInfoServlet?method=productInfo&pid=${p.pid}">
             <img src="${pageContext.request.contextPath}/${p.pimage}">
           </a>
-          <p><a href="${pageContext.request.contextPath}/ProductInfoServlet?pid=${p.pid}" style='color:#666'>${p.pname}</a> </p>
+          <p><a href="${pageContext.request.contextPath}/ProductInfoServlet?method=productInfo&pid=${p.pid}" style='color:#666'>${p.pname}</a> </p>
           <p><font color="#E4393C" style="font-size: 16px">&yen;${p.shop_price}</font> </p>
         </div>
       </c:forEach>
@@ -110,13 +111,13 @@
           <img src="${pageContext.request.contextPath}/products/hao/middle01.jpg" width="516px" height="200px" style="display: inline-block;">
         </a>
       </div>
-      <c:forEach var="n" items="${newList}">
+      <c:forEach var="p" items="${newList}">
         <div class="col-md-2" style="text-align:center;height: 200px;padding: 10px 0px;" >
-          <a href="${pageContext.request.contextPath}/productInfo?pid=${n.pid}">
-            <img src="${pageContext.request.contextPath}/${n.pimage}" width="250" height="200px" >
+          <a href="${pageContext.request.contextPath}/ProductInfoServlet?method=productInfo&pid=${p.pid}">
+            <img src="${pageContext.request.contextPath}/${p.pimage}" width="250" height="200px" >
           </a>
-          <p><a href="${pageContext.request.contextPath}/productInfo?pid=${n.pid}" style='color:#666'>${n.pname}</a> </p>
-          <p><font color="#E4393C" style="font-size: 16px">&yen;${n.shop_price}</font> </p>
+          <p><a class="productInfo" href="${pageContext.request.contextPath}/ProductInfoServlet?method=productInfo&pid=${p.pid}" style='color:#666'>${p.pname}</a> </p>
+          <p><font color="#E4393C" style="font-size: 16px">&yen;${p.shop_price}</font> </p>
         </div>
       </c:forEach>
 

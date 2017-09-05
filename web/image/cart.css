@@ -31,15 +31,15 @@ div.cart .step .current {
 }
 
 div.cart .step1 {
-	background: url(././images/cart.gif) 0px 0px no-repeat;
+	background: url(./images/cart.gif) 0px 0px no-repeat;
 }
 
 div.cart .step2 {
-	background: url(././images/cart.gif) 0px -38px no-repeat;
+	background: url(./images/cart.gif) 0px -38px no-repeat;
 }
 
 div.cart .step3 {
-	background: url(././images/cart.gif) 0px -76px no-repeat;
+	background: url(./images/cart.gif) 0px -76px no-repeat;
 }
 
 div.cart table {
@@ -113,7 +113,7 @@ div.cart .quantity .increase {
 	cursor: pointer;
 	overflow: hidden;
 	border: 1px solid #dbdbdb;
-	background: url(././images/cart.gif) 0px -120px #f9f9f9 no-repeat;
+	background: url(./images/cart.gif) 0px -120px #f9f9f9 no-repeat;
 }
 
 div.cart .quantity .decrease {
@@ -124,7 +124,7 @@ div.cart .quantity .decrease {
 	cursor: pointer;
 	overflow: hidden;
 	border: 1px solid #dbdbdb;
-	background: url(././images/cart.gif) -30px -120px #f9f9f9 no-repeat;
+	background: url(./images/cart.gif) -30px -120px #f9f9f9 no-repeat;
 }
 
 div.cart .total {

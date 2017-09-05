@@ -10,7 +10,7 @@
 <script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- 引入自定义css文件 style.css -->
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" />
 
 <style>
 body {
@@ -49,7 +49,7 @@ body {
 						</tr>
 						<tr class="active">
 							<td width="60" width="40%"><input type="hidden" name="id"
-								value="22"> <img src="./image/dadonggua.jpg" width="70"
+								value="22"> <img src="${pageContext.request.contextPath}/image/dadonggua.jpg" width="70"
 								height="60"></td>
 							<td width="30%"><a target="_blank"> 有机蔬菜 大冬瓜...</a></td>
 							<td width="20%">￥298.00</td>
@@ -70,7 +70,7 @@ body {
 						</tr>
 						<tr class="active">
 							<td width="60" width="40%"><input type="hidden" name="id"
-								value="22"> <img src="./image/dadonggua.jpg" width="70"
+								value="22"> <img src="${pageContext.request.contextPath}/image/dadonggua.jpg" width="70"
 								height="60"></td>
 							<td width="30%"><a target="_blank"> 有机蔬菜 大冬瓜...</a></td>
 							<td width="20%">￥298.00</td>
@@ -91,7 +91,7 @@ body {
 						</tr>
 						<tr class="active">
 							<td width="60" width="40%"><input type="hidden" name="id"
-								value="22"> <img src="./image/dadonggua.jpg" width="70"
+								value="22"> <img src="${pageContext.request.contextPath}/image/dadonggua.jpg" width="70"
 								height="60"></td>
 							<td width="30%"><a target="_blank"> 有机蔬菜 大冬瓜...</a></td>
 							<td width="20%">￥298.00</td>
@@ -112,7 +112,7 @@ body {
 						</tr>
 						<tr class="active">
 							<td width="60" width="40%"><input type="hidden" name="id"
-								value="22"> <img src="./image/dadonggua.jpg" width="70"
+								value="22"> <img src="${pageContext.request.contextPath}/image/dadonggua.jpg" width="70"
 								height="60"></td>
 							<td width="30%"><a target="_blank"> 有机蔬菜 大冬瓜...</a></td>
 							<td width="20%">￥298.00</td>
