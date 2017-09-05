@@ -2,6 +2,7 @@ package com.itheima.service.impl;
 
 import com.itheima.dao.ProductDao;
 import com.itheima.dao.impl.ProductDaoImpl;
+import com.itheima.domain.PageBean;
 import com.itheima.domain.Product;
 import com.itheima.service.ProductService;
 
@@ -62,5 +63,38 @@ public class ProductServiceImpl implements ProductService {
     public Product findById(String pid) throws SQLException {
         Product product = productDao.findById(pid);
         return product;
+    }
+
+    @Override
+    public PageBean<Product> findByCid(String cid, int pageNumber, int pageSize) throws SQLException {
+
+        int totalRecord = productDao.findTotalRecordByCid(cid);
+
+        PageBean<Product> pageBean = new PageBean<Product>(pageNumber,pageSize,totalRecord);
+
+        List<Product> data = productDao.findAllByCid(cid,pageBean.getStartIndex(),pageBean.getPageSize());
+
+        pageBean.setData(data);
+
+        return pageBean;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

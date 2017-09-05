@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * Created by 13718 on 2017/8/31.
  */
-@WebFilter(filterName = "LoginFilter")
+@WebFilter(filterName = "LoginFilter" )
 public class LoginFilter implements Filter {
     public void destroy() {
     }

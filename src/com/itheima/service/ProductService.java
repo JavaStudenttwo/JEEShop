@@ -1,5 +1,6 @@
 package com.itheima.service;
 
+import com.itheima.domain.PageBean;
 import com.itheima.domain.Product;
 
 import java.sql.SQLException;
@@ -16,4 +17,6 @@ public interface ProductService {
     List<Product> findByNew() throws SQLException;
 
     Product findById(String pid) throws SQLException;
+
+    PageBean<Product> findByCid(String cid, int pageNumber, int pageSize) throws SQLException;
 }

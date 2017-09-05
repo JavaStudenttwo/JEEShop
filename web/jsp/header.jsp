@@ -68,8 +68,9 @@
 
 			function (data) {
                 $.each(data,function (i,n) {
-                    $("#menu").append("<li value=''><a href='#'>"+n.cname+"</a></li>");
+                    $("#menu").append("<li value=''><a href='${pageContext.request.contextPath}/ProductServlet?cid="+n.cid+"'>"+n.cname+"</a></li>");
                 })
+                <%--$("#menu").append("<li value=''><a href='${pageContext.request.contextPath}/ProductServlet?cid="+n.cid+"'>"+n.cname+"</a></li>");--%>
 
             },
 			"json"

@@ -6,6 +6,7 @@ import com.itheima.utils.DataSourceUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -49,4 +50,24 @@ public class ProductDaoImpl implements ProductDao{
         Product product = queryRunner.query(sql,new BeanHandler<Product>(Product.class),pid);
         return product;
     }
+
+    @Override
+    public int findTotalRecordByCid(String cid) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select count(*) from product where cid = ?";
+        Long count = (Long) queryRunner.query(sql,new ScalarHandler(),cid);
+        return count.intValue();
+    }
+
+    @Override
+    public List<Product> findAllByCid(String cid, int startIndex, int pageSize) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * from product where cid = ? and pflag = ? order by pdate desc limit ?,?";
+        List<Product> list = queryRunner.query(sql ,new BeanListHandler<Product>(Product.class),cid,0,startIndex,pageSize);
+
+        return list;
+    }
+
+
+
 }

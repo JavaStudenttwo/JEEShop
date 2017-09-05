@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -51,131 +52,18 @@ body {
 			</p>
 		</div>
 
-		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10002.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>圆白菜</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
+		<c:forEach items="${pageBean.data}" var="product">
+			<div class="col-md-2" style="height:240px;">
+				<a href="${pageContext.request.contextPath}/ProductInfoServlet?pid=${product.pid}">
+					<img src="${pageContext.request.contextPath}/${product.pimage}">
+				</a>
+				<p><a href="${pageContext.request.contextPath}/ProductInfoServlet?pid=${product.pid}">
 
-		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10003.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>甜玉米</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
+				</a></p>
+				<p><font color="#FF0000">商城价：&yen;${product.shop_price}</font> </p>
+			</div>
+		</c:forEach>
 
-		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10004.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>胡萝卜</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10005.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>芹菜</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-
-		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10006.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>韭菜</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-
-		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10007.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>香菜</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10008.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>土豆</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10007.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>香菜</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10008.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>土豆</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10007.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>香菜</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
-		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10008.jpg"
-				width="170" height="170" style="display: inline-block;">
-			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>土豆</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
-		</div>
 
 	</div>
 
