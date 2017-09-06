@@ -71,7 +71,6 @@
                     $("#menu").append("<li value=''><a href='${pageContext.request.contextPath}/ProductServlet?cid="+n.cid+"'>"+n.cname+"</a></li>");
                 })
                 <%--$("#menu").append("<li value=''><a href='${pageContext.request.contextPath}/ProductServlet?cid="+n.cid+"'>"+n.cname+"</a></li>");--%>
-
             },
 			"json"
 
@@ -117,11 +116,11 @@
 				<li><a href="${pageContext.request.contextPath}/jsp/login.jsp">登录</a></li>
 				<li><a href="${pageContext.request.contextPath}/jsp/register.jsp">注册</a></li>
 			</c:if>
-			<li><a href="cart.jsp">购物车</a></li>
+			<li><a href="${pageContext.request.contextPath}/jsp/cart.jsp">购物车</a></li>
 			<c:if test="${not empty loginUser}">
 				欢迎：${loginUser.name},
-				<li><a href="${pageContext.request.contextPath}/order_list.jsp">我的订单</a> </li>
-				<li><a href="${pageContext.request.contextPath}/userlogout">退出</a></li>
+				<li><a href="${pageContext.request.contextPath}/OrderQueryServlet">我的订单</a> </li>
+				<li><a href="${pageContext.request.contextPath}/jsp/userlogout">退出</a></li>
 			</c:if>
 
 		</ol>

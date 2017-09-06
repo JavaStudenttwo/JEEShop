@@ -21,7 +21,7 @@ import java.sql.SQLException;
 /**
  * Created by 13718 on 2017/8/28.
  */
-@WebServlet(name = "RegisterServlet")
+@WebServlet(name = "RegisterServlet" , urlPatterns = "/registeruser")
 public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -40,7 +40,8 @@ public class ProductServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        request.setAttribute("pageBean",pageBean);
+
+        request.setAttribute("pageBean",pageBean.getData().get(0));
         response.sendRedirect(request.getContextPath()+"/jsp/product_list.jsp");
 
 

@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Created by 13718 on 2017/8/30.
  */
-@WebServlet(name = "ConfirmImgServlet")
+@WebServlet(name = "ConfirmImgServlet" , urlPatterns = "/confirmimg")
 public class ConfirmImgServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -2,6 +2,7 @@ package com.itheima.web.servlet;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import java.util.Random;
  *
  *
  */
+@WebServlet(name = "CheckImgServlet" , urlPatterns = "/checkimg")
 public class CheckImgServlet extends HttpServlet {
 
 	// 集合中保存所有成语

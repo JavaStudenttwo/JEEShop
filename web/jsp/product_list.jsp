@@ -6,11 +6,13 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>会员登录</title>
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" />
 <script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- 引入自定义css文件 style.css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" />
+
 
 <style>
 body {
@@ -24,6 +26,30 @@ body {
 	height: 300px;
 }
 </style>
+<script>
+	function subForm() {
+		document.getElementById("form1").submit();
+    }
+
+    <%--$(function () {--%>
+		<%--$("#paginationId").pagination({--%>
+			<%--total:'${pageBean.pageSize}',--%>
+			<%--pageSize:'${pageBean.pageSize}',--%>
+			<%--pageNumber:'${param.pageNumber}',--%>
+			<%--layout:['first','prev','sep','links','sep','next','last','sep','maunal'],--%>
+			<%--beforePageText:'当前页',--%>
+			<%--afterPageText:'页，共{pages}页',--%>
+			<%--display:'当前显示{from}到{to}条，共{total}条记录',--%>
+			<%--onSelectPage:function (pageNumber,pageSize) {--%>
+			    <%--location.href = "${pageContext.request.contextPath}/ProductServlet?cid=${param.cid}$pageNmuber="+pageNumber;--%>
+
+
+            <%--}--%>
+
+		<%--})--%>
+    <%--})--%>
+
+</script>
 </head>
 
 <body>
@@ -40,52 +66,36 @@ body {
 			</ol>
 		</div>
 
-		<div class="col-md-2">
-			<a href="product_info.jsp"> <img src="${pageContext.request.contextPath}/products/1/cs10001.jpg"
-				width="170" height="170" style="display: inline-block;">
+		<%--<c:forEach var="product" items="${requestScope.pageBean}" >--%>
+			<%--<div class="col-md-2" style="height:240px;">--%>
+				<%--<a href="${pageContext.request.contextPath}/ProductInfoServlet?pid=${product.pid}">--%>
+					<%--<img src="${pageContext.request.contextPath}/${product.pimage}">--%>
+				<%--</a>--%>
+				<%--<p><a href="${pageContext.request.contextPath}/ProductInfoServlet?pid=${product.pid}">--%>
+
+				<%--</a></p>--%>
+				<%--<p><font color="#FF0000">商城价：&yen;${product.shop_price}</font> </p>--%>
+			<%--</div>--%>
+		<%--</c:forEach>--%>
+		<div class="col-md-2" style="height:240px;">
+			<a href="${pageContext.request.contextPath}/ProductInfoServlet?pid=${product.pid}">
+				<img src="${pageContext.request.contextPath}/${product.pimage}">
 			</a>
-			<p>
-				<a href="product_info.html" style='color: green'>冬瓜</a>
-			</p>
-			<p>
-				<font color="#FF0000">商城价：&yen;299.00</font>
-			</p>
+			<p><a href="${pageContext.request.contextPath}/ProductInfoServlet?pid=1">
+
+			</a></p>
+			<p><font color="#FF0000">商城价：&yen;100${product.shop_price}</font> </p>
 		</div>
 
-		<c:forEach items="${pageBean.data}" var="product">
-			<div class="col-md-2" style="height:240px;">
-				<a href="${pageContext.request.contextPath}/ProductInfoServlet?pid=${product.pid}">
-					<img src="${pageContext.request.contextPath}/${product.pimage}">
-				</a>
-				<p><a href="${pageContext.request.contextPath}/ProductInfoServlet?pid=${product.pid}">
-
-				</a></p>
-				<p><font color="#FF0000">商城价：&yen;${product.shop_price}</font> </p>
-			</div>
-		</c:forEach>
 
 
 	</div>
 
-	<!--分页 -->
-	<div style="width: 380px; margin: 0 auto; margin-top: 50px;">
-		<ul class="pagination" style="text-align: center; margin-top: 10px;">
-			<li class="disabled"><a href="#" aria-label="Previous"><span
-					aria-hidden="true">&laquo;</span></a></li>
-			<li class="active"><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li><a href="#">6</a></li>
-			<li><a href="#">7</a></li>
-			<li><a href="#">8</a></li>
-			<li><a href="#">9</a></li>
-			<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-			</a></li>
-		</ul>
-	</div>
-	<!-- 分页结束 -->
+	<%--<div style="width: 600px; margin: 0 auto; margin-top: 50px;">--%>
+		<%--<div class="panel">--%>
+			<%--<div id="paginationId" style="font-size:14px;margin:0;display:block;"></div>--%>
+		<%--</div>--%>
+	<%--</div>--%>
 
 	<!--商品浏览记录-->
 	<div

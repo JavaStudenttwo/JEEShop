@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by 13718 on 2017/9/2.
  */
-@WebServlet(name = "CategoryServlet")
+@WebServlet(name = "CategoryServlet" , urlPatterns = "/category")
 public class CategoryServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

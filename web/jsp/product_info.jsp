@@ -36,25 +36,28 @@ body {
 				<a>无公害蔬菜</a>
 			</div>
 
+
 			<div style="margin: 0 auto; width: 950px;">
 				<div class="col-md-6">
 					<img style="opacity: 1; width: 400px; height: 350px;" title=""
 						class="medium"
-						src="${pageContext.request.contextPath}/${product.pimage}">
+						src="${pageContext.request.contextPath}/${requestScope.product.pimage}">
 				</div>
 
 				<div class="col-md-6">
 					<div>
-						<strong>${product.pname}</strong>
+						<strong>el表达式练习
+						${product.pid}
+						</strong>
 					</div>
 					<div
 						style="border-bottom: 1px dotted #dddddd; width: 350px; margin: 10px 0 10px 0;">
-						<div>编号：${product.pid}</div>
+						<div>编号：${requestScope.product.pid}</div>
 					</div>
 
 					<div style="margin: 10px 0 10px 0;">
-						亿家价: <strong style="color: #ef0101;">￥：${product.shop_price}</strong> 参 考 价：
-						<del>￥:${product.market_price}</del>
+						亿家价: <strong style="color: #ef0101;">￥：${requestScope.product.shop_price}</strong>
+						参 考 价：<del>￥:${requestScope.product.market_price}</del>
 					</div>
 
 					<div style="margin: 10px 0 10px 0;">

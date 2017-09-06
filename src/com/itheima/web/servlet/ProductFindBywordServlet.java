@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by 13718 on 2017/8/28.
  */
-@WebServlet(name = "ProductFindBywordServlet")
+@WebServlet(name = "ProductFindBywordServlet" , urlPatterns = "/productFindByword")
 public class ProductFindBywordServlet extends BaseServlet {
 
 

@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by 13718 on 2017/9/1.
  */
-@WebServlet(name = "IndexServlet")
+@WebServlet(name = "IndexServlet" , urlPatterns = "/IndexServlet")
 public class IndexServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,6 +33,7 @@ public class IndexServlet extends HttpServlet {
 
         request.setAttribute("hotList",hotList);
         request.setAttribute("newList",newList);
+
 
 //        response.sendRedirect(request.getContextPath()+"/jsp/index.jsp");
 
