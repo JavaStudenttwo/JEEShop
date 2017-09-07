@@ -6,7 +6,6 @@ import com.itheima.service.impl.ProductServiceImpl;
 import com.itheima.utils.CookieUtils;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +18,6 @@ import java.util.LinkedList;
 /**
  * Created by 13718 on 2017/9/4.
  */
-@WebServlet(name = "ProductInfoServlet", urlPatterns = "/ProductInfoServlet" )
 public class ProductInfoServlet extends HttpServlet {
 
 

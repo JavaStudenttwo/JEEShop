@@ -1,7 +1,6 @@
 package com.itheima.web.servlet;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +10,6 @@ import java.lang.reflect.Method;
 /**
  * Created by 13718 on 2017/8/31.
  */
-@WebServlet(name = "BaseServlet")
 public class BaseServlet extends HttpServlet {
 
     @Override

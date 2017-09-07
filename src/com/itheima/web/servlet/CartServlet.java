@@ -6,7 +6,6 @@ import com.itheima.service.ProductService;
 import com.itheima.service.impl.ProductServiceImpl;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +16,6 @@ import java.sql.SQLException;
 /**
  * Created by 13718 on 2017/9/7.
  */
-@WebServlet(name = "CartServlet" , urlPatterns = "/CartServlet")
 public class CartServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

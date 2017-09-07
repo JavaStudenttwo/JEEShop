@@ -6,7 +6,6 @@ import com.itheima.service.ProductService;
 import com.itheima.service.impl.ProductServiceImpl;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -16,7 +15,6 @@ import java.util.List;
 /**
  * Created by 13718 on 2017/8/28.
  */
-@WebServlet(name = "ProductFindBywordServlet" , urlPatterns = "/productFindByword")
 public class ProductFindBywordServlet extends BaseServlet {
 
 

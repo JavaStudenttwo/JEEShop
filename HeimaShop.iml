@@ -25,7 +25,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 7.0.771" level="application_server_libraries" />
-    <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit4">
         <CLASSES>
@@ -37,5 +36,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Arquillian JUnit:Release" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

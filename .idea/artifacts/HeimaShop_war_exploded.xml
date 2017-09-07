@@ -8,7 +8,6 @@
           <element id="module-output" name="HeimaShop" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="lib" />
           <element id="library" level="project" name="Arquillian JUnit:Release" />
         </element>
       </element>

@@ -4,7 +4,6 @@ import com.itheima.domain.User;
 import com.itheima.utils.LoginUtils;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +13,6 @@ import java.io.IOException;
 /**
  * Created by 13718 on 2017/8/30.
  */
-@WebServlet(name = "UserLoginServlet" , urlPatterns = "/userlogin")
 public class UserLoginServlet extends HttpServlet {
 
 

@@ -4,7 +4,6 @@ import com.itheima.service.UserService;
 import com.itheima.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -13,7 +12,6 @@ import java.sql.SQLException;
 /**
  * Created by 13718 on 2017/8/29.
  */
-@WebServlet(name = "UserActiveServlet" ,urlPatterns = "/useractive")
 public class UserActiveServlet extends BaseServlet{
 
 
