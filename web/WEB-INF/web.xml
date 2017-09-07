@@ -4,12 +4,21 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-
-
     <display-name>HeimaShop</display-name>
     <welcome-file-list>
-        <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
+
+
+
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>com.itheima.web.servlet.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>CartServlet</url-pattern>
+    </servlet-mapping>
 
 
 
@@ -56,6 +65,7 @@
         <!--<servlet-name>categoryServlet</servlet-name>-->
         <!--<servlet-class>com.itheima.web.servlet.CategoryServlet</servlet-class>-->
     <!--</servlet>-->
+
 
 
 

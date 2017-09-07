@@ -36,6 +36,8 @@ public class ProductInfoServlet extends HttpServlet {
         }
 
         request.setAttribute("product", product);
+        String pname = product.getPname();
+        request.setAttribute("pname" ,pname);
 
 
 
