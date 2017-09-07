@@ -26,7 +26,8 @@ public class CartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String pid = request.getParameter("pid");
-        Integer count = Integer.parseInt(request.getParameter("oount"));
+        String countStr = request.getParameter("count");
+        int count = Integer.parseInt(countStr);
 
         ProductService productService = new ProductServiceImpl();
         Product product = null;
@@ -39,11 +40,14 @@ public class CartServlet extends HttpServlet {
         Cart cart = getCart(request.getSession());
         cart.addCart(product,count);
 
+        String str = "Heimashop";
+        request.setAttribute("str",str);
+
         response.sendRedirect(request.getContextPath()+"/jsp/cart.jsp");
 
     }
 
-    private Cart getCart(HttpSession session) {
+    public static Cart getCart(HttpSession session) {
         Cart cart = (Cart) session.getAttribute("cart");
         if (cart == null){
             cart = new Cart();

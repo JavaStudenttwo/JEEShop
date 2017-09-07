@@ -27,8 +27,9 @@
                         $("#itemul").append("<li class='list-group-item'><a href='#'>"+str+"</a></li>")
                         $("#completeShow").show();
                     }
-                }),
+                },
                 "json"
+			)
         }).focus(function () {
             if($("#completeShow li").size()>0){
                 $("#completeShow").show();

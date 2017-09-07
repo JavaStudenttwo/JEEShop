@@ -73,7 +73,7 @@ font {
 	<jsp:include page="/jsp/header.jsp"></jsp:include>
 
 	<div class="container"
-		style="width: 100%; background: url('image/regist_bg.jpg');">
+		style="width: 100%; background: url('${pageContext.request.contextPath}/image/regist_bg.jpg');">
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-8"
@@ -150,7 +150,7 @@ font {
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<input id="regBut" type="submit" width="100" value="注册" name="submit"
-								style="background: url('${pageContext.request.contextPath}/image/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 35px; width: 100px; color: white;">
+								style="background: url('${pageContext.request.contextPath}/images/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 35px; width: 100px; color: white;">
 						</div>
 					</div>
 				</form>
