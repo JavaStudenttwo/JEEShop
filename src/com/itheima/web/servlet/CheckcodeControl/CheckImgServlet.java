@@ -1,4 +1,4 @@
-package com.itheima.web.servlet;
+package com.itheima.web.servlet.CheckcodeControl;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -17,9 +17,6 @@ import java.util.Random;
 
 /**
  * 验证码生成程序
- *
- *
- *
  */
 @WebServlet(name = "CheckImgServlet" , urlPatterns = "/checkimg")
 public class CheckImgServlet extends HttpServlet {

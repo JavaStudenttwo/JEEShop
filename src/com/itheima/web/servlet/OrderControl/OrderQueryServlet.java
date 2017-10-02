@@ -1,4 +1,4 @@
-package com.itheima.web.servlet;
+package com.itheima.web.servlet.OrderControl;
 
 import com.itheima.domain.Order;
 import com.itheima.domain.PageBean;

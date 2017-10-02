@@ -1,4 +1,4 @@
-package com.itheima.web.servlet;
+package com.itheima.web.servlet.CartControl;
 
 import com.itheima.domain.Cart;
 import com.itheima.domain.Product;
@@ -17,11 +17,10 @@ import java.sql.SQLException;
 /**
  * Created by 13718 on 2017/9/7.
  */
-@WebServlet(name = "CartServlet" , urlPatterns = "/CartServlet")
+@WebServlet(name = "CartServlet" , urlPatterns = "/CartServlet" )
 public class CartServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

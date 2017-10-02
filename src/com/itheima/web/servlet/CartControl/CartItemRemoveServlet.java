@@ -1,4 +1,4 @@
-package com.itheima.web.servlet;
+package com.itheima.web.servlet.CartControl;
 
 import com.itheima.domain.Cart;
 
@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Created by 13718 on 2017/9/7.
  */
-@WebServlet(name = "CartItemRemoveServlet" , urlPatterns = "CartItemRemoveServlet")
+@WebServlet(name = "CartItemRemoveServlet" , urlPatterns = "/CartItemRemoveServlet")
 public class CartItemRemoveServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

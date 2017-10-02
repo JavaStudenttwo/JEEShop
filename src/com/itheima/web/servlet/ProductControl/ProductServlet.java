@@ -1,4 +1,5 @@
-package com.itheima.web.servlet;
+package com.itheima.web.servlet.ProductControl;
+
 
 import com.itheima.domain.PageBean;
 import com.itheima.domain.Product;
@@ -16,7 +17,7 @@ import java.sql.SQLException;
 /**
  * Created by 13718 on 2017/9/5.
  */
-@WebServlet(name = "ProductServlet",urlPatterns = "/ProductServlet")
+@WebServlet(name = "ProductControl",urlPatterns = "/ProductControl")
 public class ProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

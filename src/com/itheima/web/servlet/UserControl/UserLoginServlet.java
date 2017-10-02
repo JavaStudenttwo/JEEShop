@@ -1,4 +1,4 @@
-package com.itheima.web.servlet;
+package com.itheima.web.servlet.UserControl;
 
 import com.itheima.domain.User;
 import com.itheima.utils.LoginUtils;
@@ -23,13 +23,20 @@ public class UserLoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+        /** 获取页面自动登陆选项框的值*/
         String autoLogin = request.getParameter("autoLogin");
+        /**如果用户点击了自动登陆*/
         if ("1".equals(autoLogin)) {
+            /**1.创建一个Cookie用于记住用户的登录名和密码*/
             Cookie autoLoginCookie = new Cookie("autoLoginCookie", username + "@" + password);
+            /**2.设置Cookie的路径为当前路径（即用户登陆）*/
             autoLoginCookie.setPath(request.getContextPath());
+            /**3.设置Cookie的生命周期为一周*/
             autoLoginCookie.setMaxAge(60 * 60 * 24 * 7);
+            /**4.将Cookie发送到浏览器*/
             response.addCookie(autoLoginCookie);
         } else {
+            /**如果用户没有点击自动登陆*/
             Cookie autoLoginCookie = new Cookie("autoLonginCookie", "");
             autoLoginCookie.setPath(request.getContextPath());
             autoLoginCookie.setMaxAge(0);

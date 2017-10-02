@@ -41,7 +41,7 @@ body {
 			<%--afterPageText:'页，共{pages}页',--%>
 			<%--display:'当前显示{from}到{to}条，共{total}条记录',--%>
 			<%--onSelectPage:function (pageNumber,pageSize) {--%>
-			    <%--location.href = "${pageContext.request.contextPath}/ProductServlet?cid=${param.cid}$pageNmuber="+pageNumber;--%>
+			    <%--location.href = "${pageContext.request.contextPath}/ProductControl?cid=${param.cid}$pageNmuber="+pageNumber;--%>
 
 
             <%--}--%>

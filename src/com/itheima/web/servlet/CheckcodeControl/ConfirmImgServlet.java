@@ -1,4 +1,4 @@
-package com.itheima.web.servlet;
+package com.itheima.web.servlet.CheckcodeControl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,8 +27,6 @@ public class ConfirmImgServlet extends HttpServlet {
         if(confirm.equals(word)){
             response.getWriter().println("1");
         }
-
-
 
     }
 

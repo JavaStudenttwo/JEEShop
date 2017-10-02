@@ -1,4 +1,4 @@
-package com.itheima.web.servlet;
+package com.itheima.web.servlet.CartControl;
 
 import com.google.gson.Gson;
 import com.itheima.domain.Category;

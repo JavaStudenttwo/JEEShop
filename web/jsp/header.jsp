@@ -4,10 +4,12 @@
 <!DOCTYPE html>
 
 <script type="text/javascript">
+
     $(function () {
+        //选择id为search的元素，按键释放时触发
         $("#search").keyup(function () {
 
-            var url = "${pageContext.request.contextPath}/productFindByword?method=checkName";
+            var url = "${pageContext.request.contextPath}/productFindByword";
             var word = $(this).val();
             var params = {"word":word};
 
@@ -15,6 +17,7 @@
                 $("#completeShow").slideUp(200);
                 return false;
             }
+
             $.post(
                 url,
                 params,
@@ -69,9 +72,9 @@
 
 			function (data) {
                 $.each(data,function (i,n) {
-                    $("#menu").append("<li value=''><a href='${pageContext.request.contextPath}/ProductServlet?cid="+n.cid+"'>"+n.cname+"</a></li>");
+                    $("#menu").append("<li value=''><a href='${pageContext.request.contextPath}/ProductControl?cid="+n.cid+"'>"+n.cname+"</a></li>");
                 })
-                <%--$("#menu").append("<li value=''><a href='${pageContext.request.contextPath}/ProductServlet?cid="+n.cid+"'>"+n.cname+"</a></li>");--%>
+                <%--$("#menu").append("<li value=''><a href='${pageContext.request.contextPath}/ProductControl?cid="+n.cid+"'>"+n.cname+"</a></li>");--%>
             },
 			"json"
 

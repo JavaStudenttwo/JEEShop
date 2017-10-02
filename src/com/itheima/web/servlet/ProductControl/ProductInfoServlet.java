@@ -1,4 +1,4 @@
-package com.itheima.web.servlet;
+package com.itheima.web.servlet.ProductControl;
 
 import com.itheima.domain.Product;
 import com.itheima.service.ProductService;

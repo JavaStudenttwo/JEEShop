@@ -22,17 +22,27 @@ public class BaseServlet extends HttpServlet {
         try {
             //1、获得请求的method的名称
             String methodName = req.getParameter("method");
+            if (methodName == null){
+                methodName = "excute";
+            }
             //2、获得当前被访问的对象的字节码对象
             Class clazz = this.getClass();
             //3、获得当前字节码对象的中的指定方法
             Method method = clazz.getMethod(methodName, HttpServletRequest.class,HttpServletResponse.class);
             //4、执行相应功能方法
-            method.invoke(this, req,resp);
+            String jsPath = (String) method.invoke(this, req,resp);
 
+            if (jsPath != null){
+                req.getRequestDispatcher(jsPath).forward(req,resp);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+    }
+
+    public String excute(HttpServletRequest httpServletRequest,HttpServletResponse httpServletResponse)throws ServletException, IOException{
+        return null;
     }
 
 }

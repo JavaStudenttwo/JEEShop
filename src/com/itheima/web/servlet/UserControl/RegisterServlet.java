@@ -1,4 +1,4 @@
-package com.itheima.web.servlet;
+package com.itheima.web.servlet.UserControl;
 
 import com.itheima.domain.User;
 import com.itheima.service.UserService;

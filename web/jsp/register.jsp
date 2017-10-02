@@ -31,24 +31,27 @@ font {
 </style>
 
 <script type="text/javascript">
+
+
 	$(function () {
 	    $("#username").blur(function () {
 			var value = $(this).val();
 			if(value!=null){
-
 			    $.get(
                     "${pageContext.request.contextPath}/checkUsername",
                     {"username":value},
 					function (data) {
-			        	if(data == "1"){
-							$("#s1").html("用户名可以使用").css("color","#0f0");
-							$("regBut").attr("disabled",false);
-						}else if(data == "2"){
-							$("#s1").html("用户名已经存在").css("color","f00");
-							$("regBut").attr("disabled",true);
+                        var isExist = data.isExist;
+			        	if(isExist){
+			        	    usernameInfo = "该用户名已经存在";
+							$("#usernameInfo").css("color","red");
+						}else{
+                            usernameInfo = "该用户名可以使用";
+                            $("#usernameInfo").css("color","green");
 						}
+						$("#usernameInfo").html(usernameInfo);
 					},
-					"text"
+					"json"
 				);
 			}
         });
@@ -60,10 +63,6 @@ font {
 	    obj.src="${pageContext.request.contextPath}/checkimg?time="+new Date().getTime();
 
     }
-	
-
-
-
 
 </script>
 </head>
@@ -85,7 +84,7 @@ font {
 						<div class="col-sm-6">
 							<input type="text" class="form-control" id="username" name="username"
 								placeholder="请输入用户名">
-							<span id="s1" ></span>
+							<span id="usernameInfo" ></span>
  						</div>
 					</div>
 					<div class="form-group">

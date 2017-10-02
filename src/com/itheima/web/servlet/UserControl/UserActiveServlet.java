@@ -1,7 +1,8 @@
-package com.itheima.web.servlet;
+package com.itheima.web.servlet.UserControl;
 
 import com.itheima.service.UserService;
 import com.itheima.service.impl.UserServiceImpl;
+import com.itheima.web.servlet.BaseServlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

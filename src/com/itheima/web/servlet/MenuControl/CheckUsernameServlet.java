@@ -1,4 +1,4 @@
-package com.itheima.web.servlet;
+package com.itheima.web.servlet.MenuControl;
 
 import com.itheima.domain.User;
 import com.itheima.service.UserService;
@@ -29,13 +29,16 @@ public class CheckUsernameServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        Boolean isExist = false;
 
         if(user == null){
-            response.getWriter().println("1");
-
+//            response.getWriter().write("{\"isExist\":"+false+"}");
+            isExist = false;
         }else if(user != null){
-            response.getWriter().println("2");
+//            response.getWriter().write("{\"isExist\":"+true+"}");
+            isExist = true;
         }
+        response.getWriter().write("{\"isExist\":"+isExist+"}");
 
     }
     public void doPost(HttpServletRequest request ,HttpServletResponse response)throws IOException, ServletException {
