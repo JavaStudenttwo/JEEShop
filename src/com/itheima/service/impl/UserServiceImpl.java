@@ -9,7 +9,11 @@ import com.itheima.service.UserService;
 import java.sql.SQLException;
 
 /**
- * Created by 13718 on 2017/8/27.
+ * creater:litiecheng
+ * createDate:2017-8-30
+ * discription:用户业务处理
+ * indetail:
+ *
  */
 public class UserServiceImpl implements UserService {
 
@@ -42,6 +46,19 @@ public class UserServiceImpl implements UserService {
             return true;
         }else{
             return false;
+        }
+    }
+
+    @Override
+    public User login(String username, String password) throws SQLException {
+
+        User user = findByUsername(username);
+
+//        if (password.equals(user.getPassword()) && user.getState()==1){
+        if (password.equals(user.getPassword())){
+            return user;
+        }else{
+            return null;
         }
     }
 }

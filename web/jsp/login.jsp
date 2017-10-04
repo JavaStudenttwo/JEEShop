@@ -39,38 +39,51 @@ font {
 
 <script>
 
-		$(function () {
-		    $("#confirmimg").blur(function () {
-		        var value = $(this).val();
-		        $.post(
-		            "${pageContext.request.contextPath}/comfirmimg",
-					{"comfirmimg":value},
+    /**
+     * creater:litiecheng
+     * createDate:2017-10-4
+     * discription:AJAX异步校验验证码
+     * indetail:
+     *
+     */
+    $(function () {
+		$("#confirmimg").blur(function ( ) {
+			var value = $(this).val();
+			if(value!=null){
+				$.post(
+					"${pageContext.request.contextPath}/userServlet?method=checkValidatecode",
+					{"validatecode":value},
 					function (data) {
-						if (data == "1"){
-
-						    alert("验证码正确")
+						var boole = data.boole;
+						if(boole){
+							validatecodeInfo = "验证码正确";
+							$("#validatecodeInfo").css("color","green");
+//                            $("#regBut").attr("disabled",true);
+							$("#regBut").disabled = true;
 						}else{
-
-						    alert("验证失败")
+							validatecodeInfo = "验证码错误";
+							$("#validatecodeInfo").css("color","red");
+//                            $("#regBut").attr("disabled",false);
+							$("#regBut").disabled = false;
 						}
-                    },
-					"text"
-				)
+						$("#validatecodeInfo").html(validatecodeInfo);
+					},
+					"json"
+				);
+			}
+		})
+    });
 
-
-
-            })
-
-
-
-        })
-
-
-
-        function changeimg(obj) {
-            obj.src="${pageContext.request.contextPath}/checkimg?time="+new Date().getTime();
-
-        }
+    /**
+     * creater:litiecheng
+     * createDate:2017-9-4
+     * discription:更换图片验证码
+     * indetail:
+     *
+     */
+	function changeimg(obj) {
+		obj.src="${pageContext.request.contextPath}/validatecode?time="+new Date().getTime();
+	}
 
 </script>
 </head>
@@ -81,7 +94,7 @@ font {
 
 
 	<div class="container"
-		style="width: 100%; height: 460px; background: #FF2C4C url('images/loginbg.jpg') no-repeat;">
+		style="width: 100%; height: 460px; background: #FF2C4C url('${pageContext.request.contextPath}/images/loginbg.jpg') no-repeat;">
 		<div class="row">
 			<div class="col-md-7">
 				<!--<img src="${pageContext.request.contextPath}/image/login.jpg" width="500" height="330" alt="会员登录" title="会员登录">-->
@@ -92,7 +105,7 @@ font {
 					style="width: 440px; border: 1px solid #E7E7E7; padding: 20px 0 20px 30px; border-radius: 5px; margin-top: 60px; background: #fff;">
 					<font>会员登录</font>USER LOGIN
 					<div>&nbsp;</div>
-					<form class="form-horizontal" action="${pageContext.request.contextPath}/userlogin" method="post">
+					<form class="form-horizontal" action="${pageContext.request.contextPath}/userServlet?method=login" method="post">
 						<div class="form-group">
 							<label for="username" class="col-sm-2 control-label">用户名</label>
 							<div class="col-sm-6">
@@ -110,11 +123,12 @@ font {
 						<div class="form-group">
 							<label for="confirmimg" class="col-sm-2 control-label">验证码</label>
 							<div class="col-sm-3">
-								<input type="text" class="form-control" id="confirmimg" name="comfirmimg"
+								<input type="text" class="form-control" id="confirmimg" name="validatecode"
 									placeholder="请输入验证码">
+								<span id="validatecodeInfo" ></span>
 							</div>
 							<div class="col-sm-3">
-								<img src="${pageContext.request.contextPath}/checkimg" onclick="changeimg(this)" />
+								<img src="${pageContext.request.contextPath}/jsp/validatecode.jsp" onclick="changeimg(this)" />
 							</div>
 						</div>
 						<div class="form-group">
@@ -129,7 +143,7 @@ font {
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<input type="submit" width="100" value="登录" name="submit"
-									style="background: url('${pageContext.request.contextPath}/image/login.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 35px; width: 100px; color: white;">
+									style="background: url('${pageContext.request.contextPath}/images/login.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 35px; width: 100px; color: white;">
 							</div>
 						</div>
 					</form>

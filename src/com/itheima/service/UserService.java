@@ -5,7 +5,11 @@ import com.itheima.domain.User;
 import java.sql.SQLException;
 
 /**
- * Created by 13718 on 2017/8/27.
+ * creater:litiecheng
+ * createDate:2017-8-30
+ * discription:用户业务处理
+ * indetail:
+ *
  */
 public interface UserService {
 
@@ -14,4 +18,6 @@ public interface UserService {
     int regist(User user) throws SQLException;
 
     Boolean activeUser(String code) throws SQLException;
+
+    User login(String username, String password) throws SQLException;
 }

@@ -8,7 +8,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 
 /**
- * Created by 13718 on 2017/9/6.
+ * creater:litiecheng
+ * createDate:2017-8-30
+ * discription:订单业务处理
+ * indetail:
+ *
  */
 public interface OrderService {
     PageBean<Order> findByUid(User loginUser, int pageNumber, int pageSize) throws SQLException, InvocationTargetException, IllegalAccessException;

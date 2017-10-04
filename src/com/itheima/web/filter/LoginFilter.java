@@ -1,8 +1,9 @@
 package com.itheima.web.filter;
 
 import com.itheima.domain.User;
+import com.itheima.service.UserService;
+import com.itheima.service.impl.UserServiceImpl;
 import com.itheima.utils.CookieUtils;
-import com.itheima.utils.LoginUtils;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * Created by 13718 on 2017/8/31.
@@ -70,7 +72,12 @@ public class LoginFilter implements Filter{
             String username = u[0];
             String password = u[1];
             /**6.2执行登陆*/
-            loginUser = LoginUtils.login(username,password);
+            UserService userService = new UserServiceImpl();
+            try {
+                loginUser = userService.login(username,password);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             /*
             public static User login(String username,String password){
                 UserService userService = new UserServiceImpl();

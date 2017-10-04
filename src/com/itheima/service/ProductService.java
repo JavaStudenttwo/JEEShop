@@ -7,7 +7,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created by 13718 on 2017/8/28.
+ * creater:litiecheng
+ * createDate:2017-8-30
+ * discription:商品业务处理
+ * indetail:
+ *
  */
 public interface ProductService {
     List<Product> findProductByword(String word) throws SQLException;

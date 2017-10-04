@@ -32,22 +32,32 @@ font {
 
 <script type="text/javascript">
 
-
+    /**
+     * creater:litiecheng
+     * createDate:2017-9-2
+     * discription:AJAX异步校验用户名是否可用
+     * indetail:使用AJAX校验用户名是否存在，如果存在，则在用户名输入框的下方提示用户名存在，不存在则提示可用
+     *
+     */
 	$(function () {
 	    $("#username").blur(function () {
 			var value = $(this).val();
 			if(value!=null){
 			    $.get(
-                    "${pageContext.request.contextPath}/checkUsername",
+                    "${pageContext.request.contextPath}/userServlet?method=checkUserName",
                     {"username":value},
 					function (data) {
                         var isExist = data.isExist;
 			        	if(isExist){
 			        	    usernameInfo = "该用户名已经存在";
 							$("#usernameInfo").css("color","red");
+//                            $("#regBut").attr("disabled",true);
+                            $("#regBut").disabled = true;
 						}else{
                             usernameInfo = "该用户名可以使用";
                             $("#usernameInfo").css("color","green");
+//                            $("#regBut").attr("disabled",false);
+                            $("#regBut").disabled = false;
 						}
 						$("#usernameInfo").html(usernameInfo);
 					},
@@ -55,13 +65,50 @@ font {
 				);
 			}
         });
+
+        /**
+         * creater:litiecheng
+         * createDate:2017-10-4
+         * discription:AJAX异步校验验证码
+         * indetail:
+         *
+         */
+	    $("#confirmimg").blur(function ( ) {
+            var value = $(this).val();
+            if(value!=null){
+                $.post(
+                    "${pageContext.request.contextPath}/userServlet?method=checkValidatecode",
+                    {"validatecode":value},
+                    function (data) {
+                        var boole = data.boole;
+                        if(boole){
+                            validatecodeInfo = "验证码正确";
+                            $("#validatecodeInfo").css("color","green");
+//                            $("#regBut").attr("disabled",true);
+                            $("#regBut").disabled = true;
+                        }else{
+                            validatecodeInfo = "验证码错误";
+                            $("#validatecodeInfo").css("color","red");
+//                            $("#regBut").attr("disabled",false);
+                            $("#regBut").disabled = false;
+                        }
+                        $("#validatecodeInfo").html(validatecodeInfo);
+                    },
+                    "json"
+                );
+            }
+        })
     });
 
-
-
+    /**
+     * creater:litiecheng
+     * createDate:2017-9-4
+     * discription:更换图片验证码
+     * indetail:
+     *
+     */
 	function changeimg(obj) {
-	    obj.src="${pageContext.request.contextPath}/checkimg?time="+new Date().getTime();
-
+	    obj.src="${pageContext.request.contextPath}/jsp/validatecode.jsp?time="+new Date().getTime();
     }
 
 </script>
@@ -78,7 +125,7 @@ font {
 			<div class="col-md-8"
 				style="background: #fff; padding: 40px 80px; margin: 30px; border: 7px solid #ccc;">
 				<font>会员注册</font>USER REGISTER
-				<form class="form-horizontal" style="margin-top: 5px;" action="${pageContext.request.contextPath}/registeruser" method="post">
+				<form class="form-horizontal" style="margin-top: 5px;" action="${pageContext.request.contextPath}/userServlet?method=register" method="post">
 					<div class="form-group">
 						<label for="username" class="col-sm-2 control-label">用户名</label>
 						<div class="col-sm-6">
@@ -138,10 +185,11 @@ font {
 					<div class="form-group">
 						<label for="confirmimg" class="col-sm-2 control-label">验证码</label>
 						<div class="col-sm-3">
-							<input id="confirmimg" type="text" class="form-control" >
+							<input id="confirmimg" type="text" class="form-control" name="validatecode">
+							<span id="validatecodeInfo" ></span>
 						</div>
 						<div class="col-sm-2">
-							<img src="${pageContext.request.contextPath}/checkimg" onclick="changeimg(this)" />
+							<img src="${pageContext.request.contextPath}/jsp/validatecode.jsp" onclick="changeimg(this)" />
 						</div>
 
 					</div>
