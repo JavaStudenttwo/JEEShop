@@ -42,25 +42,25 @@ body {
 				<a>无公害蔬菜</a>
 			</div>
 
-			<div style="margin: 0 auto; width: 950px;">
-				<div class="col-md-6">
-					<img style="opacity: 1; width: 400px; height: 350px;" title=""
+			<div style="text-align: center;margin: 0 auto; width: 950px;">
+				<div class="col-md-6" >
+					<img style="opacity: 1;padding: 100px 50px;" title=""
 						class="medium"
-						src="${pageContext.request.contextPath}/image/r___________renleipic_01/bigPic5f3622b8-028a-4e62-a77f-f41a16d715ed.jpg">
+						src="${pageContext.request.contextPath}/${product.pimage}">
 				</div>
 
 				<div class="col-md-6">
 					<div>
-						<strong>大冬瓜</strong>
+						<strong>${product.pname}</strong>
 					</div>
 					<div
 						style="border-bottom: 1px dotted #dddddd; width: 350px; margin: 10px 0 10px 0;">
-						<div>编号：751</div>
+						<div>编号：${product.pid}</div>
 					</div>
 
 					<div style="margin: 10px 0 10px 0;">
-						亿家价: <strong style="color: #ef0101;">￥：4.78元/份</strong> 参 考 价：
-						<del>￥6.00元/份</del>
+						亿家价: <strong style="color: #ef0101;">￥：${product.market_price}/份</strong> 参 考 价：
+						<del>￥${product.shop_price}元/份</del>
 					</div>
 
 					<div style="margin: 10px 0 10px 0;">
@@ -70,7 +70,7 @@ body {
 
 					<div
 						style="padding: 10px; border: 1px solid #e7dbb1; width: 330px; margin: 15px 0 10px 0;; background-color: #fffee6;">
-						<div style="margin: 5px 0 10px 0;">白色</div>
+						<div style="margin: 5px 0 10px 0;">${product.pname}</div>
 
 						<form id="form1" action="${pageContext.request.contextPath}/CartServlet" method="post">
 							<div style="border-bottom: 1px solid #faeac7; margin-top: 20px; padding-left: 10px;">购买数量:
@@ -97,7 +97,7 @@ body {
 
 				<div>
 					<img
-						src="${pageContext.request.contextPath}/image/r___________renleipic_01/bigPic139f030b-d68b-41dd-be6d-b94cc568d3c5.jpg">
+						src="${pageContext.request.contextPath}/${product.pimage}">
 				</div>
 
 				<div
@@ -113,14 +113,6 @@ body {
 							<tr>
 								<th width="10%">级别</th>
 								<td width="30%">标准</td>
-							</tr>
-							<tr>
-								<th width="10%">标重</th>
-								<td>500</td>
-							</tr>
-							<tr>
-								<th width="10%">浮动</th>
-								<td>200</td>
 							</tr>
 						</tbody>
 					</table>

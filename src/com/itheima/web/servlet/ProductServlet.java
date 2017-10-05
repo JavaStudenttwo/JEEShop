@@ -67,12 +67,12 @@ public class ProductServlet extends BaseServlet {
 
     /**
      * creater:litiecheng
-     * createDate:2017-9-1
-     * discription:查询数据库中的商品，并展示在商品展示页(product_list.jsp)
+     * createDate:2017-9-7
+     * discription:首页根据商品的id(pid)，查找数据库查询商品信息并展示在商品信息页(product_info.jsp)
      * indetail:
      *
      */
-    public void productListIndex(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void productInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String pid = request.getParameter("pid");
         ProductService productService = new ProductServiceImpl();
@@ -84,9 +84,7 @@ public class ProductServlet extends BaseServlet {
             e.printStackTrace();
         }
 
-        request.setAttribute("product", product);
-        String pname = product.getPname();
-        request.setAttribute("pname" ,pname);
+        request.getSession().setAttribute("product", product);
 
         /*//浏览历史相关
         Cookie cookie = CookieUtils.findCookie(request.getCookies(),"history");
@@ -174,8 +172,8 @@ public class ProductServlet extends BaseServlet {
             e.printStackTrace();
         }
 
-        request.setAttribute("hotList",hotList);
-        request.setAttribute("newList",newList);
+        request.getSession().setAttribute("hotList",hotList);
+        request.getSession().setAttribute("newList",newList);
 
         response.sendRedirect(request.getContextPath()+"/jsp/index.jsp");
     }
