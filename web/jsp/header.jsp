@@ -16,7 +16,7 @@
             "${pageContext.request.contextPath}/productServlet?method=category",
             function (data) {
                 $.each(data,function (i,n) {
-                    $("#menu").append("<li value=''><a href='${pageContext.request.contextPath}/ProductServlet?cid="+n.cid+"'>"+n.cname+"</a></li>");
+                    $("#menu").append("<li value=''>" + "<a href='${pageContext.request.contextPath}/productServlet?method=productList&cid="+n.cid+"'>"+n.cname+"</a></li>");
                 })
 			},
             "json"
@@ -30,7 +30,7 @@
          *
          */
         $("#search").keyup(function () {
-            var url = "${pageContext.request.contextPath}/productServlet?method=";
+            var url = "${pageContext.request.contextPath}/productServlet?method=queryByKeyword";
             var word = $(this).val();
             var params = {"word":word};
             if(word == ""){
@@ -46,7 +46,8 @@
                         var product = data[i];
                         var str = ""+product.pname;
                         str = highlight(word,str);
-                        $("#itemul").append("<li class='list-group-item'><a href='#'>"+str+"</a></li>")
+                        $("#itemul").append("<li class='list-group-item'>" +
+							"<a href='${pageContext.request.contextPath}/productServlet?method=productInfo&pid="+product.pid+"'>"+str+"</a></li>")
                         $("#completeShow").show();
                     }
                 },
@@ -131,13 +132,17 @@
 						<input id="search" type="text" class="form-control" placeholder="Search">
 					</div>
 					<button id="submit" type="submit" class="btn btn-default" disabled="submit-disabled">Submit</button>
-					<div id="completeShow">
 
+					<div id="completeShow">
+						<ul id="itemul" class="list-group">
+
+						</ul>
 
 					</div>
-
 				</form>
+
 			</div>
+
 		</div>
 	</nav>
 </div>

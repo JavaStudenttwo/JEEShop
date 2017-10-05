@@ -31,23 +31,20 @@ body {
 		document.getElementById("form1").submit();
     }
 
-    <%--$(function () {--%>
-		<%--$("#paginationId").pagination({--%>
-			<%--total:'${pageBean.pageSize}',--%>
-			<%--pageSize:'${pageBean.pageSize}',--%>
-			<%--pageNumber:'${param.pageNumber}',--%>
-			<%--layout:['first','prev','sep','links','sep','next','last','sep','maunal'],--%>
-			<%--beforePageText:'当前页',--%>
-			<%--afterPageText:'页，共{pages}页',--%>
-			<%--display:'当前显示{from}到{to}条，共{total}条记录',--%>
-			<%--onSelectPage:function (pageNumber,pageSize) {--%>
-			    <%--location.href = "${pageContext.request.contextPath}/ProductControl?cid=${param.cid}$pageNmuber="+pageNumber;--%>
-
-
-            <%--}--%>
-
-		<%--})--%>
-    <%--})--%>
+    /*$(function () {
+		$("#paginationId").pagination({
+			total:${pageBean.pageSize},
+			pageSize:${pageBean.pageSize},
+			pageNumber:${pageBean.pageNumber},
+			layout:['first','prev','sep','links','sep','next','last','sep','maunal'],
+			beforePageText:'当前页',
+			afterPageText:'页，共{pages}页',
+			display:'当前显示{from}到{to}条，共{total}条记录',
+			onSelectPage:function (pageNumber,pageSize) {
+			    location.href = "${pageContext.request.contextPath}/product?method=productList&cid=${productList[0].cid}$pageNmuber="+pageNumber;
+            }
+		})
+    })*/
 
 </script>
 </head>
@@ -66,36 +63,59 @@ body {
 			</ol>
 		</div>
 
-		<%--<c:forEach var="product" items="${requestScope.pageBean}" >--%>
-			<%--<div class="col-md-2" style="height:240px;">--%>
-				<%--<a href="${pageContext.request.contextPath}/ProductInfoServlet?pid=${product.pid}">--%>
-					<%--<img src="${pageContext.request.contextPath}/${product.pimage}">--%>
-				<%--</a>--%>
-				<%--<p><a href="${pageContext.request.contextPath}/ProductInfoServlet?pid=${product.pid}">--%>
-
-				<%--</a></p>--%>
-				<%--<p><font color="#FF0000">商城价：&yen;${product.shop_price}</font> </p>--%>
-			<%--</div>--%>
-		<%--</c:forEach>--%>
-		<div class="col-md-2" style="height:240px;">
-			<a href="${pageContext.request.contextPath}/ProductInfoServlet?pid=${product.pid}">
-				<img src="${pageContext.request.contextPath}/${product.pimage}">
-			</a>
-			<p><a href="${pageContext.request.contextPath}/ProductInfoServlet?pid=1">
-
-			</a></p>
-			<p><font color="#FF0000">商城价：&yen;100${product.shop_price}</font> </p>
-		</div>
-
+		<c:forEach var="product" items="${pageBean.data}" >
+			<div class="col-md-2" style="height:240px;">
+				<a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${product.pid}">
+					<img src="${pageContext.request.contextPath}/${product.pimage}">
+				</a>
+				<p><a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${product.pid}">
+				</a></p>
+				<p><font color="#FF0000">商城价：&yen;${product.shop_price}</font> </p>
+			</div>
+		</c:forEach>
 
 
 	</div>
 
-	<%--<div style="width: 600px; margin: 0 auto; margin-top: 50px;">--%>
-		<%--<div class="panel">--%>
-			<%--<div id="paginationId" style="font-size:14px;margin:0;display:block;"></div>--%>
-		<%--</div>--%>
-	<%--</div>--%>
+	<div style="width: 600px; margin: 0 auto; margin-top: 50px;">
+		<div class="panel">
+			<div id="paginationId" style="font-size:14px;margin:0;display:block;">
+
+
+				第${pageBean.pageNumber}/${pageBean.totalPage}页&nbsp;&nbsp;
+				总记录数:${pageBean.totalRecord}&nbsp;
+				每页显示:${pageBean.pageSize}&nbsp;&nbsp;
+
+
+				<c:if test="${pageBean.pageNumber gt 0}">
+					<a href="${pageContext.request.contextPath}/productServlet?method=productList&cid=${pageBean.data[0].cid}&pageNumber=1">[首页]
+					</a>&nbsp;
+					<a href="${pageContext.request.contextPath}/productServlet?method=productList&cid=${pageBean.data[0].cid}&pageNumber=${pageBean.pageNumber-1}">
+						[上一页]</a>
+				</c:if>&nbsp;
+
+
+				<c:forEach var="i" begin="1" end="${pageBean.totalPage}">
+					<c:if test="${pageBean.pageNumber eq i}">
+						${i}
+					</c:if>
+					<c:if test="${pageBean.pageNumber != i}">
+						<a href="${pageContext.request.contextPath}/productServlet?method=productList&cid=${pageBean.data[0].cid}&pageNumber=${i}">
+					</c:if>
+				</c:forEach>&nbsp;
+
+
+				<c:if test="${pageBean.pageNumber lt pageBean.totalPage}">
+					<a href="${pageContext.request.contextPath}/productServlet?method=productList&cid=${pageBean.data[0].cid}&pageNumber=${pageBean.pageNumber+1}">[下一页]
+					</a>&nbsp;
+					<a href="${pageContext.request.contextPath}/productServlet?method=productList&cid=${pageBean.data[0].cid}&pageNumber=${pageBean.totalPage}">
+						[尾页]</a>
+				</c:if>&nbsp;
+
+
+			</div>
+		</div>
+	</div>
 
 	<!--商品浏览记录-->
 	<div

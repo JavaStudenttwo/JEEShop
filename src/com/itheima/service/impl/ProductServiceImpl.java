@@ -65,11 +65,19 @@ public class ProductServiceImpl implements ProductService {
         return product;
     }
 
+    /**
+     * creater:litiecheng
+     * createDate:2017-9-8
+     * discription:分页查询某一分类的商品
+     * indetail:参数：1.分类标记(cid)，2.当前页页码，3.每页显示总数
+     *          返回值：pageBean对象
+     *
+     */
     @Override
     public PageBean<Product> findByCid(String cid, int pageNumber, int pageSize) throws SQLException {
-
+        /**1.先差查询此类别的商品的总数*/
         int totalRecord = productDao.findTotalRecordByCid(cid);
-
+        /**2.分页查询*/
         PageBean<Product> pageBean = new PageBean<Product>(pageNumber,pageSize,totalRecord);
 
         List<Product> data = productDao.findAllByCid(cid,pageBean.getStartIndex(),pageBean.getPageSize());
@@ -77,23 +85,6 @@ public class ProductServiceImpl implements ProductService {
         pageBean.setData(data);
 
         return pageBean;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }

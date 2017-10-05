@@ -2,17 +2,6 @@ package com.itheima.domain;
 
 public class Product {
 
-	/*`pid` varchar(32) NOT NULL,
-	  `pname` varchar(50) DEFAULT NULL,
-	  `market_price` double DEFAULT NULL,
-	  `shop_price` double DEFAULT NULL,
-	  `pimage` varchar(200) DEFAULT NULL,
-	  `pdate` date DEFAULT NULL,
-	  `is_hot` int(11) DEFAULT NULL,
-	  `pdesc` varchar(255) DEFAULT NULL,
-	  `pflag` int(11) DEFAULT NULL,
-	  `cid` varchar(32) DEFAULT NULL*/
-	
 	private String pid;
 	private String pname;
 	private double market_price;

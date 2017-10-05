@@ -12,13 +12,16 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created by 13718 on 2017/8/28.
+ * creater:litiecheng
+ * createDate:2017-9-1
+ * discription:对商品表进行数据库查询
+ * indetail:
+ *
  */
 public class ProductDaoImpl implements ProductDao{
 
     @Override
     public List<Product> findProductByword(String word) throws SQLException{
-
         QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "select * from Product where pname like ? limit 0,8";
         List<Product> list = queryRunner.query(sql,new BeanListHandler<Product>(Product.class),"%"+word+"%");
@@ -51,6 +54,13 @@ public class ProductDaoImpl implements ProductDao{
         return product;
     }
 
+    /**
+     * creater:litiecheng
+     * createDate:2017-9-7
+     * discription:查询某一分类的商品的总数
+     * indetail:
+     *
+     */
     @Override
     public int findTotalRecordByCid(String cid) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
@@ -59,12 +69,18 @@ public class ProductDaoImpl implements ProductDao{
         return count.intValue();
     }
 
+    /**
+     * creater:litiecheng
+     * createDate:2017-9-7
+     * discription:分页查询
+     * indetail:
+     *
+     */
     @Override
     public List<Product> findAllByCid(String cid, int startIndex, int pageSize) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "select * from product where cid = ? and pflag = ? order by pdate desc limit ?,?";
         List<Product> list = queryRunner.query(sql ,new BeanListHandler<Product>(Product.class),cid,0,startIndex,pageSize);
-
         return list;
     }
 

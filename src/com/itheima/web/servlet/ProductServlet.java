@@ -36,7 +36,7 @@ public class ProductServlet extends BaseServlet {
     /**
      * creater:litiecheng
      * createDate:2017-9-1
-     * discription:查询数据库中的商品，并展示在商品展示页(product_list.jsp)
+     * discription:根据商品分类(cid)查询数据库中的商品，并展示在商品展示页(product_list.jsp)
      * indetail:
      *
      */
@@ -48,10 +48,10 @@ public class ProductServlet extends BaseServlet {
         if ( page_number != null ){
             pageNumber = Integer.parseInt(page_number);
         }
-//        pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-        int pageSize = 12;
-        ProductService productService = new ProductServiceImpl();
 
+        int pageSize = 4;
+
+        ProductService productService = new ProductServiceImpl();
         PageBean<Product> pageBean = null;
         try {
             pageBean = productService.findByCid(cid,pageNumber,pageSize);
@@ -59,7 +59,17 @@ public class ProductServlet extends BaseServlet {
             e.printStackTrace();
         }
 
-        request.setAttribute("pageBean",pageBean.getData().get(0));
+        int total_record = pageBean.getTotalRecord();
+        int total_page = 0;
+        if ( total_record % pageSize > 0 && total_record != 0){
+            total_page = total_record / pageSize + 1 ;
+        }else {
+            total_page = total_record / pageSize + 1 ;
+        }
+
+        pageBean.setTotalPage(total_page);
+        request.getSession().setAttribute("pageBean",pageBean);
+        request.getSession().setAttribute("productlist",pageBean.getData().get(0));
         response.sendRedirect(request.getContextPath()+"/jsp/product_list.jsp");
 
 
@@ -84,6 +94,7 @@ public class ProductServlet extends BaseServlet {
             e.printStackTrace();
         }
 
+        request.getSession().removeAttribute("product");
         request.getSession().setAttribute("product", product);
 
         /*//浏览历史相关
@@ -130,7 +141,7 @@ public class ProductServlet extends BaseServlet {
     /**
      * creater:litiecheng
      * createDate:2017-9-1
-     * discription:查询数据库中的商品，并展示在商品展示页(product_list.jsp)
+     * discription:AJAX异步根据关键字查询商品
      * indetail:
      *
      */
@@ -181,7 +192,7 @@ public class ProductServlet extends BaseServlet {
     /**
      * creater:litiecheng
      * createDate:2017-9-4
-     * discription:异步查询商品种类
+     * discription:异步查询商品种类，并展示在首页头部
      * indetail:
      *
      */

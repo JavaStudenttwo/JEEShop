@@ -2,18 +2,14 @@ package com.itheima.domain;
 
 import java.util.Date;
 
+/**
+ * creater:litiecheng
+ * createDate:2017-9-1
+ * discription:为分页创建的持久化类
+ * indetail:
+ *
+ */
 public class User {
-
-	 /*`uid` varchar(32) NOT NULL,
-	  `username` varchar(20) DEFAULT NULL,
-	  `password` varchar(20) DEFAULT NULL,
-	  `name` varchar(20) DEFAULT NULL,
-	  `email` varchar(30) DEFAULT NULL,
-	  `telephone` varchar(20) DEFAULT NULL,
-	  `birthday` date DEFAULT NULL,
-	  `sex` varchar(10) DEFAULT NULL,
-	  `state` int(11) DEFAULT NULL,
-	  `code` varchar(64) DEFAULT NULL,*/
 
     private String uid;
     private String username;
@@ -23,8 +19,10 @@ public class User {
     private String telephone;
     private Date birthday;
     private String sex;
-    private int state;//是否激活
-    private String code;//激活码
+    /**是否激活*/
+    private int state;
+    /**激活码*/
+    private String code;
 
     public User() {
     }

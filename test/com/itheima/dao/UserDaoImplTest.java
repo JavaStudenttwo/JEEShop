@@ -12,7 +12,7 @@ import org.junit.Test;
  * @author <Authors name>
  * @version 1.0
  */
-public class UserDaoTest {
+public class UserDaoImplTest {
 
     @Before
     public void before() throws Exception {
