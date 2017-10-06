@@ -1,7 +1,11 @@
 package com.itheima.domain;
 
 /**
- * Created by 13718 on 2017/9/1.
+ * creater:litiecheng
+ * createDate:2017-9-1
+ * discription:商品分类JavaBean
+ * indetail:
+ *
  */
 public class Category {
     private String cid;

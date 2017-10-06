@@ -12,7 +12,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created by 13718 on 2017/9/6.
+ * creater:litiecheng
+ * createDate:2017-8-30
+ * discription:订单业务处理
+ * indetail:
+ *
  */
 public class OrderServiceImpl implements OrderService {
 

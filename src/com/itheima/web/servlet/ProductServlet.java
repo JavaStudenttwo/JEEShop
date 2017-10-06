@@ -26,7 +26,7 @@ import java.util.List;
  * creater:litiecheng
  * createDate:2017-9-1
  * discription:处理和商品相关的请求
- * indetail:1.
+ * indetail:
  *
  */
 @WebServlet(name = "ProductServlet",urlPatterns = "/productServlet")
@@ -97,7 +97,6 @@ public class ProductServlet extends BaseServlet {
         }
         return list;
     }
-
 
     /**
      * creater:litiecheng

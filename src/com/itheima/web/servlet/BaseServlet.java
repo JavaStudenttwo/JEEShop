@@ -59,8 +59,9 @@ public class BaseServlet extends HttpServlet {
      * indetail:
      *
      */
-    public String excute(HttpServletRequest httpServletRequest,HttpServletResponse httpServletResponse)throws ServletException, IOException{
-        return null;
+    public void excute(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)throws ServletException, IOException{
+        httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/jsp/index.jsp");
+
     }
 
 }

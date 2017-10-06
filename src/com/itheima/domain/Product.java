@@ -1,5 +1,12 @@
 package com.itheima.domain;
 
+/**
+ * creater:litiecheng
+ * createDate:2017-9-1
+ * discription:商品JavaBean
+ * indetail:
+ *
+ */
 public class Product {
 
 	private String pid;

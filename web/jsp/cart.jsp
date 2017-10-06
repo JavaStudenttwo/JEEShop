@@ -30,15 +30,6 @@
 			}
 		</style>
 		<script>
-			<%--$(function () {--%>
-				<%--$("#remove").onclick(function () {--%>
-					<%--$.get(--%>
-					    <%--"${pageContext.request.contextPath}/jsp/CartItemRemoveServlet"--%>
-						<%----%>
-					<%--)--%>
-                <%--})--%>
-            <%--})--%>
-
 
 		</script>
 	</head>
@@ -47,17 +38,16 @@
 		<!-- 引入header.jsp -->
 		<jsp:include page="header.jsp"></jsp:include>
 
-		<%--<c:if test="${empty cart || empty cart.cartItems}">--%>
-			<%--您还没有购买任何商品--%>
-		<%--</c:if>--%>
+		<c:if test="${empty cart || empty cart.cartItems}">
+			您还没有购买任何商品
+		</c:if>
 
-
-		<%--<c:if test="${not (empty cart || empty cart.cartItems)}">--%>
+		<c:if test="${not (empty cart || empty cart.cartItems)}">
 		<div class="container">
 			<div class="row">
-
 				<div style="margin:0 auto; margin-top:10px;width:950px;">
 					<strong style="font-size:16px;margin:5px 0;">订单详情</strong>
+					商品金额:<strong style="color: #ff6600;">￥${cart.total}元</strong>
 					<table class="table table-bordered">
 						<tbody>
 							<tr class="warning">
@@ -87,12 +77,10 @@
 										<span class="subtotal">￥${cartItem.subtotal}</span>
 									</td>
 									<td>
-										<a href="javascript:;" class="delete">删除</a>
-
+										<a href="${pageContext.request.contextPath }/cartServlet?method=removeItem&pid=${cartItem.product.pid}" class="delete">删除</a>
 									</td>
 								</tr>
 							</c:forEach>
-							商品金额:<strong style="color: #ff6600;">￥${cart.total}元</strong>
 						</tbody>
 					</table>
 				</div>
@@ -101,36 +89,29 @@
 			<div style="margin-right:130px;">
 				<div style="text-align:right;">
 					<em style="color:#ff6600;">
-				登录后确认是否享有优惠&nbsp;&nbsp;
-			</em> 赠送积分: <em style="color:#ff6600;">596</em>&nbsp; 商品金额: <strong style="color:#ff6600;">￥596.00元</strong>
+						登录后确认是否享有优惠&nbsp;&nbsp;
+					</em> 赠送积分: <em style="color:#ff6600;">${cart.total }</em>&nbsp; 商品金额: <strong style="color:#ff6600;">￥${cart.total }元</strong>
 				</div>
 				<div style="text-align:right;margin-top:10px;margin-bottom:10px;">
-					<a href="${pageContext.request.contextPath}/CartServlet" id="clear" class="clear">清空购物车</a>
-					<a href="order_info.htm">
-						<input type="submit" width="100" value="提交订单" name="submit" border="0" style="background: url('${pageContext.request.contextPath}/image/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-						height:35px;width:100px;color:white;">
+					<a href="${pageContext.request.contextPath }/cartServlet?method=cartClear" id="clear" class="clear">清空购物车</a>
+					<a href="${pageContext.request.contextPath }/product?method=submitOrder">
+						<input type="button" width="100" value="提交订单" name="submit" border="0" style="background: url('${pageContext.request.contextPath }/images/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+							height:35px;width:100px;color:white;">
 					</a>
-
 				</div>
 			</div>
 
-
-			<input id="remove" value="删除" type="button" >
-
-
 		</div>
-		<%--</c:if>--%>
+		</c:if>
+		<c:if test="${empty cart.cartItems }">
+			<div>
+				<img alt="" src="${pageContext.request.contextPath }/images/cart-empty.png">
+				<a href="${pageContext.request.contextPath }/">返回首页</a>
+			</div>
+		</c:if>
 
 		<!-- 引入footer.jsp -->
 		<jsp:include page="footer.jsp"></jsp:include>
-
-
-
-
-
-
-
-
 
 	</body>
 

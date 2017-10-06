@@ -1,4 +1,4 @@
-package com.itheima.web.servlet.OrderControl;
+package com.itheima.web.servlet;
 
 import com.itheima.domain.Order;
 import com.itheima.domain.PageBean;
@@ -16,15 +16,16 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 
 /**
- * Created by 13718 on 2017/9/6.
+ * creater:litiecheng
+ * createDate:2017-10-6
+ * discription:处理和订单相关的请求
+ * indetail:
+ *
  */
-@WebServlet(name = "OrderQueryServlet" ,urlPatterns = "/OrderQueryServlet")
-public class OrderQueryServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+@WebServlet(name = "OrderServlet" ,urlPatterns = "/orderServlet")
+public class OrderServlet extends HttpServlet {
 
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void orderHome(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         int pageNumber = 1;
         pageNumber = Integer.getInteger(request.getParameter("pageNumber"));

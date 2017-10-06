@@ -6,7 +6,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created by 13718 on 2017/8/28.
+ * creater:litiecheng
+ * createDate:2017-8-30
+ * discription:商品数据操作
+ * indetail: 实现类:
+ *              com.itheima.dao.impl.ProductDaoImpl
+ *
  */
 public interface ProductDao {
     List<Product> findProductByword(String word) throws SQLException;

@@ -10,7 +10,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created by 13718 on 2017/9/1.
+ * creater:litiecheng
+ * createDate:2017-9-4
+ * discription:购物车操作
+ * indetail:
+ *
  */
 public class CategoryDaoImpl implements CategoryDao {
     @Override

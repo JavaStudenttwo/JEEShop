@@ -8,7 +8,8 @@ import java.sql.SQLException;
  * creater:litiecheng
  * createDate:2017-8-30
  * discription:用户业务处理
- * indetail:
+ * indetail: 实现类:
+ *              com.itheima.service.impl.UserServiceImpl
  *
  */
 public interface UserService {

@@ -1,15 +1,23 @@
 package com.itheima.domain;
 
 /**
- * Created by 13718 on 2017/9/6.
+ * creater:litiecheng
+ * createDate:2017-9-6
+ * discription:订单项JavaBean
+ * indetail:
+ *
  */
 public class OrderItem {
-
-    private String itemid;//订单项的id
-    private int count;//订单项内商品的购买数量
-    private double subtotal;//订单项小计
-    private Product product;//订单项内部的商品
-    private Order order;//该订单项属于哪个订单
+    /**订单项的id*/
+    private String itemid;
+    /**订单项内商品的购买数量*/
+    private int count;
+    /**订单项小计*/
+    private double subtotal;
+    /**订单项内部的商品*/
+    private Product product;
+    /**该订单项属于哪个订单*/
+    private Order order;
 
     public String getItemid() {
         return itemid;

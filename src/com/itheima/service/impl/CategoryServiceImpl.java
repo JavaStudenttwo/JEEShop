@@ -9,7 +9,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created by 13718 on 2017/9/1.
+ * creater:litiecheng
+ * createDate:2017-8-30
+ * discription:购物车相关业务处理
+ * indetail:
+ *
  */
 public class CategoryServiceImpl implements CategoryService{
 

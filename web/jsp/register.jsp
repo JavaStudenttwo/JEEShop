@@ -110,14 +110,12 @@ font {
 	function changeimg(obj) {
 	    obj.src="${pageContext.request.contextPath}/jsp/validatecode.jsp?time="+new Date().getTime();
     }
-
 </script>
+
 </head>
 <body>
-
 	<!-- 引入header.jsp -->
 	<jsp:include page="/jsp/header.jsp"></jsp:include>
-
 	<div class="container"
 		style="width: 100%; background: url('${pageContext.request.contextPath}/image/regist_bg.jpg');">
 		<div class="row">
@@ -181,7 +179,6 @@ font {
 							<input id="date" type="date" class="form-control" name="birthday">
 						</div>
 					</div>
-
 					<div class="form-group">
 						<label for="confirmimg" class="col-sm-2 control-label">验证码</label>
 						<div class="col-sm-3">
@@ -191,9 +188,7 @@ font {
 						<div class="col-sm-2">
 							<img src="${pageContext.request.contextPath}/jsp/validatecode.jsp" onclick="changeimg(this)" />
 						</div>
-
 					</div>
-
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<input id="regBut" type="submit" width="100" value="注册" name="submit"
@@ -202,9 +197,7 @@ font {
 					</div>
 				</form>
 			</div>
-
 			<div class="col-md-2"></div>
-
 		</div>
 	</div>
 

@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * creater:litiecheng
  * createDate:2017-9-1
- * discription:为分页创建的持久化类
+ * discription:用户JavaBean
  * indetail:
  *
  */
