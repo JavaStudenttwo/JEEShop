@@ -15,12 +15,14 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 /**
- * Created by 13718 on 2017/8/31.
+ * creater:litiecheng
+ * createDate:2017-9-5
+ * discription:拦截器实现用户自动登录
+ * indetail:
+ *
  */
-@WebFilter(filterName = "LoginFilter" ,urlPatterns = "/filter")
+@WebFilter(filterName = "LoginFilter" ,urlPatterns = "/")
 public class LoginFilter implements Filter{
-
-
 
     /**实现拦截方法doFilter执行拦截*/
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
@@ -42,23 +44,6 @@ public class LoginFilter implements Filter{
         /**4.获得自动登陆的cookie信息*/
         Cookie userCookie = CookieUtils.findCookie(request.getCookies(),"autoLoginCookie");
 
-        /*
-        CookieUtils：
-        public static Cookie findCookie(Cookie[] allCookie ,String cookieName){
-            if (cookieName == null){
-                return null;
-            }
-            if (allCookie != null){
-                for (Cookie c : allCookie){
-                    if (cookieName.equals(c.getName())){
-                        return c;
-                    }
-                }
-            }
-            return null;
-        }
-        */
-
         /**5.判断自动登陆的cookie是否存在，如果不错在，则不需要自动登陆*/
         if(userCookie == null){
             chain.doFilter(request,response);
@@ -78,22 +63,6 @@ public class LoginFilter implements Filter{
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            /*
-            public static User login(String username,String password){
-                UserService userService = new UserServiceImpl();
-                User user = null;
-                try {
-                    user = userService.findByUsername(username);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                if (password.equals(user.getPassword()) && user.getState()==1){
-                    return user;
-                }else{
-                    return null;
-                }
-            }
-            */
             /**6.3若没有返回值说明自动登陆没有成功*/
             if (loginUser == null){
                 chain.doFilter(request,response);

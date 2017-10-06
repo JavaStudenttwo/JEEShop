@@ -9,25 +9,24 @@ import com.itheima.service.CategoryService;
 import com.itheima.service.ProductService;
 import com.itheima.service.impl.CategoryServiceImpl;
 import com.itheima.service.impl.ProductServiceImpl;
+import com.itheima.utils.CookieUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  * creater:litiecheng
  * createDate:2017-9-1
  * discription:处理和商品相关的请求
- * indetail:1.用户登录
- *          2.用户退出
- *          3.用户注册
- *          4.AJAX异步校验用户名是否可用
- *          5.AJAX异步校验验证码
- *          6.验证激活码
+ * indetail:1.
  *
  */
 @WebServlet(name = "ProductServlet",urlPatterns = "/productServlet")
@@ -36,11 +35,11 @@ public class ProductServlet extends BaseServlet {
     /**
      * creater:litiecheng
      * createDate:2017-9-1
-     * discription:根据商品分类(cid)查询数据库中的商品，并展示在商品展示页(product_list.jsp)
+     * discription:根据商品分类(cid)查询数据库中的商品，并分页展示在商品展示页(product_list.jsp)
      * indetail:
      *
      */
-    public void productList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void productList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 
         String cid = request.getParameter("cid");
         int pageNumber = 1;
@@ -66,19 +65,44 @@ public class ProductServlet extends BaseServlet {
         }else {
             total_page = total_record / pageSize + 1 ;
         }
+        /**查询浏览历史*/
+        Cookie cookie = CookieUtils.findCookie(request.getCookies(),"history");
+        List<Product> list = null;
+        if (cookie != null){
+            list = this.browsingHistory(cookie);
+        }
 
         pageBean.setTotalPage(total_page);
         request.getSession().setAttribute("pageBean",pageBean);
-        request.getSession().setAttribute("productlist",pageBean.getData().get(0));
+        request.getSession().setAttribute("prohis",list);
         response.sendRedirect(request.getContextPath()+"/jsp/product_list.jsp");
-
 
     }
 
     /**
      * creater:litiecheng
+     * createDate:2017-10-6
+     * discription:查询历史记录中的商品
+     * indetail:
+     *
+     */
+    public List<Product> browsingHistory(Cookie cookie) throws SQLException {
+        String value = cookie.getValue();
+        String[] ids = value.split("-");
+        ProductService productService = new ProductServiceImpl();
+        List<Product> list = new LinkedList<Product>();
+        for (String pid : ids) {
+            Product product = productService.findById(pid);
+            list.add(product);
+        }
+        return list;
+    }
+
+
+    /**
+     * creater:litiecheng
      * createDate:2017-9-7
-     * discription:首页根据商品的id(pid)，查找数据库查询商品信息并展示在商品信息页(product_info.jsp)
+     * discription:根据商品id，查找数据库并展示商品的详细信息
      * indetail:
      *
      */
@@ -94,48 +118,47 @@ public class ProductServlet extends BaseServlet {
             e.printStackTrace();
         }
 
-        request.getSession().removeAttribute("product");
-        request.getSession().setAttribute("product", product);
-
-        /*//浏览历史相关
+        /**将此商品添加到历史记录中*/
         Cookie cookie = CookieUtils.findCookie(request.getCookies(),"history");
-
         if (cookie == null){
             Cookie c = new Cookie("history",pid);
             c.setPath("/");
             c.setMaxAge(7*24*60*60);
             response.addCookie(c);
-        }else{
+        }else {
             String value = cookie.getValue();
+            /**根据"-"分割获取id组成的数组*/
             String[] ids = value.split("-");
+            /**字符串数组转换为集合*/
             LinkedList<String> list = new LinkedList<String>(Arrays.asList(ids));
-
-            if (list.contains(pid)){
+            /**如果此商品已经在浏览历史记录中，则先将其删除后再添加到记录的首位*/
+            if (list.contains(pid)) {
                 list.remove(pid);
                 list.addFirst(pid);
-            }else{
-                if (list.size() >= 6){
+            } else {
+                /**如果此商品不在浏览历史记录中，则直接添加到记录的首位。限制历史记录中记录数为6*/
+                if (list.size() >= 6) {
                     list.removeLast();
                     list.addFirst(pid);
-                }else{
+                } else {
                     list.addFirst(pid);
                 }
             }
-
             StringBuffer sb = new StringBuffer();
-            for (String id : list){
-                sb.append(id+"-");
+            for (String id : list) {
+                sb.append(id + "-");
             }
 
-            String history = sb.substring(0, sb.length()-1);
-            Cookie c = new Cookie("history",history);
+            String history = sb.substring(0, sb.length() - 1);
+            Cookie c = new Cookie("history", history);
             c.setPath("/");
-            c.setMaxAge(7*24*60*60);
+            c.setMaxAge(7 * 24 * 60 * 60);
             response.addCookie(c);
 
-        }*/
-        response.sendRedirect(request.getContextPath() + "/jsp/product_info.jsp");
-
+            request.getSession().removeAttribute("product");
+            request.getSession().setAttribute("product", product);
+            response.sendRedirect(request.getContextPath() + "/jsp/product_info.jsp");
+        }
     }
 
     /**
@@ -167,7 +190,7 @@ public class ProductServlet extends BaseServlet {
     /**
      * creater:litiecheng
      * createDate:2017-9-4
-     * discription:查询数据库中的商品，并展示在商品展示页(product_list.jsp)
+     * discription:在首页展示热门商品和新商品
      * indetail:
      *
      */

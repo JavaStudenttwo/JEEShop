@@ -8,6 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * creater:litiecheng
+ * createDate:2017-10-4
+ * discription:拦截器实现编码转换
+ * indetail:
+ *
+ */
 @WebFilter(filterName = "EncodingFilter" , urlPatterns = "/encoding")
 public class EncodingFilter implements Filter {
     public void destroy() {
