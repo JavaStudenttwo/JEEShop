@@ -1,5 +1,7 @@
 package com.itheima.domain;
 
+import java.io.Serializable;
+
 /**
  * creater:litiecheng
  * createDate:2017-9-6
@@ -7,7 +9,7 @@ package com.itheima.domain;
  * indetail:
  *
  */
-public class CartItem {
+public class CartItem implements Serializable{
     /**商品项*/
     private Product product;
     /**购买此商品的数量*/

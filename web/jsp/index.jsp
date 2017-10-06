@@ -85,7 +85,7 @@
       <c:forEach var="item" items="${hotList}">
         <div class="col-md-2" style="text-align:center;height: 200px;padding: 10px 0px;">
           <a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${item.pid}">
-            <img src="${pageContext.request.contextPath}/${item.pimage}" >
+            <img src="${pageContext.request.contextPath}/${item.pimage}" width="130" height="130" style="display: inline-block;">
           </a>
           <p><a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${item.pid}" style='color:#666'>${item.pname}</a> </p>
           <p><font color="#E4393C" style="font-size: 16px">&yen;${item.shop_price}</font> </p>
@@ -118,7 +118,7 @@
       <c:forEach var="p" items="${newList}">
         <div class="col-md-2" style="text-align:center;height: 200px;padding: 10px 0px;" >
           <a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${p.pid}">
-            <img src="${pageContext.request.contextPath}/${p.pimage}" >
+            <img src="${pageContext.request.contextPath}/${p.pimage}" width="130" height="130" style="display: inline-block;">
           </a>
           <p><a class="productInfo" href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${p.pid}" style='color:#666'>${p.pname}</a> </p>
           <p><font color="#E4393C" style="font-size: 16px">&yen;${p.shop_price}</font> </p>

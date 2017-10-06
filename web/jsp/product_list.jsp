@@ -57,7 +57,7 @@ body {
 		<c:forEach var="product" items="${pageBean.data}" >
 			<div class="col-md-2" style="height:240px;">
 				<a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${product.pid}">
-					<img src="${pageContext.request.contextPath}/${product.pimage}">
+					<img src="${pageContext.request.contextPath}/${product.pimage}" width="130" height="130" style="display: inline-block;">
 				</a>
 				<p><a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${product.pid}">
 				</a></p>
@@ -72,9 +72,9 @@ body {
 
 				第${pageBean.pageNumber}/${pageBean.totalPage}页&nbsp;&nbsp;
 				总记录数:${pageBean.totalRecord}&nbsp;
-				每页显示:${pageBean.pageSize}&nbsp;&nbsp;
+				每页显示数:${pageBean.pageSize}&nbsp;&nbsp;
 
-				<c:if test="${pageBean.pageNumber gt 0}">
+				<c:if test="${pageBean.pageNumber gt 1}">
 					<a href="${pageContext.request.contextPath}/productServlet?method=productList&cid=${pageBean.data[0].cid}&pageNumber=1">[首页]
 					</a>&nbsp;
 					<a href="${pageContext.request.contextPath}/productServlet?method=productList&cid=${pageBean.data[0].cid}&pageNumber=${pageBean.pageNumber-1}">
@@ -83,7 +83,7 @@ body {
 
 				<c:forEach var="i" begin="1" end="${pageBean.totalPage}">
 					<c:if test="${pageBean.pageNumber eq i}">
-						${i}
+						第${i}页
 					</c:if>
 					<c:if test="${pageBean.pageNumber != i}">
 						<a href="${pageContext.request.contextPath}/productServlet?method=productList&cid=${pageBean.data[0].cid}&pageNumber=${i}">
@@ -110,11 +110,13 @@ body {
 		<div style="clear: both;"></div>
 		<div style="overflow: hidden;">
 
-			<%--<c:forEach var="item" items="${hotList}">--%>
 			<c:forEach var="item" items="${prohis}">
 				<ul style="list-style: none;">
 					<li style="width: 150px; float: left; margin: 0 8px 0 0; padding: 0 18px 15px; text-align: center;">
-						<img src="${pageContext.request.contextPath}/${item.pimage}"/></li>
+						<a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${item.pid}">
+							<img src="${pageContext.request.contextPath}/${item.pimage}" width="130" height="130" style="display: inline-block;"/>
+						</a>
+					</li>
 				</ul>
 			</c:forEach>
 		</div>

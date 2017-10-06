@@ -100,7 +100,7 @@
 			<li><a href="${pageContext.request.contextPath}/jsp/cart.jsp">购物车</a></li>
 			<c:if test="${not empty loginUser}">
 				欢迎：${loginUser.name},
-				<li><a href="${pageContext.request.contextPath}/OrderQueryServlet">我的订单</a> </li>
+				<li><a href="${pageContext.request.contextPath}/orderServlet?method=findByUid">我的订单</a> </li>
 				<li><a href="${pageContext.request.contextPath}/userServlet?method=logout">退出</a></li>
 			</c:if>
 
@@ -133,12 +133,7 @@
 					</div>
 					<button id="submit" type="submit" class="btn btn-default" disabled="submit-disabled">Submit</button>
 
-					<div id="completeShow">
-						<ul id="itemul" class="list-group">
-
-						</ul>
-
-					</div>
+					<div id="completeShow"></div>
 				</form>
 
 			</div>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,8 +34,26 @@ body {
 				<strong>订单详情</strong>
 				<table class="table table-bordered">
 					<tbody>
+					<%--/**该订单的订单号*/
+					private String oid;
+					/**下单时间*/
+					private Date ordertime;
+					/**该订单的总金额*/
+					private double total;
+					/**订单支付状态，1代表未付款，2代表已付款未发货，3代表已发货为收货，4代表收货订单结束 */
+					private int state;
+					/**收货地址*/
+					private String address;
+					/**收货人*/
+					private String name;
+					/**收货人电话*/
+					private String telephone;
+					/**该订单属于哪个用户*/
+					private User user;
+					/**该订单中的订单项*/
+					List<OrderItem> orderItems = new ArrayList<OrderItem>();--%>
 						<tr class="warning">
-							<th colspan="5">订单编号:9005</th>
+							<th colspan="5">订单编号:${order.oid}</th>
 						</tr>
 						<tr class="warning">
 							<th>图片</th>
@@ -43,25 +62,24 @@ body {
 							<th>数量</th>
 							<th>小计</th>
 						</tr>
-						<tr class="active">
-							<td width="60" width="40%"><input type="hidden" name="id"
-								value="22"> <img src="${pageContext.request.contextPath}/image/dadonggua.jpg" width="70"
-								height="60"></td>
-							<td width="30%"><a target="_blank"> 有机蔬菜 大冬瓜...</a></td>
-							<td width="20%">￥298.00</td>
-							<td width="10%">5</td>
-							<td width="15%"><span class="subtotal">￥596.00</span></td>
-						</tr>
+						<c:forEach var="item" items="${order.orderItems}">
+							<tr class="active">
+								<td width="60" width="40%"><input type="hidden" name="id"
+									value="22"> <img src="${pageContext.request.contextPath}/${item.product.pimage}" width="70"
+									height="60"></td>
+								<td width="30%"><a target="_blank">${item.product.pname}</a></td>
+								<td width="20%">￥${item.product.shop_price}</td>
+								<td width="10%">${item.count}</td>
+								<td width="15%"><span class="subtotal">￥${item.subtotal}</span></td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
-
 			<div style="text-align: right; margin-right: 120px;">
 				商品金额: <strong style="color: #ff6600;">￥596.00元</strong>
 			</div>
-
 		</div>
-
 		<div>
 			<hr />
 			<form class="form-horizontal"
@@ -88,9 +106,7 @@ body {
 					</div>
 				</div>
 			</form>
-
-			<hr />
-
+			<hr/>
 			<div style="margin-top: 5px; margin-left: 150px;">
 				<strong>选择银行：</strong>
 				<p>
@@ -111,7 +127,6 @@ body {
 						src="./bank_img/guangda.bmp" align="middle" />&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="radio" name="pd_FrpId" value="CMBCHINA-NET-B2C" />招商银行
 					<img src="./bank_img/cmb.bmp" align="middle" />
-
 				</p>
 				<hr />
 				<p style="text-align: right; margin-right: 100px;">
@@ -121,10 +136,8 @@ body {
 					</a>
 				</p>
 				<hr />
-
 			</div>
 		</div>
-
 	</div>
 
 	<!-- 引入footer.jsp -->

@@ -1,9 +1,11 @@
 package com.itheima.dao;
 
 import com.itheima.domain.Order;
+import com.itheima.domain.OrderItem;
 import com.itheima.domain.User;
 
 import java.lang.reflect.InvocationTargetException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -19,4 +21,8 @@ public interface OrderDao {
     int findTotalRecordByUid(User loginUser) throws SQLException;
 
     List<Order> findAllByUid(User loginUser, int startIndex, int pageSize) throws SQLException, InvocationTargetException, IllegalAccessException;
+
+    void save(Connection connection, Order order) throws SQLException;
+
+    void save(Connection connection, OrderItem orderItem) throws SQLException;
 }

@@ -17,4 +17,6 @@ import java.sql.SQLException;
  */
 public interface OrderService {
     PageBean<Order> findByUid(User loginUser, int pageNumber, int pageSize) throws SQLException, InvocationTargetException, IllegalAccessException;
+
+    void save(Order order) throws SQLException;
 }

@@ -73,8 +73,10 @@ public class ProductServiceImpl implements ProductService {
      * creater:litiecheng
      * createDate:2017-9-8
      * discription:分页查询某一分类的商品
-     * indetail:参数：1.分类标记(cid)，2.当前页页码，3.每页显示总数
-     *          返回值：pageBean对象
+     * indetail:
+     *
+     * @parameter：1.分类标记(cid)，2.当前页页码，3.每页显示总数
+     * @return：pageBean对象
      *
      */
     @Override

@@ -13,6 +13,7 @@ import org.apache.commons.dbutils.handlers.MapListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.lang.reflect.InvocationTargetException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,13 @@ import java.util.Map;
  */
 public class OrderDaoImpl implements OrderDao {
 
+    /**
+     * creater:litiecheng
+     * createDate:2017-10-6
+     * discription:根据用户id查找该用户的订单总数
+     * indetail:
+     *
+     */
     @Override
     public int findTotalRecordByUid(User loginUser) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
@@ -34,13 +42,23 @@ public class OrderDaoImpl implements OrderDao {
         return count.intValue();
     }
 
+    /**
+     * creater:litiecheng
+     * createDate:2017-10-6
+     * discription:根据用户id查找该用户的所有订单详细信息
+     * indetail:
+     *
+     */
     @Override
     public List<Order> findAllByUid(User loginUser, int startIndex, int pageSize) throws SQLException, InvocationTargetException, IllegalAccessException {
         QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
-        String sql = "selectt * from orders where uid = ? order by ordertime desc limit ?,?";
+        /**查询数据库获得该用户所有订单order*/
+        String sql = "select * from orders where uid = ? order by ordertime desc limit ?,?";
         List<Order> list = queryRunner.query(sql,new BeanListHandler<Order>(Order.class), loginUser.getUid(),startIndex,pageSize);
+        /**使用循环查询orderitem和product，将两张表的属性打乱封装到一个map中*/
         for (Order order : list){
             sql = "Select * from orderitem o ,product p where oid = ? and o.pid = p.pid";
+            /**因为一个oid能查出多个orderitem(即一个订单中有多个订单项)，所以查询结果用List集合封装*/
             List<Map<String,Object>> oList = queryRunner.query(sql ,new MapListHandler(),order.getOid());
             for (Map<String,Object> map : oList){
                 OrderItem orderItem = new OrderItem();
@@ -52,33 +70,33 @@ public class OrderDaoImpl implements OrderDao {
                 orderItem.setProduct(product);
                 orderItem.setOrder(order);
 
-//                order.getList().add(orderItem);
+                order.getOrderItems().add(orderItem);
             }
 
             order.setUser(loginUser);
         }
-        return null;
+        return list;
     }
 
+    @Override
+    public void save(Connection connection, Order order) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner();
+        String sql = "insert into orders values (?,?,?,?,?,?,?,?)";
+        Object[] params = {order.getOid(),order.getOrdertime(),order.getTotal(),
+                           order.getState(),order.getAddress(),order.getName(),
+                           order.getTelephone(),order.getUser().getUid()};
+        queryRunner.update(connection,sql,params);
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public void save(Connection connection, OrderItem orderItem) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner();
+        String sql = "insert into orderitem values (?,?,?,?,?)";
+        Object[] params = {orderItem.getItemid(),orderItem.getCount(),
+                           orderItem.getSubtotal(),orderItem.getProduct().getPid(),
+                           orderItem.getOrder().getOid()};
+        queryRunner.update(connection,sql,params);
+    }
 
 
 }

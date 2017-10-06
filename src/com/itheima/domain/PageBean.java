@@ -1,5 +1,6 @@
 package com.itheima.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  * indetail:
  *
  */
-public class PageBean<T> {
+public class PageBean<T> implements Serializable{
     /**当前页页码*/
     private int pageNumber;
     /**一页显示的记录数*/
@@ -28,8 +29,13 @@ public class PageBean<T> {
         this.pageNumber = pageNumber;
         this.pageSize = pageSize;
         this.totalRecord = totalRecord;
-
-        this.totalPage = (this.totalRecord + this.pageNumber-1)/this.pageSize;
+        /**计算总页数*/
+        if ( totalRecord % pageSize > 0 && totalRecord != 0){
+            totalPage = totalRecord / pageSize + 1 ;
+        }else {
+            totalPage = totalRecord / pageSize + 1 ;
+        }
+        /**起始项(通过计算得到)*/
         this.startIndex = (this.pageNumber-1)*pageSize;
     }
 

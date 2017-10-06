@@ -18,7 +18,6 @@ public class UserBeanUtils {
     public static void populate(User user, Map<String, String[]> parameterMap) throws InvocationTargetException, IllegalAccessException {
 
         ConvertUtils.register(new Converter(){
-
             @Override
             public Object convert(Class aClass, Object value) {
                 SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");

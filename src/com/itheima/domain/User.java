@@ -1,5 +1,6 @@
 package com.itheima.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Date;
  * indetail:
  *
  */
-public class User {
+public class User implements Serializable {
 
     private String uid;
     private String username;

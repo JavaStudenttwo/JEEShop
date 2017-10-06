@@ -72,8 +72,7 @@ body {
 								<input type="hidden" name="pid" value="${product.pid}">
 							</div>
 							<div style="margin: 20px 0 10px 0;; text-align: center;">
-								<input style="background: url('${pageContext.request.contextPath}/images/product.gif') no-repeat scroll 0 -600px rgba(0, 0, 0, 0); height: 36px; width: 127px;"
-										   value="加入购物车" type="submit">&nbsp;收藏商品
+								<input style="background: url('${pageContext.request.contextPath}/images/product.gif') no-repeat scroll 0 -600px rgba(0, 0, 0, 0); height: 36px; width: 127px;" value="加入购物车" type="submit">&nbsp;收藏商品
 							</div>
 						</form>
 
@@ -88,7 +87,7 @@ body {
 				</div>
 
 				<div>
-					<img src="${pageContext.request.contextPath}/${product.pimage}">
+					<img src="${pageContext.request.contextPath}/${product.pimage}" width="130" height="130" style="display: inline-block;">
 				</div>
 
 				<div

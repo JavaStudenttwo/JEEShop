@@ -1,5 +1,7 @@
 package com.itheima.domain;
 
+import java.io.Serializable;
+
 /**
  * creater:litiecheng
  * createDate:2017-9-1
@@ -7,7 +9,7 @@ package com.itheima.domain;
  * indetail:
  *
  */
-public class Product {
+public class Product implements Serializable{
 
 	private String pid;
 	private String pname;

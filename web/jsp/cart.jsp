@@ -16,12 +16,10 @@
 				margin-top: 20px;
 				margin: 0 auto;
 			}
-			
 			.carousel-inner .item img {
 				width: 100%;
 				height: 300px;
 			}
-			
 			font {
 				color: #3164af;
 				font-size: 18px;
@@ -94,7 +92,7 @@
 				</div>
 				<div style="text-align:right;margin-top:10px;margin-bottom:10px;">
 					<a href="${pageContext.request.contextPath }/cartServlet?method=cartClear" id="clear" class="clear">清空购物车</a>
-					<a href="${pageContext.request.contextPath }/product?method=submitOrder">
+					<a href="${pageContext.request.contextPath }/orderServlet?method=addOrder">
 						<input type="button" width="100" value="提交订单" name="submit" border="0" style="background: url('${pageContext.request.contextPath }/images/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 							height:35px;width:100px;color:white;">
 					</a>

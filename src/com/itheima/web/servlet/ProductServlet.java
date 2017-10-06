@@ -40,16 +40,20 @@ public class ProductServlet extends BaseServlet {
      *
      */
     public void productList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-
+        /**获取商品分类的id*/
         String cid = request.getParameter("cid");
+
+        /**设置当前页的页码(默认是1，即第一页)*/
         int pageNumber = 1;
         String page_number = request.getParameter("pageNumber");
         if ( page_number != null ){
             pageNumber = Integer.parseInt(page_number);
         }
 
+        /**设置每页显示4个商品*/
         int pageSize = 4;
 
+        /**调用service层实现类查询商品*/
         ProductService productService = new ProductServiceImpl();
         PageBean<Product> pageBean = null;
         try {
@@ -58,13 +62,6 @@ public class ProductServlet extends BaseServlet {
             e.printStackTrace();
         }
 
-        int total_record = pageBean.getTotalRecord();
-        int total_page = 0;
-        if ( total_record % pageSize > 0 && total_record != 0){
-            total_page = total_record / pageSize + 1 ;
-        }else {
-            total_page = total_record / pageSize + 1 ;
-        }
         /**查询浏览历史*/
         Cookie cookie = CookieUtils.findCookie(request.getCookies(),"history");
         List<Product> list = null;
@@ -72,7 +69,6 @@ public class ProductServlet extends BaseServlet {
             list = this.browsingHistory(cookie);
         }
 
-        pageBean.setTotalPage(total_page);
         request.getSession().setAttribute("pageBean",pageBean);
         request.getSession().setAttribute("prohis",list);
         response.sendRedirect(request.getContextPath()+"/jsp/product_list.jsp");

@@ -1,28 +1,33 @@
 package com.itheima.utils;
 
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javax.sql.DataSource;
-
-import com.mchange.v2.c3p0.ComboPooledDataSource;
-
+/**
+ * creater:litiecheng
+ * createDate:2017-10-6
+ * discription:数据库资源工具类，用来获取数据库连接
+ * indetail:
+ *
+ */
 public class DataSourceUtils {
-
+	/**创建一个C3P0连接池对象*/
 	private static DataSource dataSource = new ComboPooledDataSource();
 
 	private static ThreadLocal<Connection> tl = new ThreadLocal<Connection>();
 
-	// 直接可以获取一个连接池
+	/**返回一个C3P0连接池对象*/
 	public static DataSource getDataSource() {
 		return dataSource;
 	}
 
-	// 获取连接对象
+	/**获取连接对象*/
 	public static Connection getConnection() throws SQLException {
-
 		Connection con = tl.get();
 		if (con == null) {
 			con = dataSource.getConnection();
@@ -31,15 +36,16 @@ public class DataSourceUtils {
 		return con;
 	}
 
-	// 开启事务
-	public static void startTransaction() throws SQLException {
+	/**获取连接对象，开启事务*/
+	public static Connection startTransaction() throws SQLException {
 		Connection con = getConnection();
 		if (con != null) {
 			con.setAutoCommit(false);
 		}
+		return con;
 	}
 
-	// 事务回滚
+	/**事务回滚*/
 	public static void rollback() throws SQLException {
 		Connection con = getConnection();
 		if (con != null) {
@@ -47,17 +53,20 @@ public class DataSourceUtils {
 		}
 	}
 
-	// 提交并且 关闭资源及从ThreadLocall中释放
+	/**事务提交，资源关闭*/
 	public static void commitAndRelease() throws SQLException {
 		Connection con = getConnection();
 		if (con != null) {
-			con.commit(); // 事务提交
-			con.close();// 关闭资源
-			tl.remove();// 从线程绑定中移除
+			/**事务提交*/
+			con.commit();
+			/**关闭资源*/
+			con.close();
+			/**将连接从线程中移除*/
+			tl.remove();
 		}
 	}
 
-	// 关闭资源方法
+	/**关闭资源*/
 	public static void closeConnection() throws SQLException {
 		Connection con = getConnection();
 		if (con != null) {

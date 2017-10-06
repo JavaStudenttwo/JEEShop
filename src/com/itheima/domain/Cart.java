@@ -1,5 +1,6 @@
 package com.itheima.domain;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -11,7 +12,7 @@ import java.util.Map;
  * indetail:
  *
  */
-public class Cart {
+public class Cart implements Serializable{
     /**购物车中所有内容，通过一个map集合储存，键是商品id，值是CartItem*/
     private Map<String,CartItem> map = new LinkedHashMap<String ,CartItem>();
     /**购物车中所有商品的总价*/
