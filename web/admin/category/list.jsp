@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <HTML>
 <HEAD>
@@ -27,7 +28,6 @@
 					<button type="button" id="add" name="add" value="添加"
 						class="button_add" onclick="addCategory()">
 						&#28155;&#21152;</button>
-
 				</td>
 			</tr>
 			<tr>
@@ -37,31 +37,32 @@
 						style="BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; BORDER-LEFT: gray 1px solid; WIDTH: 100%; WORD-BREAK: break-all; BORDER-BOTTOM: gray 1px solid; BORDER-COLLAPSE: collapse; BACKGROUND-COLOR: #f5fafe; WORD-WRAP: break-word">
 						<tr
 							style="FONT-WEIGHT: bold; FONT-SIZE: 12pt; HEIGHT: 25px; BACKGROUND-COLOR: #afd1f3">
-
-							<td align="center" width="18%">序号</td>
-							<td align="center" width="17%">分类名称</td>
-							<td width="7%" align="center">编辑</td>
-							<td width="7%" align="center">删除</td>
+							<td align="center" width="27%">序号</td>
+							<td align="center" width="27%">分类名称</td>
+							<td width="17%" align="center">编辑</td>
+							<td width="17%" align="center">删除</td>
 						</tr>
+						<c:forEach var="item" items="${allCategory}">
 							<tr onmouseover="this.style.backgroundColor = 'white'"
 								onmouseout="this.style.backgroundColor = '#F5FAFE';">
 								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-									width="18%">1</td>
+									width="18%">${item.cid}</td>
 								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-									width="17%">手机数码</td>
-								<td align="center" style="HEIGHT: 22px"><a
-									href="${ pageContext.request.contextPath }/admin/category/edit.jsp">
-										<img
-										src="${pageContext.request.contextPath}/images/i_edit.gif"
-										border="0" style="CURSOR: hand">
-								</a></td>
-
-								<td align="center" style="HEIGHT: 22px"><a
-									href="">
+									width="17%">${item.cname}</td>
+								<td align="center" style="HEIGHT: 22px">
+									<a href="${ pageContext.request.contextPath }/adminProductServlet?method=toUpdate&cid=${item.cid}&cname=${item.cname}">
+										<img src="${pageContext.request.contextPath}/images/i_edit.gif"
+											 border="0" style="CURSOR: hand" >
+									</a>
+								</td>
+								<td align="center" style="HEIGHT: 22px">
+									<a href="${ pageContext.request.contextPath }/adminProductServlet?method=categoryRemove&cid=${item.cid}">
 										<img src="${pageContext.request.contextPath}/images/i_del.gif"
-										width="16" height="16" border="0" style="CURSOR: hand">
-								</a></td>
+											width="16" height="16" border="0" style="CURSOR: hand">
+									</a>
+								</td>
 							</tr>
+						</c:forEach>
 					</table>
 				</td>
 			</tr>

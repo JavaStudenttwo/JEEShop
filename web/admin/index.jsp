@@ -16,18 +16,18 @@ body {
 </head>
 <body style="background: #278296">
 <center></center>
-<form method="post" action="${pageContext.request.contextPath }/admin/home.jsp" target="_parent" name='theForm' onsubmit="return validate()">
+<form method="post" action="${pageContext.request.contextPath }/adminServlet?method=login" target="_parent" name='theForm' onsubmit="return validate()">
   <table cellspacing="0" cellpadding="0" style="margin-top: 100px" align="center">
   <tr>
     <td style="padding-left: 50px">
       <table>
       <tr>
         <td>管理员姓名：</td>
-        <td><input type="text" name="username" /></td>
+        <td><input type="text" name="username"/></td>
       </tr>
       <tr>
         <td>管理员密码：</td>
-        <td><input type="password" name="password" /></td>
+        <td><input type="password" name="password"/></td>
       </tr>
       <tr><td>&nbsp;</td><td><input type="submit" value="进入管理中心" class="button" /></td></tr>
       </table>
@@ -36,7 +36,7 @@ body {
   </table>
 </form>
 <script language="JavaScript">
-<!--
+
   document.forms['theForm'].elements['username'].focus();
   
   /**
@@ -53,7 +53,7 @@ body {
     }
     return validator.passed();
   }
-  
-//-->
+
+
 </script>
 </body>

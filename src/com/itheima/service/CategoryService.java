@@ -15,4 +15,10 @@ import java.util.List;
  */
 public interface CategoryService {
     List<Category> findAll() throws SQLException;
+
+    int remove(String cid) throws SQLException;
+
+    int add(String cid, String cname) throws SQLException;
+
+    int update(String cid, String cname) throws SQLException;
 }

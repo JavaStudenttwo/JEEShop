@@ -31,7 +31,6 @@ import java.sql.SQLException;
 @WebServlet(name = "UserServlet" , urlPatterns = "/userServlet")
 public class UserServlet extends BaseServlet {
 
-
     /**
      * creater:litiecheng
      * createDate:2017-8-30

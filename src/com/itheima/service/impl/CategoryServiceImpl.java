@@ -18,9 +18,25 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService{
 
     private CategoryDao categoryDao = new CategoryDaoImpl();
+
     @Override
     public List<Category> findAll() throws SQLException {
         List<Category> list = categoryDao.findAll();
         return list;
+    }
+
+    @Override
+    public int remove(String cid) throws SQLException {
+        return categoryDao.remove(cid);
+    }
+
+    @Override
+    public int add(String cid, String cname) throws SQLException {
+        return categoryDao.add(cid,cname);
+    }
+
+    @Override
+    public int update(String cid, String cname) throws SQLException {
+        return categoryDao.update(cid,cname);
     }
 }
