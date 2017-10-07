@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <HTML>
 <HEAD>
@@ -9,7 +10,7 @@
 	src="${pageContext.request.contextPath}/js/public.js"></script>
 <script type="text/javascript">
 			function addProduct(){
-				window.location.href = "${pageContext.request.contextPath}/admin/product/add.jsp";
+				window.location.href = "${pageContext.request.contextPath}/adminProductServlet?method=toAdd";
 			}
 		</script>
 </HEAD>
@@ -30,7 +31,6 @@
 						<button type="button" id="add" name="add" value="添加"
 							class="button_add" onclick="addProduct()">
 							&#28155;&#21152;</button>
-
 					</td>
 				</tr>
 				<tr>
@@ -38,9 +38,7 @@
 						<table cellspacing="0" cellpadding="1" rules="all"
 							bordercolor="gray" border="1" id="DataGrid1"
 							style="BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; BORDER-LEFT: gray 1px solid; WIDTH: 100%; WORD-BREAK: break-all; BORDER-BOTTOM: gray 1px solid; BORDER-COLLAPSE: collapse; BACKGROUND-COLOR: #f5fafe; WORD-WRAP: break-word">
-							<tr
-								style="FONT-WEIGHT: bold; FONT-SIZE: 12pt; HEIGHT: 25px; BACKGROUND-COLOR: #afd1f3">
-
+							<tr style="FONT-WEIGHT: bold; FONT-SIZE: 12pt; HEIGHT: 25px; BACKGROUND-COLOR: #afd1f3">
 								<td align="center" width="18%">序号</td>
 								<td align="center" width="17%">商品图片</td>
 								<td align="center" width="17%">商品名称</td>
@@ -49,37 +47,83 @@
 								<td width="7%" align="center">编辑</td>
 								<td width="7%" align="center">删除</td>
 							</tr>
-							<tr onmouseover="this.style.backgroundColor = 'white'"
-								onmouseout="this.style.backgroundColor = '#F5FAFE';">
-								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-									width="18%">1</td>
-								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-									width="17%"><img width="40" height="45" src=""></td>
-								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-									width="17%">电视机</td>
-								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-									width="17%">3000</td>
-								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-									width="17%">是</td>
-								<td align="center" style="HEIGHT: 22px"><a
-									href="${ pageContext.request.contextPath }/admin/product/edit.jsp">
-										<img
-										src="${pageContext.request.contextPath}/images/i_edit.gif"
-										border="0" style="CURSOR: hand">
-								</a></td>
-
-								<td align="center" style="HEIGHT: 22px"><a href="#"> <img
-										src="${pageContext.request.contextPath}/images/i_del.gif"
-										width="16" height="16" border="0" style="CURSOR: hand">
-								</a></td>
-							</tr>
+							<c:forEach var="item" varStatus="status" items="${pageBean.data}">
+								<tr onmouseover="this.style.backgroundColor = 'white'"
+									onmouseout="this.style.backgroundColor = '#F5FAFE';">
+									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+										width="18%">${status.count }</td>
+									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+										width="17%">
+										<img width="40" height="45" src="${pageContext.request.contextPath}/${item.pimage}"></td>
+									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+										width="17%">${item.pname}</td>
+									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+										width="17%">${item.shop_price}</td>
+									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+										width="17%">
+										<c:if test="${item.is_hot eq 1}">
+											是
+										</c:if>
+										<c:if test="${item.is_hot eq 0}">
+											否
+										</c:if>
+									</td>
+									<td align="center" style="HEIGHT: 22px"><a
+										href="${ pageContext.request.contextPath }/adminProductServlet?method=productEdit$pid=${item.pid}">
+											<img src="${pageContext.request.contextPath}/images/i_edit.gif"
+											border="0" style="CURSOR: hand">
+									</a></td>
+									<td align="center" style="HEIGHT: 22px">
+										<a href="${pageContext.request.contextPath}/adminProductServlet?method=productDelete$pid=${item.pid}">
+											<img src="${pageContext.request.contextPath}/images/i_del.gif"
+											width="16" height="16" border="0" style="CURSOR: hand">
+									</a></td>
+								</tr>
+							</c:forEach>
 						</table>
 					</td>
 				</tr>
-
 			</TBODY>
 		</table>
 	</form>
+
+	<table>
+		<tr onmouseover="this.style.backgroundColor = 'white'"
+			onmouseout="this.style.backgroundColor = '#F5FAFE';">
+			<td style="CURSOR: hand; HEIGHT: 22px" align="center" width="18%">
+				<div id="paginationId" style="font-size:14px;margin:0;display:block;">
+
+					第${pageBean.pageNumber}/${pageBean.totalPage}页&nbsp;
+					总项数:${pageBean.totalRecord}&nbsp;
+					每页显示:${pageBean.pageSize}&nbsp;
+
+					<c:if test="${pageBean.pageNumber gt 1}">
+						<a href="${pageContext.request.contextPath}/adminProductServlet?method=productList&pageNumber=1">[首页]
+						</a>&nbsp;
+						<a href="${pageContext.request.contextPath}/adminProductServlet?method=productList&pageNumber=${pageBean.pageNumber-1}">
+							[上一页]</a>
+					</c:if>&nbsp;
+
+					<c:forEach var="i" begin="1" end="${pageBean.totalPage}">
+						<c:if test="${pageBean.pageNumber eq i}">
+							第${i}页
+						</c:if>
+						<c:if test="${pageBean.pageNumber != i}">
+							<a href="${pageContext.request.contextPath}/adminProductServlet?method=productList&pageNumber=${i}">第${i}页</a>
+						</c:if>
+					</c:forEach>&nbsp;
+
+					<c:if test="${pageBean.pageNumber lt pageBean.totalPage}">
+						<a href="${pageContext.request.contextPath}/adminProductServlet?method=productList&pageNumber=${pageBean.pageNumber+1}">[下一页]
+						</a>&nbsp;
+						<a href="${pageContext.request.contextPath}/adminProductServlet?method=productList&pageNumber=${pageBean.totalPage}">
+							[尾页]</a>
+					</c:if>
+				</div>
+			</td>
+		</tr>
+	</table>
+
 </body>
 </HTML>
 

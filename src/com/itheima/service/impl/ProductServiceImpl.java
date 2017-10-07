@@ -92,6 +92,24 @@ public class ProductServiceImpl implements ProductService {
 
         return pageBean;
 
+    }
 
+    @Override
+    public PageBean<Product> findAll(int pageNumber, int pageSize) throws SQLException {
+
+        int totalRecord = productDao.findTotalRecord();
+
+        PageBean<Product> pageBean = new PageBean<Product>(pageNumber,pageSize,totalRecord);
+
+        List<Product> data = productDao.findAll(pageBean.getStartIndex(),pageBean.getPageSize());
+
+        pageBean.setData(data);
+
+        return pageBean;
+    }
+
+    @Override
+    public int productDelete(String pid) throws SQLException {
+        return productDao.productDelete(pid);
     }
 }

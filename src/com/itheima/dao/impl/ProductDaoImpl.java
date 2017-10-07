@@ -99,5 +99,37 @@ public class ProductDaoImpl implements ProductDao{
         return list;
     }*/
 
+    /**
+     * creater:litiecheng
+     * createDate:2017-10-7
+     * discription:查询商品的总数
+     * indetail:
+     *
+     */
+    @Override
+    public int findTotalRecord() throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select count(*) from product";
+        Long count = (Long) queryRunner.query(sql,new ScalarHandler());
+        return count.intValue();
+    }
+
+    @Override
+    public List<Product> findAll(int startIndex, int pageSize) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * from product where pflag = ? order by pdate desc limit ?,?";
+        List<Product> list = queryRunner.query(sql ,new BeanListHandler<Product>(Product.class),0,startIndex,pageSize);
+        return list;
+    }
+
+    @Override
+    public int productDelete(String pid) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "update orderitem set pid = null where pid = ?";
+        queryRunner.update(sql,pid);
+
+        sql = "delete from product where pid = ?";
+        return queryRunner.update(sql,pid);
+    }
 
 }

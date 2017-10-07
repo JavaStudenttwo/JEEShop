@@ -18,8 +18,8 @@ import java.sql.SQLException;
  * indetail:
  *
  */
-@WebServlet(name = "AdminServlet" , urlPatterns = "/adminServlet")
-public class AdminServlet extends BaseServlet{
+@WebServlet(name = "AdminLoginServlet" , urlPatterns = "/adminServlet")
+public class AdminLoginServlet extends BaseServlet{
 
     /**
      * creater:litiecheng

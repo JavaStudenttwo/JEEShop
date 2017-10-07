@@ -50,13 +50,13 @@
 								<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 									width="17%">${item.cname}</td>
 								<td align="center" style="HEIGHT: 22px">
-									<a href="${ pageContext.request.contextPath }/adminProductServlet?method=toUpdate&cid=${item.cid}&cname=${item.cname}">
+									<a href="${ pageContext.request.contextPath }/adminCategoryServlet?method=toUpdate&cid=${item.cid}&cname=${item.cname}">
 										<img src="${pageContext.request.contextPath}/images/i_edit.gif"
 											 border="0" style="CURSOR: hand" >
 									</a>
 								</td>
 								<td align="center" style="HEIGHT: 22px">
-									<a href="${ pageContext.request.contextPath }/adminProductServlet?method=categoryRemove&cid=${item.cid}">
+									<a href="${ pageContext.request.contextPath }/adminCategoryServlet?method=categoryRemove&cid=${item.cid}">
 										<img src="${pageContext.request.contextPath}/images/i_del.gif"
 											width="16" height="16" border="0" style="CURSOR: hand">
 									</a>

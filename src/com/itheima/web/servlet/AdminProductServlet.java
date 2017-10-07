@@ -1,111 +1,133 @@
 package com.itheima.web.servlet;
 
 import com.itheima.domain.Category;
+import com.itheima.domain.PageBean;
+import com.itheima.domain.Product;
 import com.itheima.service.CategoryService;
+import com.itheima.service.ProductService;
 import com.itheima.service.impl.CategoryServiceImpl;
-import com.itheima.utils.UUIDUtils;
+import com.itheima.service.impl.ProductServiceImpl;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.IOUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.SQLException;
-import java.util.LinkedList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * creater:litiecheng
  * createDate:2017-10-7
- * discription:处理和后台商品管理相关的请求
+ * discription:处理和后台商品添加删除等相关的请求
  * indetail:
  *
  */
-@WebServlet(name = "AdminProductServlet" ,urlPatterns = "/adminProductServlet")
-public class AdminProductServlet extends BaseServlet {
+@WebServlet(name = "AdminProductServlet" , urlPatterns = "/adminProductServlet")
+public class AdminProductServlet extends BaseServlet{
 
+    ProductService productService = new ProductServiceImpl();
     CategoryService categoryService = new CategoryServiceImpl();
 
     /**
      * creater:litiecheng
      * createDate:2017-10-7
-     * discription:查询分类
+     * discription:查询所有商品(使用了分页)
      * indetail:
      */
-    public void categoryList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void productList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        /**设置当前页的页码(默认是1，即第一页)*/
+        int pageNumber = 1;
+        String page_number = request.getParameter("pageNumber");
+        if ( page_number != null ){
+            pageNumber = Integer.parseInt(page_number);
+        }
 
-        List<Category> allCategory = new LinkedList<Category>();
+        int pageSize = 8;
+        PageBean<Product> pageBean = null;
         try {
-            allCategory = categoryService.findAll();
+            pageBean = productService.findAll(pageNumber,pageSize);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        request.getSession().setAttribute("allCategory", allCategory);
-        response.sendRedirect(request.getContextPath() + "/admin/category/list.jsp");
+        request.getSession().setAttribute("pageBean",pageBean);
+        response.sendRedirect(request.getContextPath()+"/admin/product/list.jsp");
+
     }
 
     /**
      * creater:litiecheng
      * createDate:2017-10-7
-     * discription:删除分类
+     * discription:删除商品
      * indetail:
      */
-    public String  categoryRemove(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+    public String productDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 
-        String cid = request.getParameter("cid");
-        int i = categoryService.remove(cid);
+        String pid = request.getParameter("pid");
+        int i = productService.productDelete(pid);
 
-        return "/adminProductServlet?method=categoryList";
+        return "/adminProductServlet?method=productList";
     }
 
     /**
      * creater:litiecheng
      * createDate:2017-10-7
-     * discription:添加分类
+     * discription:跳转到商品添加页面
      * indetail:
      */
-    public String categoryAdd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+    public void toAdd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 
-        String cname = request.getParameter("cname");
-        String cid = UUIDUtils.getUUID();
-        int i = categoryService.add(cid,cname);
+        List<Category> list =  categoryService.findAll();
+        request.getSession().setAttribute("categoryList",list);
 
-        return "/adminProductServlet?method=categoryList";
+        response.sendRedirect(request.getContextPath() + "/admin/product/add.jsp");
+
     }
 
     /**
      * creater:litiecheng
      * createDate:2017-10-7
-     * discription:跳转的修改页面
+     * discription:添加商品
      * indetail:
      */
-    public void toUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+    public void productAdd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, FileUploadException {
 
-        String cname = request.getParameter("cname");
-        String cid = request.getParameter("cid");
-        Category category = new Category();
-        category.setCname(cname);
-        category.setCid(cid);
-        request.getSession().setAttribute("categoryItem",category);
+        DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
+        diskFileItemFactory.setSizeThreshold(3*1024*1024);
 
-        response.sendRedirect(request.getContextPath() + "/admin/category/edit.jsp");
+        ServletFileUpload fileUpload = new ServletFileUpload(diskFileItemFactory);
+        fileUpload.setHeaderEncoding("UTF-8");
+
+        List<FileItem> list = fileUpload.parseRequest(request);
+
+        Map<String , String > map = new HashMap<String , String>();
+        String fileName = null;
+        for (FileItem fileItem:list) {
+            if (fileItem.isFormField()){
+                String name = fileItem.getFieldName();
+                String value = fileItem.getString("UTF-8");
+                System.out.println(name + " " + value);
+                map.put(name,value);
+            }else {
+                fileName = fileItem.getName();
+                System.out.println("文件名" + fileName);
+
+                InputStream in = fileItem.getInputStream();
+                String path = this.getServletContext().getRealPath("/prducts/1");
+                OutputStream out = new FileOutputStream(path + "/" + fileName);
+                IOUtils.copy(in,out);
+            }
+        }
     }
-
-    /**
-     * creater:litiecheng
-     * createDate:2017-10-7
-     * discription:修改分类
-     * indetail:
-     */
-    public String categoryUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-
-        String cname = request.getParameter("cname");
-        String cid = request.getParameter("cid");
-        int i = categoryService.update(cid,cname);
-
-        return "/adminProductServlet?method=categoryList";
-    }
-
-
 }
