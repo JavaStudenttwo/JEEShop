@@ -1,11 +1,10 @@
 package com.itheima.service.impl;
 
 import com.itheima.dao.OrderDao;
+import com.itheima.dao.ProductDao;
 import com.itheima.dao.impl.OrderDaoImpl;
-import com.itheima.domain.Order;
-import com.itheima.domain.OrderItem;
-import com.itheima.domain.PageBean;
-import com.itheima.domain.User;
+import com.itheima.dao.impl.ProductDaoImpl;
+import com.itheima.domain.*;
 import com.itheima.service.OrderService;
 import com.itheima.utils.DataSourceUtils;
 
@@ -24,7 +23,7 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
 
     OrderDao orderDao = new OrderDaoImpl();
-
+    ProductDao productDao = new ProductDaoImpl();
     /**
      * creater:litiecheng
      * createDate:2017-10-6
@@ -62,25 +61,33 @@ public class OrderServiceImpl implements OrderService {
         DataSourceUtils.commitAndRelease();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /**
+     * creater:litiecheng
+     * createDate:2017-10-7
+     * discription:根据oid查找订单
+     * indetail:
+     *
+     */
+    @Override
+    public Order findByOid(String oid) throws SQLException, InvocationTargetException, IllegalAccessException {
+        /**尝试使用单表查询，失败*/
+        /*Order order = orderDao.findOrderByOid(oid);
+        List<OrderItem> orderItemlist = orderDao.findOrderItemByOid(oid);
+        List<Product> productList = productDao.findByOid(oid);
+        for (OrderItem oitem:orderItemlist) {
+            String pid = oitem.getPid();
+            for (Product pitem:productList) {
+                if (pid == pitem.getPid()){
+                    oitem.setProduct(pitem);
+                    break;
+                }
+            }
+        }
+        order.setOrderItems(orderItemlist);
+        return order;*/
+        Order order = orderDao.findByOid(oid);
+        return order;
+    }
 
 
 }

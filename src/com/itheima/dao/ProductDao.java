@@ -25,4 +25,8 @@ public interface ProductDao {
     int findTotalRecordByCid(String cid) throws SQLException;
 
     List<Product> findAllByCid(String cid, int startIndex, int pageSize) throws SQLException;
+
+    /**该方法不能使用*/
+    /*List<Product> findByOid(String oid) throws SQLException;*/
+
 }

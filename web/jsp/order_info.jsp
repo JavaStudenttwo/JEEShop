@@ -34,24 +34,6 @@ body {
 				<strong>订单详情</strong>
 				<table class="table table-bordered">
 					<tbody>
-					<%--/**该订单的订单号*/
-					private String oid;
-					/**下单时间*/
-					private Date ordertime;
-					/**该订单的总金额*/
-					private double total;
-					/**订单支付状态，1代表未付款，2代表已付款未发货，3代表已发货为收货，4代表收货订单结束 */
-					private int state;
-					/**收货地址*/
-					private String address;
-					/**收货人*/
-					private String name;
-					/**收货人电话*/
-					private String telephone;
-					/**该订单属于哪个用户*/
-					private User user;
-					/**该订单中的订单项*/
-					List<OrderItem> orderItems = new ArrayList<OrderItem>();--%>
 						<tr class="warning">
 							<th colspan="5">订单编号:${order.oid}</th>
 						</tr>
@@ -77,7 +59,7 @@ body {
 				</table>
 			</div>
 			<div style="text-align: right; margin-right: 120px;">
-				商品金额: <strong style="color: #ff6600;">￥596.00元</strong>
+				商品金额: <strong style="color: #ff6600;">￥${order.total}</strong>
 			</div>
 		</div>
 		<div>

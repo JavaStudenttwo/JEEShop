@@ -25,4 +25,11 @@ public interface OrderDao {
     void save(Connection connection, Order order) throws SQLException;
 
     void save(Connection connection, OrderItem orderItem) throws SQLException;
+
+    Order findByOid(String oid) throws SQLException, InvocationTargetException, IllegalAccessException;
+
+    /**查询订单只能使用多表查询，单表查询不可行(错误方法，不可用)*/
+    /*Order findOrderByOid(String oid) throws SQLException;*/
+    /**查询订单只能使用多表查询，单表查询不可行(错误方法，不可用)*/
+    /*List<OrderItem> findOrderItemByOid(String oid) throws SQLException;*/
 }

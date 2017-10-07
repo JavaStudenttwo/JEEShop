@@ -70,9 +70,9 @@ body {
 		<div class="panel">
 			<div id="paginationId" style="font-size:14px;margin:0;display:block;">
 
-				第${pageBean.pageNumber}/${pageBean.totalPage}页&nbsp;&nbsp;
-				总记录数:${pageBean.totalRecord}&nbsp;
-				每页显示数:${pageBean.pageSize}&nbsp;&nbsp;
+				第${pageBean.pageNumber}/${pageBean.totalPage}页&nbsp;
+				总项数:${pageBean.totalRecord}&nbsp;
+				每页显示:${pageBean.pageSize}&nbsp;
 
 				<c:if test="${pageBean.pageNumber gt 1}">
 					<a href="${pageContext.request.contextPath}/productServlet?method=productList&cid=${pageBean.data[0].cid}&pageNumber=1">[首页]
@@ -86,7 +86,7 @@ body {
 						第${i}页
 					</c:if>
 					<c:if test="${pageBean.pageNumber != i}">
-						<a href="${pageContext.request.contextPath}/productServlet?method=productList&cid=${pageBean.data[0].cid}&pageNumber=${i}">
+						<a href="${pageContext.request.contextPath}/productServlet?method=productList&cid=${pageBean.data[0].cid}&pageNumber=${i}">第${i}页</a>
 					</c:if>
 				</c:forEach>&nbsp;
 
@@ -95,7 +95,7 @@ body {
 					</a>&nbsp;
 					<a href="${pageContext.request.contextPath}/productServlet?method=productList&cid=${pageBean.data[0].cid}&pageNumber=${pageBean.totalPage}">
 						[尾页]</a>
-				</c:if>&nbsp;
+				</c:if>
 
 			</div>
 		</div>

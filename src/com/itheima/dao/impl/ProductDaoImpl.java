@@ -84,6 +84,20 @@ public class ProductDaoImpl implements ProductDao{
         return list;
     }
 
+    /**
+     * creater:litiecheng
+     * createDate:2017-10-7
+     * discription:为根据oid查询订单而创建的方法，不可行
+     * indetail:
+     *
+     */
+    /*@Override
+    public List<Product> findByOid(String oid) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * from product where oid = ?";
+        List<Product> list = queryRunner.query(sql ,new BeanListHandler<Product>(Product.class),oid);
+        return list;
+    }*/
 
 
 }

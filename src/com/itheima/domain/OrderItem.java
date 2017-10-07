@@ -21,6 +21,8 @@ public class OrderItem implements Serializable{
     /**该订单项属于哪个订单*/
     private Order order;
 
+    private String pid;
+
     public String getItemid() {
         return itemid;
     }
@@ -60,4 +62,21 @@ public class OrderItem implements Serializable{
     public void setOrder(Order order) {
         this.order = order;
     }
+
+    public String getPid() { return pid; }
+
+    public void setPid(String pid) { this.pid = pid; }
+
+
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "itemid='" + itemid + '\'' +
+                ", count=" + count +
+                ", subtotal=" + subtotal +
+                ", product=" + product +
+                ", order=" + order +
+                '}';
+    }
+
 }

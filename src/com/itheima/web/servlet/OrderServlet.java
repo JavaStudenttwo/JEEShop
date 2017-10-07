@@ -23,20 +23,20 @@ import java.util.Date;
  */
 @WebServlet(name = "OrderServlet" ,urlPatterns = "/orderServlet")
 public class OrderServlet extends BaseServlet {
+    OrderService orderService = new OrderServiceImpl();
 
     public void findByUid(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, IllegalAccessException, SQLException, InvocationTargetException {
         /**设置页码*/
         int pageNumber = 1;
         String number =  request.getParameter("pageNumber");
         if (number != null){
-            pageNumber = Integer.getInteger(number);
+            pageNumber = Integer.parseInt(number);
         }
         /**每页显示数(暂定)*/
         int pageSize = 3;
 
         User loginUser = (User) request.getSession().getAttribute("loginUser");
 
-        OrderService orderService = new OrderServiceImpl();
         PageBean<Order> pageBean = orderService.findByUid(loginUser,pageNumber,pageSize);
 
         request.getSession().setAttribute("orderList",pageBean);
@@ -74,7 +74,6 @@ public class OrderServlet extends BaseServlet {
             orderItem.setOrder(order);
             order.getOrderItems().add(orderItem);
         }
-        OrderService orderService = new OrderServiceImpl();
         orderService.save(order);
 
         cart.clearCart();
@@ -82,6 +81,19 @@ public class OrderServlet extends BaseServlet {
         response.sendRedirect(request.getContextPath()+"/jsp/order_info.jsp");
     }
 
+    /**
+     * creater:litiecheng
+     * createDate:2017-10-7
+     * discription:根据oid数据库显示订单详情
+     * indetail:
+     *
+     */
+    public void orderInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, InvocationTargetException, IllegalAccessException {
+        String oid = request.getParameter("oid");
+        Order order = orderService.findByOid(oid);
+        request.getSession().setAttribute("order",order);
+        response.sendRedirect(request.getContextPath()+"/jsp/order_info.jsp");
+    }
 
 
 
