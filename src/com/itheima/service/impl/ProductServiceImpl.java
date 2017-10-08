@@ -112,4 +112,9 @@ public class ProductServiceImpl implements ProductService {
     public int productDelete(String pid) throws SQLException {
         return productDao.productDelete(pid);
     }
+
+    @Override
+    public int productAdd(Product product) throws SQLException {
+        return productDao.productAdd(product);
+    }
 }

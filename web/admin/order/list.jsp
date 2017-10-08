@@ -23,7 +23,7 @@
 			bgColor="#f5fafe" border="0">
 			<TBODY>
 				<tr>
-					<td class="ta_01" align="center" bgColor="#afd1f3"><strong>商品列表</strong>
+					<td class="ta_01" align="center" bgColor="#afd1f3"><strong>订单管理</strong>
 					</TD>
 				</tr>
 				<tr>
@@ -40,12 +40,12 @@
 							style="BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; BORDER-LEFT: gray 1px solid; WIDTH: 100%; WORD-BREAK: break-all; BORDER-BOTTOM: gray 1px solid; BORDER-COLLAPSE: collapse; BACKGROUND-COLOR: #f5fafe; WORD-WRAP: break-word">
 							<tr style="FONT-WEIGHT: bold; FONT-SIZE: 12pt; HEIGHT: 25px; BACKGROUND-COLOR: #afd1f3">
 								<td align="center" width="18%">序号</td>
-								<td align="center" width="17%">商品图片</td>
-								<td align="center" width="17%">商品名称</td>
-								<td align="center" width="17%">商品价格</td>
-								<td align="center" width="17%">是否热门</td>
-								<td width="7%" align="center">编辑</td>
+								<td align="center" width="17%">下单时间</td>
+								<td align="center" width="17%">订单总金额</td>
+								<td align="center" width="17%">订单状态</td>
+								<td align="center" width="17%">送货地址</td>
 								<td width="7%" align="center">删除</td>
+								<td width="7%" align="center">编辑</td>
 							</tr>
 							<c:forEach var="item" varStatus="status" items="${pageBean.data}">
 								<tr onmouseover="this.style.backgroundColor = 'white'"
@@ -53,28 +53,35 @@
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 										width="18%">${status.count }</td>
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="17%">
-										<img width="40" height="45" src="${pageContext.request.contextPath}/${item.pimage}"></td>
+										width="17%">${item.ordertime}</td>
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="17%">${item.pname}</td>
-									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="17%">${item.shop_price}</td>
+										width="17%">${item.total}</td>
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 										width="17%">
-										<c:if test="${item.is_hot eq 1}">
-											是
+										<c:if test="${item.state == 1}">
+											未付款
 										</c:if>
-										<c:if test="${item.is_hot eq 0}">
-											否
+										<c:if test="${item.state == 2}">
+											发货
+										</c:if>
+										<c:if test="${item.state == 3}">
+											未确认收费
+										</c:if>
+										<c:if test="${item.state == 4}">
+											订单结束
 										</c:if>
 									</td>
+									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+										width="17%">
+										${item.address}
+									</td>
 									<td align="center" style="HEIGHT: 22px"><a
-										href="${ pageContext.request.contextPath }/adminProductServlet?method=productEdit&pid=${item.pid}">
+										href="${ pageContext.request.contextPath }/adminOrderServlet?method=orderEdit&pid=${item.oid}">
 											<img src="${pageContext.request.contextPath}/images/i_edit.gif"
 											border="0" style="CURSOR: hand">
 									</a></td>
 									<td align="center" style="HEIGHT: 22px">
-										<a href="${pageContext.request.contextPath}/adminProductServlet?method=productDelete&pid=${item.pid}">
+										<a href="${pageContext.request.contextPath}/adminOrderServlet?method=orderDelete&pid=${item.oid}">
 											<img src="${pageContext.request.contextPath}/images/i_del.gif"
 											width="16" height="16" border="0" style="CURSOR: hand">
 									</a></td>
@@ -88,7 +95,7 @@
 	</form>
 
 	<table>
-		<tr onmouseover="this.style.backgroundColor = 'white'"
+		<%--<tr onmouseover="this.style.backgroundColor = 'white'"
 			onmouseout="this.style.backgroundColor = '#F5FAFE';">
 			<td style="CURSOR: hand; HEIGHT: 22px" align="center" width="18%">
 				<div id="paginationId" style="font-size:14px;margin:0;display:block;">
@@ -121,7 +128,7 @@
 					</c:if>
 				</div>
 			</td>
-		</tr>
+		</tr>--%>
 	</table>
 
 </body>

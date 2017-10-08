@@ -1,6 +1,7 @@
 package com.itheima.dao.impl;
 
 import com.itheima.dao.OrderDao;
+import com.itheima.dao.UserDao;
 import com.itheima.domain.Order;
 import com.itheima.domain.OrderItem;
 import com.itheima.domain.Product;
@@ -28,6 +29,8 @@ import java.util.Map;
  *
  */
 public class OrderDaoImpl implements OrderDao {
+
+    UserDao userDao = new UserDaoImpl();
 
     /**
      * creater:litiecheng
@@ -160,6 +163,50 @@ public class OrderDaoImpl implements OrderDao {
         }
         order.setOrderItems(orderItemList);
         return order;
+    }
+
+    @Override
+    public int findTotalRecord() throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select count(*) from orders";
+        Long count = (Long) queryRunner.query(sql,new ScalarHandler());
+        return count.intValue();
+    }
+
+    @Override
+    public int findTotalRecordByState(int state) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select count(*) from orders where state = ?";
+        Long count = (Long) queryRunner.query(sql,new ScalarHandler(),state);
+        return count.intValue();
+    }
+
+    @Override
+    public List<Order> orderList(int startIndex, int pageSize) throws SQLException, InvocationTargetException, IllegalAccessException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * from orders order by ordertime desc limit ?,?";
+        List<Order> orderList = queryRunner.query(sql,new BeanListHandler<Order>(Order.class),startIndex,pageSize);
+
+        for (Order order:orderList) {
+            order = this.findByOid(order.getOid());
+        }
+
+        return orderList;
+    }
+
+    @Override
+    public List<Order> findOrderByState(int state, int startIndex, int pageSize) throws SQLException, InvocationTargetException, IllegalAccessException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * from orders where state = ? order by ordertime desc limit ?,?";
+        List<Order> orderList = queryRunner.query(sql,new BeanListHandler<Order>(Order.class),state,startIndex,pageSize);
+
+        for (Order order:orderList) {
+            order = this.findByOid(order.getOid());
+            User user = userDao.findByUid(order.getUser().getUid());
+        }
+
+
+        return orderList;
     }
 
 }

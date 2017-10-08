@@ -1,10 +1,11 @@
 package com.itheima.service.impl;
 
 import com.itheima.dao.OrderDao;
-import com.itheima.dao.ProductDao;
 import com.itheima.dao.impl.OrderDaoImpl;
-import com.itheima.dao.impl.ProductDaoImpl;
-import com.itheima.domain.*;
+import com.itheima.domain.Order;
+import com.itheima.domain.OrderItem;
+import com.itheima.domain.PageBean;
+import com.itheima.domain.User;
 import com.itheima.service.OrderService;
 import com.itheima.utils.DataSourceUtils;
 
@@ -23,7 +24,6 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
 
     OrderDao orderDao = new OrderDaoImpl();
-    ProductDao productDao = new ProductDaoImpl();
     /**
      * creater:litiecheng
      * createDate:2017-10-6
@@ -87,6 +87,48 @@ public class OrderServiceImpl implements OrderService {
         return order;*/
         Order order = orderDao.findByOid(oid);
         return order;
+    }
+
+    /**
+     * creater:litiecheng
+     * createDate:2017-10-8
+     * discription:商城后台显示所有订单
+     * indetail:
+     *
+     */
+    @Override
+    public PageBean<Order> orderList(int pageNumber, int pageSize) throws IllegalAccessException, SQLException, InvocationTargetException {
+
+        int totalRecord = orderDao.findTotalRecord();
+
+        PageBean pageBean = new PageBean(pageNumber,pageSize,totalRecord);
+
+        List<Order> list = orderDao.orderList(pageBean.getStartIndex(),pageBean.getPageSize());
+
+        pageBean.setData(list);
+
+        return pageBean;
+    }
+
+    /**
+     * creater:litiecheng
+     * createDate:2017-10-8
+     * discription:商城后台按照订单状态显示订单
+     * indetail:
+     *
+     */
+    @Override
+    public PageBean<Order> findOrderByState(int state, int pageNumber, int pageSize) throws IllegalAccessException, SQLException, InvocationTargetException {
+
+        int totalRecord = orderDao.findTotalRecordByState(state);
+
+        PageBean pageBean = new PageBean(pageNumber,pageSize,totalRecord);
+
+        List<Order> list = orderDao.findOrderByState(state,pageBean.getStartIndex(),pageBean.getPageSize());
+
+        pageBean.setData(list);
+
+        return pageBean;
     }
 
 

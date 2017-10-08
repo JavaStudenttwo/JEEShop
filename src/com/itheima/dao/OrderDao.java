@@ -28,6 +28,14 @@ public interface OrderDao {
 
     Order findByOid(String oid) throws SQLException, InvocationTargetException, IllegalAccessException;
 
+    List<Order> orderList(int startIndex, int pageSize) throws SQLException, InvocationTargetException, IllegalAccessException;
+
+    List<Order> findOrderByState(int state, int startIndex, int pageSize) throws SQLException, InvocationTargetException, IllegalAccessException;
+
+    int findTotalRecord() throws SQLException;
+
+    int findTotalRecordByState(int state) throws SQLException;
+
     /**查询订单只能使用多表查询，单表查询不可行(错误方法，不可用)*/
     /*Order findOrderByOid(String oid) throws SQLException;*/
     /**查询订单只能使用多表查询，单表查询不可行(错误方法，不可用)*/

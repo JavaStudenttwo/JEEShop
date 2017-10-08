@@ -132,4 +132,14 @@ public class ProductDaoImpl implements ProductDao{
         return queryRunner.update(sql,pid);
     }
 
+    @Override
+    public int productAdd(Product product) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "insert into product values (?,?,?,?,?,?,?,?,?,?)";
+        Object[] params = {product.getPid(),product.getPname(),product.getMarket_price(),
+                product.getShop_price(),product.getPimage(),product.getPdate(),
+                product.getIs_hot(),product.getPdesc(),product.getPflag(),product.getCid()};
+        return queryRunner.update(sql,params);
+    }
+
 }

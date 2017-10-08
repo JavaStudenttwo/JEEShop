@@ -7,6 +7,8 @@ import com.itheima.service.CategoryService;
 import com.itheima.service.ProductService;
 import com.itheima.service.impl.CategoryServiceImpl;
 import com.itheima.service.impl.ProductServiceImpl;
+import com.itheima.utils.UUIDUtils;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -21,7 +23,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -101,7 +105,7 @@ public class AdminProductServlet extends BaseServlet{
      * discription:添加商品
      * indetail:
      */
-    public void productAdd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, FileUploadException {
+    public String productAdd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, FileUploadException, InvocationTargetException, IllegalAccessException {
 
         DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
         diskFileItemFactory.setSizeThreshold(3*1024*1024);
@@ -124,10 +128,29 @@ public class AdminProductServlet extends BaseServlet{
                 System.out.println("文件名" + fileName);
 
                 InputStream in = fileItem.getInputStream();
-                String path = this.getServletContext().getRealPath("/prducts/1");
+                String path = this.getServletContext().getRealPath("/products/1");
                 OutputStream out = new FileOutputStream(path + "/" + fileName);
                 IOUtils.copy(in,out);
+
+                int length = 0;
+                byte[] b = new byte[1024];
+                while((length = in.read(b)) != -1){
+                    out.write(b ,0 ,length);
+                }
+                in.close();
+                out.close();
             }
         }
+        Product product = new Product();
+        BeanUtils.populate(product,map);
+        product.setPid(UUIDUtils.getUUID());
+        product.setPdate(new Date());
+        product.setPflag(0);
+        product.setPimage("products/1/" + fileName);
+        product.setCid(map.get("cid"));
+
+        productService.productAdd(product);
+
+        return "/adminProductServlet?method=productList";
     }
 }

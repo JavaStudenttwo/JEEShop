@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -87,6 +88,19 @@ public class ProductDaoImplTest {
         for (Product item: list) {
             System.out.println(item);
         }
+
+    }
+
+    @Test
+    public void testProductAdd() throws Exception {
+//TODO: Test goes here...
+        ProductDao productDao = new ProductDaoImpl();
+        Product product = new Product();
+        product.setPid("1");
+        product.setCid("1");
+        product.setPdate(new Date());
+        int i = productDao.productAdd(product);
+        System.out.println(i);
 
     }
 

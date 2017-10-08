@@ -32,6 +32,8 @@ public interface ProductDao {
 
     int productDelete(String pid) throws SQLException;
 
+    int productAdd(Product product) throws SQLException;
+
     /**该方法不能使用*/
     /*List<Product> findByOid(String oid) throws SQLException;*/
 

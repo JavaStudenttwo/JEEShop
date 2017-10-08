@@ -1,6 +1,7 @@
 package com.itheima.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * creater:litiecheng
@@ -16,7 +17,7 @@ public class Product implements Serializable{
 	private double market_price;
 	private double shop_price;
 	private String pimage;
-	private String pdate;
+	private Date pdate;
 	private int is_hot;
 	private String pdesc;
 	private int pflag;
@@ -52,10 +53,10 @@ public class Product implements Serializable{
 	public void setPimage(String pimage) {
 		this.pimage = pimage;
 	}
-	public String getPdate() {
+	public Date getPdate() {
 		return pdate;
 	}
-	public void setPdate(String pdate) {
+	public void setPdate(Date pdate) {
 		this.pdate = pdate;
 	}
 	public int getIs_hot() {

@@ -21,4 +21,8 @@ public interface OrderService {
     void save(Order order) throws SQLException;
 
     Order findByOid(String oid) throws SQLException, InvocationTargetException, IllegalAccessException;
+
+    PageBean<Order> orderList(int pageNumber, int pageSize) throws IllegalAccessException, SQLException, InvocationTargetException;
+
+    PageBean<Order> findOrderByState(int state, int pageNumber, int pageSize) throws IllegalAccessException, SQLException, InvocationTargetException;
 }

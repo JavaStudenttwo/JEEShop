@@ -21,4 +21,6 @@ public interface UserDao {
     User findByCode(String code) throws SQLException;
 
     void update(User existUser) throws SQLException;
+
+    User findByUid(String username) throws SQLException;
 }

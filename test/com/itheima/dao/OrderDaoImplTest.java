@@ -7,6 +7,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 /**
  * OrderDaoImpl Tester.
  *
@@ -77,6 +79,15 @@ public class OrderDaoImplTest {
         orderItem = order.getOrderItems().get(0);
         System.out.println(orderItem);
 
+    }
+
+    @Test
+    public void testFindAll() throws Exception {
+//TODO: Test goes here...
+        OrderDao orderDao = new OrderDaoImpl();
+        List<Order> orderList = orderDao.orderList(4,8);
+
+        System.out.println(orderList.get(0).getUser());
     }
 
 

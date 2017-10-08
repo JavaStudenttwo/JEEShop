@@ -55,4 +55,12 @@ public class UserDaoImpl implements UserDao {
                 user.getSex(), user.getState(), user.getCode(), user.getUid()};
         queryRunner.update(sql,params);
     }
+
+    @Override
+    public User findByUid(String uid) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * from user where uid = ? ";
+        User user = queryRunner.query(sql,new BeanHandler<User>(User.class),uid);
+        return user;
+    }
 }
