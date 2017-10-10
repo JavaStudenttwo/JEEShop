@@ -94,6 +94,26 @@
     </div>
   </div>
 
+<%--
+  <%
+    pageContext.setAttribute("p1name","page");
+    String rname = (String) request.getAttribute("rname");
+    out.println(rname);
+    request.setAttribute("pname","lilisiq");
+
+    application.setAttribute("cname","xiaomingq");
+  %>
+
+  <%=application.getAttribute("cname")%>
+  <%=request.getAttribute("rname")%>
+  <%=session.getAttribute("sname")%>
+  ${cname}
+  ${rname}
+  ${sname}
+  ${pname}
+
+
+--%>
 
   <!-- 广告条 -->
   <div class="container-fluid">

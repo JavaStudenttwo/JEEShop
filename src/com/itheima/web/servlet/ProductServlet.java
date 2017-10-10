@@ -201,6 +201,11 @@ public class ProductServlet extends BaseServlet {
             e.printStackTrace();
         }
 
+        request.setAttribute("rname","lilisi");
+        response.getWriter().print(4);
+        this.getServletContext().setAttribute("cname","xiaoming");
+        request.getSession().setAttribute("sname","hahaha");
+
         request.getSession().setAttribute("hotList",hotList);
         request.getSession().setAttribute("newList",newList);
 
