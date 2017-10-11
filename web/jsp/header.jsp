@@ -41,14 +41,14 @@
                 url,
                 params,
                 function (data) {
-                    $("#completeShow").html("<ul id='itemul' class='list-group'></ul>");
+                    $("#completeShow1").html("<ul id='itemul' class='list-group'></ul>");
                     for(var i=0 ;i<data.length;i++){
                         var product = data[i];
                         var str = ""+product.pname;
                         str = highlight(word,str);
                         $("#itemul").append("<li class='list-group-item'>" +
 							"<a href='${pageContext.request.contextPath}/productServlet?method=productInfo&pid="+product.pid+"'>"+str+"</a></li>")
-                        $("#completeShow").show();
+                        $("#completeShow1").show();
                     }
                 },
                 "json"
@@ -110,7 +110,7 @@
 
 <!-- 导航条 -->
 <div class="container-fluid">
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-default" >
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -122,18 +122,17 @@
 				</button>
 				<a class="navbar-brand" href="${pageContext.request.contextPath}/productServlet?method=listAtHome">首页</a>
 			</div>
-
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav" id="menu">
-
-				</ul>
-				<form class="navbar-form navbar-right" role="search">
+				<ul class="nav navbar-nav" id="menu"></ul>
+				<form class="navbar-form navbar-left" role="search" id="form1">
 					<div class="form-group">
 						<input id="search" type="text" class="form-control" placeholder="Search">
 					</div>
-					<button id="submit" type="submit" class="btn btn-default" disabled="submit-disabled">Submit</button>
-
-					<div id="completeShow"></div>
+					<button id="submit" type="submit" class="btn btn-default">Submit</button>
+					<div id="completeShow">
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+						</ul>
+					</div>
 				</form>
 
 			</div>
@@ -141,3 +140,6 @@
 		</div>
 	</nav>
 </div>
+
+
+

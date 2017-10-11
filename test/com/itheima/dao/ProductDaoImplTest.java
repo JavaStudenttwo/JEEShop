@@ -104,5 +104,18 @@ public class ProductDaoImplTest {
 
     }
 
+    @Test
+    public void test(){
+        int totalRecord = 8;
+        int pageSize = 4;
+        int totalPage = 0;
+        if ( totalRecord % pageSize == 0){
+            totalPage = totalRecord / pageSize ;
+        }else {
+            totalPage = totalRecord / pageSize + 1 ;
+        }
+        System.out.println(totalPage);
+    }
+
 
 }

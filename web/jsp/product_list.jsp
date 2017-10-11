@@ -98,8 +98,54 @@ body {
 				</c:if>
 
 			</div>
+
+
+
+			<div>
+				<nav aria-label="Page navigation">
+					<ul class="pagination">
+						<c:if test="${!(pageBean.pageNumber gt 1)}">
+							<li class="disabled">
+								<span aria-hidden="true">&laquo;</span>
+							</li>
+						</c:if>
+						<c:if test="${pageBean.pageNumber gt 1}">
+							<li>
+								<a href="${pageContext.request.contextPath}/productServlet?method=productList&cid=${pageBean.data[0].cid}&pageNumber=${pageBean.pageNumber-1}" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+						</c:if>
+
+						<c:forEach var="i" begin="1" end="${pageBean.totalPage}">
+							<c:if test="${pageBean.pageNumber eq i}">
+								<%--<li class="active"><a href="#">${i}</a></li>--%>
+								<li class="active"><a href="#">${i}</a></li>
+							</c:if>
+							<c:if test="${pageBean.pageNumber != i}">
+								<li><a href="${pageContext.request.contextPath}/productServlet?method=productList&cid=${pageBean.data[0].cid}&pageNumber=${i}">${i}</a></li>
+							</c:if>
+						</c:forEach>
+
+						<c:if test="${pageBean.pageNumber lt pageBean.totalPage}">
+							<li>
+								<a href="${pageContext.request.contextPath}/productServlet?method=productList&cid=${pageBean.data[0].cid}&pageNumber=${pageBean.pageNumber+1}" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</c:if>
+						<c:if test="${ !(pageBean.pageNumber lt pageBean.totalPage)}">
+							<li class="disabled">
+								<span aria-hidden="true">&raquo;</span>
+							</li>
+						</c:if>
+					</ul>
+				</nav>
+
+			</div>
 		</div>
 	</div>
+
 
 	<div
 		style="width: 1210px; margin: 0 auto; padding: 0 9px; border: 1px solid #ddd; border-top: 2px solid #999; height: 246px;">

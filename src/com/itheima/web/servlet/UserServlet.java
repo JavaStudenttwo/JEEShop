@@ -106,6 +106,10 @@ public class UserServlet extends BaseServlet {
     public void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("UTF-8");
+        /**id="usercaption" name="name"*/
+        String name =  request.getParameter("name");
+        String usercaption =  request.getParameter("usercaption");
+        System.out.println(usercaption);
 
         User user = new User();
 

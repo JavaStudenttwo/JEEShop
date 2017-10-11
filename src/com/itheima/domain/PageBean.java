@@ -30,8 +30,9 @@ public class PageBean<T> implements Serializable{
         this.pageSize = pageSize;
         this.totalRecord = totalRecord;
         /**计算总页数*/
-        if ( totalRecord % pageSize > 0 && totalRecord != 0){
-            totalPage = totalRecord / pageSize + 1 ;
+        System.out.println(totalRecord % pageSize);
+        if ( totalRecord % pageSize == 0){
+            totalPage = totalRecord / pageSize ;
         }else {
             totalPage = totalRecord / pageSize + 1 ;
         }
