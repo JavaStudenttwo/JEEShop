@@ -7,6 +7,7 @@ import com.itheima.domain.OrderItem;
 import com.itheima.domain.Product;
 import com.itheima.domain.User;
 import com.itheima.utils.DataSourceUtils;
+import com.itheima.utils.JDBCUtils;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
@@ -16,6 +17,8 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
@@ -205,8 +208,47 @@ public class OrderDaoImpl implements OrderDao {
             User user = userDao.findByUid(order.getUser().getUid());
         }
 
-
         return orderList;
+    }
+
+    @Override
+    public void outMoney(Connection connection, String name, int money) throws SQLException {
+
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            String sql = "update useraccount set money = money - ? where name = ?";
+
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,money);
+            preparedStatement.setString(2,name);
+
+            preparedStatement.executeUpdate();
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }finally {
+            JDBCUtils.closeResouce(null,preparedStatement,resultSet);
+        }
+    }
+
+    @Override
+    public void inMoney(Connection connection, String to, int money) throws SQLException {
+
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            String sql = "update selleraccount set money = money + ? where name = ?";
+
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,money);
+            preparedStatement.setString(2,to);
+
+            preparedStatement.executeUpdate();
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }finally {
+            JDBCUtils.closeResouce(null,preparedStatement,resultSet);
+        }
     }
 
 }

@@ -10,10 +10,5 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    <context-param>
-        <param-name>namespace</param-name>
-        <param-value>/e3mall</param-value>
-    </context-param>
-
 
 </web-app>

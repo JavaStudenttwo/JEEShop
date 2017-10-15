@@ -95,8 +95,49 @@ public class OrderServlet extends BaseServlet {
         response.sendRedirect(request.getContextPath()+"/jsp/order_info.jsp");
     }
 
+    /**
+     * @Date 2017/10/14 10:33
+     * @Author CycloneKid sk18810356@gmail.com
+     * @MethodName: orderPay
+     * @Params: [request, response]
+     * @ReturnType: void
+     * @Description:
+     *
+     */
+    public void orderPay(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, InvocationTargetException, IllegalAccessException {
 
+        String address = request.getParameter("address");
+        String name = request.getParameter("name");
+        String telephone = request.getParameter("telephone");
+        String pd_FrpId = request.getParameter("pd_FrpId");
+        String money = request.getParameter("money");
+        /**System.out.println(address+".."+name+".."+telephone+".."+pd_FrpId);*/
 
+        request.getSession().setAttribute("name",name);
+        request.getSession().setAttribute("to",pd_FrpId);
+        request.getSession().setAttribute("money",money);
+
+        response.sendRedirect(request.getContextPath()+"/jsp/transfer.jsp");
+    }
+
+    /**
+     * @Date 2017/10/14 15:11
+     * @Author CycloneKid sk18810356@gmail.com
+     * @MethodName: transfer
+     * @Params: [request, response]
+     * @ReturnType: void
+     * @Description:
+     *
+     */
+    public void transfer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, InvocationTargetException, IllegalAccessException, ClassNotFoundException {
+
+        String name = request.getParameter("name");
+        String to = request.getParameter("to");
+        String money = request.getParameter("money");
+        orderService.transfer(name,to,money);
+
+        response.sendRedirect(request.getContextPath()+"/jsp/index.jsp");
+    }
 
 
 

@@ -3,10 +3,14 @@ package com.itheima.dao.impl;
 import com.itheima.dao.UserDao;
 import com.itheima.domain.User;
 import com.itheima.utils.DataSourceUtils;
+import com.itheima.utils.JDBCUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * creater:litiecheng
@@ -22,6 +26,32 @@ public class UserDaoImpl implements UserDao {
         String sql = "select * from user where username = ? ";
         User existUser = queryRunner.query(sql,new BeanHandler<User>(User.class),username);
         return existUser;
+    }
+
+    /**
+     * @Date 2017/10/13 16:02
+     * @Author CycloneKid sk18810356@gmail.com
+     * @MethodName: findByUsername_J
+     * @Params: [username]
+     * @ReturnType: com.itheima.domain.User
+     * @Description:
+     *
+     */
+    public User findByUsername_J(String username) throws SQLException, ClassNotFoundException {
+
+        Connection connection = JDBCUtils.getDataSource();
+        Statement statement = connection.createStatement();
+        String sql = "select * from user where username = ? ";
+
+        ResultSet resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            System.out.println("ID:" + resultSet.getString("uid") + "\tNAME:"+ resultSet.getString("name"));
+        }
+
+        resultSet.close();
+        statement.close();
+        connection.close();
+        return null;
     }
 
     @Override

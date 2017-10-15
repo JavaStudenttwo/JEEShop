@@ -235,5 +235,21 @@ public class ProductServlet extends BaseServlet {
         response.getWriter().print(json);
     }
 
+    /**
+     * @Date 2017/10/14 9:32
+     * @Author CycloneKid sk18810356@gmail.com
+     * @MethodName: AJAXTest
+     * @Params: [request, response]
+     * @ReturnType: void
+     * @Description:
+     *
+     */
+    public void AJAXTest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String txt = "<font>你好</font>";
+        response.getWriter().println(txt);
+
+    }
+
 
 }

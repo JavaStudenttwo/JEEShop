@@ -8,6 +8,7 @@ import com.itheima.domain.PageBean;
 import com.itheima.domain.User;
 import com.itheima.service.OrderService;
 import com.itheima.utils.DataSourceUtils;
+import com.itheima.utils.JDBCUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
@@ -130,6 +131,54 @@ public class OrderServiceImpl implements OrderService {
 
         return pageBean;
     }
+
+    /**
+     * @Date 2017/10/14 15:34
+     * @Author CycloneKid sk18810356@gmail.com
+     * @MethodName: transfer
+     * @Params: [name, to, money]
+     * @ReturnType: void
+     * @Description:
+     *
+     */
+    @Override
+    public void transfer(String name, String to, String money) throws SQLException, ClassNotFoundException {
+
+        Connection connection = null;
+        try {
+            connection = JDBCUtils.getDataSource();
+            /**开始事务*/
+            connection.setAutoCommit(false);
+
+            int money_int = Integer.parseInt(money);
+            orderDao.outMoney(connection,name,money_int);
+
+            orderDao.inMoney(connection,to,money_int);
+
+            connection.commit();
+        }catch (Exception e){
+            try{
+                if (connection != null){
+                    /**发生错误则事务回滚*/
+                    connection.rollback();
+                }
+            }catch (Exception e2){
+
+            }
+            throw new RuntimeException(e);
+        }finally {
+            /**关闭数据库资源*/
+            JDBCUtils.closeResouce(connection,null,null);
+        }
+
+
+
+    }
+
+
+
+
+
 
 
 }
