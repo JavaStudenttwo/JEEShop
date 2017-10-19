@@ -143,17 +143,16 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public void transfer(String name, String to, String money) throws SQLException, ClassNotFoundException {
-
+        int money_int = Integer.parseInt(money);
         Connection connection = null;
         try {
-            connection = JDBCUtils.getDataSource();
+            connection = JDBCUtils.getConnection();
             /**开始事务*/
             connection.setAutoCommit(false);
 
-            int money_int = Integer.parseInt(money);
-            orderDao.outMoney(connection,name,money_int);
+            orderDao.outMoney(name,money_int);
 
-            orderDao.inMoney(connection,to,money_int);
+            orderDao.inMoney(to,money_int);
 
             connection.commit();
         }catch (Exception e){

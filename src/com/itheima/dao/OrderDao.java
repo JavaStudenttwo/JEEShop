@@ -36,9 +36,9 @@ public interface OrderDao {
 
     int findTotalRecordByState(int state) throws SQLException;
 
-    void outMoney(Connection connection, String name, int money) throws SQLException;
+    void outMoney(String name, int money) throws SQLException;
 
-    void inMoney(Connection connection, String to, int money) throws SQLException;
+    void inMoney(String to, int money) throws SQLException;
 
     /**查询订单只能使用多表查询，单表查询不可行(错误方法，不可用)*/
     /*Order findOrderByOid(String oid) throws SQLException;*/

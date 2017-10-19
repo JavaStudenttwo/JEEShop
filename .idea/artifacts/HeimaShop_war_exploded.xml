@@ -6,9 +6,7 @@
         <element id="directory" name="classes">
           <element id="module-output" name="HeimaShop" />
         </element>
-        <element id="directory" name="lib">
-          <element id="library" level="project" name="lib" />
-        </element>
+        <element id="directory" name="lib" />
       </element>
       <element id="javaee-facet-resources" facet="HeimaShop/web/Web" />
     </root>

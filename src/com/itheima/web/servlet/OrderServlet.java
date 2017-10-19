@@ -134,7 +134,12 @@ public class OrderServlet extends BaseServlet {
         String name = request.getParameter("name");
         String to = request.getParameter("to");
         String money = request.getParameter("money");
-        orderService.transfer(name,to,money);
+
+        String[] strings = new String[2];
+        /**"."和"|"都是转义字符，在使用split函数分割字符串时，在两符号前加\\*/
+        strings = money.split("\\.",2);
+        System.out.println(strings[0]);
+        orderService.transfer(name,to,strings[0]);
 
         response.sendRedirect(request.getContextPath()+"/jsp/index.jsp");
     }

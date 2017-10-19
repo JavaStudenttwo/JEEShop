@@ -16,13 +16,12 @@ import org.apache.commons.dbutils.handlers.MapListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.lang.reflect.InvocationTargetException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
+import static java.sql.ResultSet.CONCUR_READ_ONLY;
 
 /**
  * creater:litiecheng
@@ -212,42 +211,55 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public void outMoney(Connection connection, String name, int money) throws SQLException {
+    public void outMoney(String username, int money) throws SQLException {
 
+        Statement statement = null;
         PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
         try {
+            String qsql = "SELECT name FROM user WHERE username = '"+  username + "'";
+
+            Connection connection = JDBCUtils.getConnection();
+            statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,CONCUR_READ_ONLY);
+            ResultSet resultSet = statement.executeQuery(qsql);
+            boolean bool = resultSet.first();
+            String name = resultSet.getString("name");
+
             String sql = "update useraccount set money = money - ? where name = ?";
 
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1,money);
             preparedStatement.setString(2,name);
 
-            preparedStatement.executeUpdate();
+            int change = preparedStatement.executeUpdate();
+            System.out.println(change);
+
         }catch (Exception e){
             throw new RuntimeException(e);
         }finally {
-            JDBCUtils.closeResouce(null,preparedStatement,resultSet);
+            JDBCUtils.closeResouce(null,preparedStatement,null);
         }
+
     }
 
     @Override
-    public void inMoney(Connection connection, String to, int money) throws SQLException {
+    public void inMoney(String to, int money) throws SQLException {
 
         PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
         try {
             String sql = "update selleraccount set money = money + ? where name = ?";
 
+            Connection connection = JDBCUtils.getConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1,money);
             preparedStatement.setString(2,to);
 
-            preparedStatement.executeUpdate();
+            int change = preparedStatement.executeUpdate();
+            System.out.println(change);
+
         }catch (Exception e){
             throw new RuntimeException(e);
         }finally {
-            JDBCUtils.closeResouce(null,preparedStatement,resultSet);
+            JDBCUtils.closeResouce(null,preparedStatement,null);
         }
     }
 

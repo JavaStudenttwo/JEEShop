@@ -27,15 +27,15 @@
     <form action="${pageContext.request.contextPath}/orderServlet?method=transfer" method="post">
         <div class="form-group">
             <label for="username">付款人：</label>
-            <input type="text" class="form-control" id="username" placeholder="Text input" value="${name}">
+            <input type="text" class="form-control" id="username" name="name" placeholder="Text input" value="${name}">
         </div>
         <div class="form-group">
             <label for="to">收款人：</label>
-            <input type="text" class="form-control" id="to" placeholder="Text input" value="${to}">
+            <input type="text" class="form-control" id="to" name="to" placeholder="Text input" value="${to}">
         </div>
         <div class="form-group">
             <label for="money">转账金额：</label>
-            <input type="text" class="form-control" id="money" placeholder="Text input" value="${money}">
+            <input type="text" class="form-control" id="money" name="money" placeholder="Text input" value="${money}">
         </div>
         <button type="submit" class="btn btn-default">转账</button>
     </form>
