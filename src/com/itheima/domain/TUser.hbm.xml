@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--建立持久化类和数据库表的映射关系-->
+    <class name="com.itheima.domain.TUser" table="user" schema="shop">
+        <!--建立类中属性和表中主键的对应关系-->
+        <id name="uid">
+            <column name="uid" sql-type="varchar(100)" length="100"/>
+        </id>
+        <!--建立类中属性和表中字段的对应关系-->
+        <property name="username">
+            <column name="username" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="password">
+            <column name="password" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="name">
+            <column name="name" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="email">
+            <column name="email" sql-type="varchar(30)" length="30" not-null="true"/>
+        </property>
+        <property name="telephone">
+            <column name="telephone" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="birthday">
+            <column name="birthday" sql-type="date" not-null="true"/>
+        </property>
+        <property name="sex">
+            <column name="sex" sql-type="varchar(10)" length="10" not-null="true"/>
+        </property>
+        <property name="state">
+            <column name="state" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="code">
+            <column name="code" sql-type="varchar(64)" length="64" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

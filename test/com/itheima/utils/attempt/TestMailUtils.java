@@ -1,4 +1,4 @@
-package com.itheima.utils.test;
+package com.itheima.utils.attempt;
 
 import com.itheima.utils.MailUtils;
 

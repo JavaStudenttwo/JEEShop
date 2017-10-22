@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Hibernate配置文件的DTD约束-->
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+
+    <!-- 连接数据库，加载数据库驱动设置数据库路径和用户连接信息 -->
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql:///shop</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">123</property>
+    <!-- 数据库方言 -->
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+    <!-- 将hibernate生成的sql语句打印到控制台 -->
+    <property name="hibernate.show_sql">true</property>
+    <!-- 将hibernate生成的sql语句格式化(语法缩进) -->
+    <property name="hibernate.format_sql">true</property>
+    <!-- 自动更新数据库表 -->
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <!-- 指定hibernate操作数据库时的隔离级别 0100 4 可重复读 -->
+    <property name="hibernate.connection.isolation">4</property>
+
+    <!-- 映射文件 -->
+    <mapping resource="com/itheima/domain/TCategory.hbm.xml"/>
+    <mapping class="com.itheima.domain.TCategory"/>
+    <mapping resource="com/itheima/domain/TOrderitem.hbm.xml"/>
+    <mapping class="com.itheima.domain.TOrderitem"/>
+    <mapping resource="com/itheima/domain/TOrders.hbm.xml"/>
+    <mapping class="com.itheima.domain.TOrders"/>
+    <mapping resource="com/itheima/domain/TProduct.hbm.xml"/>
+    <mapping class="com.itheima.domain.TProduct"/>
+    <mapping resource="com/itheima/domain/TSelleraccount.hbm.xml"/>
+    <mapping class="com.itheima.domain.TSelleraccount"/>
+    <mapping resource="com/itheima/domain/TUser.hbm.xml"/>
+    <mapping class="com.itheima.domain.TUser"/>
+    <mapping resource="com/itheima/domain/TUseraccount.hbm.xml"/>
+    <mapping class="com.itheima.domain.TUseraccount"/>
+
+  </session-factory>
+</hibernate-configuration>

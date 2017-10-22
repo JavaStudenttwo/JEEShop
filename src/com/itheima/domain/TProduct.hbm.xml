@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.itheima.domain.TProduct" table="product" schema="shop">
+        <id name="pid">
+            <column name="pid" sql-type="varchar(100)" length="100"/>
+        </id>
+        <property name="pname">
+            <column name="pname" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <property name="marketPrice">
+            <column name="market_price" sql-type="double" precision="-1" not-null="true"/>
+        </property>
+        <property name="shopPrice">
+            <column name="shop_price" sql-type="double" precision="-1" not-null="true"/>
+        </property>
+        <property name="pimage">
+            <column name="pimage" sql-type="varchar(200)" length="200" not-null="true"/>
+        </property>
+        <property name="pdate">
+            <column name="pdate" sql-type="date" not-null="true"/>
+        </property>
+        <property name="isHot">
+            <column name="is_hot" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="pdesc">
+            <column name="pdesc" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="pflag">
+            <column name="pflag" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="cid">
+            <column name="cid" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+        <!--<many-to-one name="categoryByCid" class="com.itheima.domain.TCategory">
+            <column name="cid" not-null="true"/>
+        </many-to-one>
+        <set name="orderitemsByPid" inverse="true">
+            <key>
+                <column name="pid" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.itheima.domain.TOrderitem"/>
+        </set>-->
+    </class>
+</hibernate-mapping>

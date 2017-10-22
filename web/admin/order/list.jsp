@@ -104,7 +104,7 @@
 					总项数:${pageBean.totalRecord}&nbsp;
 					每页显示:${pageBean.pageSize}&nbsp;
 
-					<c:if test="${pageBean.pageNumber gt 1}">
+					<c:if attempt="${pageBean.pageNumber gt 1}">
 						<a href="${pageContext.request.contextPath}/adminProductServlet?method=productList&pageNumber=1">[首页]
 						</a>&nbsp;
 						<a href="${pageContext.request.contextPath}/adminProductServlet?method=productList&pageNumber=${pageBean.pageNumber-1}">
@@ -112,15 +112,15 @@
 					</c:if>&nbsp;
 
 					<c:forEach var="i" begin="1" end="${pageBean.totalPage}">
-						<c:if test="${pageBean.pageNumber eq i}">
+						<c:if attempt="${pageBean.pageNumber eq i}">
 							第${i}页
 						</c:if>
-						<c:if test="${pageBean.pageNumber != i}">
+						<c:if attempt="${pageBean.pageNumber != i}">
 							<a href="${pageContext.request.contextPath}/adminProductServlet?method=productList&pageNumber=${i}">第${i}页</a>
 						</c:if>
 					</c:forEach>&nbsp;
 
-					<c:if test="${pageBean.pageNumber lt pageBean.totalPage}">
+					<c:if attempt="${pageBean.pageNumber lt pageBean.totalPage}">
 						<a href="${pageContext.request.contextPath}/adminProductServlet?method=productList&pageNumber=${pageBean.pageNumber+1}">[下一页]
 						</a>&nbsp;
 						<a href="${pageContext.request.contextPath}/adminProductServlet?method=productList&pageNumber=${pageBean.totalPage}">
