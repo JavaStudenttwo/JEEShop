@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--DAO层-->
+    <bean id="UserDaoimpl" class="com.itheima.dao.impl.UserDaoImpl" ></bean>
+
+    <!--Service层-->
+    <bean id="UserServiceImpl" class="com.itheima.service.impl.UserServiceImpl">
+        <property name="UserDaoimpl" ref="UserDaoimpl"></property>
+    </bean>
+
+    <!--Control层-->
+    <bean id="UserServlet" class="com.itheima.web.servlet.UserServlet">
+        <property name="UserServiceImpl" ref="UserServiceImpl"></property>
+    </bean>
+
+
+</beans>

@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -66,11 +67,36 @@ public class HbUserDaoImpl {
 
         criteria.setFirstResult(5);
         criteria.setMaxResults(7);
+        criteria.addOrder(Order.asc("uid"));
 
         List<TUser> list = criteria.list();
         for (TUser user : list ){
             System.out.println(user.getName());
         }
+
+        transaction.commit();
+        HibernateUtils.closeSession(session);
+
+    }
+
+
+    /**
+     * @Date 2017/10/22 19:51
+     * @Author CycloneKid sk18810356@gmail.com
+     * @PackageName: com.itheima.dao.impl
+     * @ClassName: HbUserDaoImpl
+     * @Description:
+     *
+     */
+    public void add(){
+
+        Session session = HibernateUtils.getSession();
+        Transaction transaction = session.beginTransaction();
+
+        TUser user = new TUser();
+        user.setName("呜呜");
+        user.setPassword("2222");
+        session.delete(user);
 
         transaction.commit();
         HibernateUtils.closeSession(session);

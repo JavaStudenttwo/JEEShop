@@ -1,7 +1,6 @@
 package com.itheima.web.servlet;
 
 import com.itheima.domain.User;
-import com.itheima.service.UserService;
 import com.itheima.service.impl.UserServiceImpl;
 import com.itheima.utils.UUIDUtils;
 import com.itheima.utils.UserBeanUtils;
@@ -30,6 +29,8 @@ import java.sql.SQLException;
  */
 @WebServlet(name = "UserServlet" , urlPatterns = "/userServlet")
 public class UserServlet extends BaseServlet {
+
+    private UserServiceImpl userService;
 
     /**
      * creater:litiecheng
@@ -64,7 +65,6 @@ public class UserServlet extends BaseServlet {
             response.addCookie(autoLoginCookie);
         }
 
-        UserService userService = new UserServiceImpl();
         User user = userService.login(username, password);
         if (user != null) {
             request.getSession().setAttribute("loginUser", user);
@@ -127,7 +127,6 @@ public class UserServlet extends BaseServlet {
         user.setCode(UUIDUtils.getUUID());
         user.setState(0);
 
-        UserService userService = new UserServiceImpl();
         int i = 0;
         try {
             i = userService.regist(user);
@@ -168,7 +167,6 @@ public class UserServlet extends BaseServlet {
     public void checkUserName(HttpServletRequest request , HttpServletResponse response) throws IOException, ServletException {
 
         String username = request.getParameter("username");
-        UserService userService = new UserServiceImpl();
         User user = null;
 
         try {
@@ -223,7 +221,6 @@ public class UserServlet extends BaseServlet {
 
         String code = request.getParameter("activecode");
 
-        UserService userService = new UserServiceImpl();
         Boolean bool = null;
         try {
             bool = userService.activeUser(code);
@@ -242,6 +239,11 @@ public class UserServlet extends BaseServlet {
     }
 
 
+    public void setUserServiceImpl(UserServiceImpl UserServiceImpl) {
+        userService = UserServiceImpl;
+    }
 
-
+    public UserServiceImpl getUserServiceImpl() {
+        return userService;
+    }
 }

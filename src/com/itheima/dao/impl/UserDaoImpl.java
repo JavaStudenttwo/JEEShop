@@ -20,6 +20,7 @@ import java.sql.Statement;
  *
  */
 public class UserDaoImpl implements UserDao {
+
     @Override
     public User findByUsername(String username) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());

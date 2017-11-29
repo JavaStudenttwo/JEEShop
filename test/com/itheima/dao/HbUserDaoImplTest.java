@@ -52,6 +52,7 @@ public class HbUserDaoImplTest {
     @Test
     public void testInsterUser() throws Exception {
 //TODO: Test goes here...
+        hbUserDao.add();
     }
 
     /**

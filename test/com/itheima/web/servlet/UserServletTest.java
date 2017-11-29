@@ -36,6 +36,7 @@ public class UserServletTest {
     @Test
     public void testLogin() throws Exception {
 //TODO: Test goes here...
+
     }
 
     /**
