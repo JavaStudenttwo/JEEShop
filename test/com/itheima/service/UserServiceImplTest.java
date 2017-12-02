@@ -1,7 +1,7 @@
 package com.itheima.service;
 
+import com.itheima.dao.impl.UserDaoImpl;
 import com.itheima.domain.User;
-import com.itheima.service.impl.UserServiceImpl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,11 +38,12 @@ public class UserServiceImplTest {
     @Test
     public void testFindByUsername() throws Exception {
 //TODO: Test goes here...
+        System.out.println("haha");
 
         ApplicationContext applicationContext =
                 new ClassPathXmlApplicationContext("applicationContext.xml");
-        UserServiceImpl userService = (UserServiceImpl) applicationContext.getBean("UserServiceImpl");
-        User user = userService.findByUsername("张三");
+        UserDaoImpl userDao = (UserDaoImpl) applicationContext.getBean("userDao");
+        User user = userDao.findByUsername("张三");
         System.out.println(user);
     }
 
