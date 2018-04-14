@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="JEEShop">
+    <output-path>$PROJECT_DIR$/out/artifacts/JEEShop</output-path>
+    <root id="archive" name="JEEShop.war">
+      <element id="artifact" artifact-name="JEEShop:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -50,18 +50,33 @@ body {
 	<div class="row" style="width: 1210px; margin: 0 auto;">
 		<div class="col-md-12">
 			<ol class="breadcrumb">
-				<li><a href="#">首页</a></li>
+				<li><a href="${pageContext.request.contextPath}/productServlet?method=listAtHome">首页</a></li>
 			</ol>
 		</div>
+		<%--
+			<div class="col-md-2" style="text-align:center;height: 200px;padding: 10px 0px;">
+				<a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${item.pid}">
+					<img src="${pageContext.request.contextPath}/${item.pimage}" width="130" height="130" style="display: inline-block;">
+				</a>
+				<p><a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${item.pid}" style='color:#666'>${item.pname}</a> </p>
+				<p><font color="#8E8E8E" style="font-size: 16px">&yen;${item.shop_price}</font> </p>
+			</div>
+		--%>
 
 		<c:forEach var="product" items="${pageBean.data}" >
-			<div class="col-md-2" style="height:240px;">
-				<a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${product.pid}">
+			<div class="col-md-2" style="text-align:center;width:240px ;height: 240px;padding: 20px 0px;">
+				<%--<a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${product.pid}">--%>
+					<%--<img src="${pageContext.request.contextPath}/${product.pimage}" width="130" height="130" style="display: inline-block;">--%>
+				<%--</a>--%>
+				<%--<p><a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${product.pid}">--%>
+				<%--</a></p>--%>
+				<%--<p><font color="#FF0000">商城价：&yen;${product.shop_price}</font> </p>--%>
+				<a style="height: 160px" href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${product.pid}">
 					<img src="${pageContext.request.contextPath}/${product.pimage}" width="130" height="130" style="display: inline-block;">
 				</a>
-				<p><a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${product.pid}">
-				</a></p>
-				<p><font color="#FF0000">商城价：&yen;${product.shop_price}</font> </p>
+				<P style="height: 20px"></P>
+				<p style="height: 30px"><a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${product.pid}" style='color:#666'>${product.pname}</a></p>
+				<p style="height: 30px"><font color="#8E8E8E" style="font-size: 16px">&yen;${product.shop_price}</font> </p>
 			</div>
 		</c:forEach>
 
@@ -155,22 +170,36 @@ body {
 		</div>
 		<div style="clear: both;"></div>
 		<div style="overflow: hidden;">
-
-			<c:forEach var="item" items="${prohis}">
-				<ul style="list-style: none;">
-					<li style="width: 150px; float: left; margin: 0 8px 0 0; padding: 0 18px 15px; text-align: center;">
-						<a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${item.pid}">
-							<img src="${pageContext.request.contextPath}/${item.pimage}" width="130" height="130" style="display: inline-block;"/>
-						</a>
-					</li>
-				</ul>
-			</c:forEach>
-		</div>
+		<%--
+			<div class="col-md-2" style="text-align:center;height: 200px;padding: 10px 0px;">
+				<a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${item.pid}">
+					<img src="${pageContext.request.contextPath}/${item.pimage}" width="130" height="130" style="display: inline-block;">
+				</a>
+				<p><a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${item.pid}" style='color:#666'>${item.pname}</a> </p>
+				<p><font color="#8E8E8E" style="font-size: 16px">&yen;${item.shop_price}</font> </p>
+			</div>
+		--%>
+		<c:forEach var="item" items="${prohis}">
+			<%--<ul style="list-style: none;">--%>
+				<%--<li style="width: 150px; float: left; margin: 0 8px 0 0; padding: 0 18px 15px; text-align: center;">--%>
+					<%--<a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${item.pid}">--%>
+						<%--<img src="${pageContext.request.contextPath}/${item.pimage}" width="130" height="130" style="display: inline-block;"/>--%>
+					<%--</a>--%>
+				<%--</li>--%>
+			<%--</ul>--%>
+			<div class="col-md-2" style="text-align:center;height: 200px;padding: 10px 0px;">
+				<a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${item.pid}">
+					<img src="${pageContext.request.contextPath}/${item.pimage}" width="130" height="130" style="display: inline-block;"/>
+				</a>
+				<p><a href="${pageContext.request.contextPath}/productServlet?method=productInfo&pid=${item.pid}" style='color:#666'>${item.pname}</a> </p>
+			</div>
+		</c:forEach>
 	</div>
+</div>
 
 
-	<!-- 引入footer.jsp -->
-	<jsp:include page="footer.jsp"></jsp:include>
+<!-- 引入footer.jsp -->
+<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 

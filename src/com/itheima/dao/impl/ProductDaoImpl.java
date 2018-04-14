@@ -33,7 +33,7 @@ public class ProductDaoImpl implements ProductDao{
     public List<Product> findByHot() throws SQLException {
         QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "select * from product where is_hot = ? and pflag = ? order by pdate desc limit ?";
-        List<Product> list = queryRunner.query(sql,new BeanListHandler<Product>(Product.class),1,0,9);
+        List<Product> list = queryRunner.query(sql,new BeanListHandler<Product>(Product.class),1,0,12);
         return list;
     }
 
@@ -41,7 +41,7 @@ public class ProductDaoImpl implements ProductDao{
     public List<Product> findByNew() throws SQLException {
         QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "select * from product where is_hot = ? and pflag = ? order by pdate desc limit ?";
-        List<Product> list = queryRunner.query(sql,new BeanListHandler<Product>(Product.class),0,1,9);
+        List<Product> list = queryRunner.query(sql,new BeanListHandler<Product>(Product.class),0,1,12);
         return list;
     }
 
