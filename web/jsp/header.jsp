@@ -83,34 +83,56 @@
 
 </script>
 
+<div class="bs-docs-header" id="content" tabindex="-1" style="background:#ffCC33">
+	<div class="container">
+		<h1>JEE电子商城</h1>
+		<h5>java练习项目，GitHub链接：<a href="https://github.com/JavaStudenttwo/HeimaShop">JEE商城</a></h5>
+	</div>
+</div>
+
 <!-- 登录 注册 购物车... -->
 <div class="container-fluid">
-	<div class="col-md-4">
-		<img src="${pageContext.request.contextPath}/img/logo2.png" />
-	</div>
-	<div class="col-md-5">
-		<img src="${pageContext.request.contextPath}/img/header.png" />
-	</div>
-	<div class="col-md-3" style="padding-top:20px">
-		<ol class="list-inline">
+	<%--
+		<ul class="nav nav-tabs">
+			<li role="presentation" class="active"><a href="#">Home</a></li>
+			<li role="presentation"><a href="#">Profile</a></li>
+			<li role="presentation"><a href="#">Messages</a></li>
+		</ul>
+	--%>
+
+	<%--
+	<ol class="list-inline">
+		<c:if test="${empty loginUser}">
+			<li><a href="${pageContext.request.contextPath}/jsp/login.jsp">登录</a></li>
+			<li><a href="${pageContext.request.contextPath}/jsp/register.jsp">注册</a></li>
+		</c:if>
+		<li><a href="${pageContext.request.contextPath}/jsp/cart.jsp">购物车</a></li>
+		<c:if test="${not empty loginUser}">
+			欢迎：${loginUser.name},
+			<li><a href="${pageContext.request.contextPath}/orderServlet?method=findByUid">我的订单</a> </li>
+			<li><a href="${pageContext.request.contextPath}/userServlet?method=logout">退出</a></li>
+		</c:if>
+	</ol>
+	--%>
+	<div class="col-md-4" style="text-align:right;padding: 10px 0px;">
+		<ol class="nav nav-tabs">
 			<c:if test="${empty loginUser}">
-				<li><a href="${pageContext.request.contextPath}/jsp/login.jsp">登录</a></li>
-				<li><a href="${pageContext.request.contextPath}/jsp/register.jsp">注册</a></li>
+				<li role="presentation"><a href="${pageContext.request.contextPath}/jsp/login.jsp">登录</a></li>
+				<li role="presentation"><a href="${pageContext.request.contextPath}/jsp/register.jsp">注册</a></li>
 			</c:if>
 			<li><a href="${pageContext.request.contextPath}/jsp/cart.jsp">购物车</a></li>
 			<c:if test="${not empty loginUser}">
 				欢迎：${loginUser.name},
-				<li><a href="${pageContext.request.contextPath}/orderServlet?method=findByUid">我的订单</a> </li>
-				<li><a href="${pageContext.request.contextPath}/userServlet?method=logout">退出</a></li>
+				<li role="presentation"><a href="${pageContext.request.contextPath}/orderServlet?method=findByUid">我的订单</a> </li>
+				<li role="presentation"><a href="${pageContext.request.contextPath}/userServlet?method=logout">退出</a></li>
 			</c:if>
-
 		</ol>
 	</div>
 </div>
 
 <!-- 导航条 -->
 <div class="container-fluid">
-	<nav class="navbar navbar-default" >
+	<nav class="navbar navbar-inverse" >
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -124,7 +146,7 @@
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav" id="menu"></ul>
-				<form class="navbar-form navbar-left" role="search" id="form1">
+				<form class="navbar-form navbar-right" role="search" id="form1">
 					<div class="form-group">
 						<input id="search" type="text" class="form-control" placeholder="Search">
 					</div>
@@ -134,9 +156,7 @@
 						</ul>
 					</div>
 				</form>
-
 			</div>
-
 		</div>
 	</nav>
 </div>

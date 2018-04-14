@@ -1,6 +1,7 @@
 package com.itheima.web.servlet;
 
 import com.itheima.domain.User;
+import com.itheima.service.UserService;
 import com.itheima.service.impl.UserServiceImpl;
 import com.itheima.utils.UUIDUtils;
 import com.itheima.utils.UserBeanUtils;
@@ -30,7 +31,7 @@ import java.sql.SQLException;
 @WebServlet(name = "UserServlet" , urlPatterns = "/userServlet")
 public class UserServlet extends BaseServlet {
 
-    private UserServiceImpl userService;
+    private UserService userService = new UserServiceImpl();
 
     /**
      * creater:litiecheng
@@ -66,6 +67,7 @@ public class UserServlet extends BaseServlet {
         }
 
         User user = userService.login(username, password);
+
         if (user != null) {
             request.getSession().setAttribute("loginUser", user);
             response.sendRedirect(request.getContextPath() + "/index.jsp");
@@ -238,12 +240,4 @@ public class UserServlet extends BaseServlet {
 
     }
 
-
-    public void setUserServiceImpl(UserServiceImpl UserServiceImpl) {
-        userService = UserServiceImpl;
-    }
-
-    public UserServiceImpl getUserServiceImpl() {
-        return userService;
-    }
 }

@@ -12,7 +12,6 @@
   <script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js" type="text/javascript"></script>
   <script src="${pageContext.request.contextPath}/js/bootstrap.min.js" type="text/javascript"></script>
   <script>
-
   </script>
 </head>
 
