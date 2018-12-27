@@ -78,6 +78,49 @@ public class ProductServlet extends BaseServlet {
 
     /**
      * creater:litiecheng
+     * createDate:2018-12-27
+     * discription:根据商品关键字查询数据库中的商品，并分页展示在商品展示页(product_search.jsp)
+     * indetail:
+     *
+     */
+    public void productSearch(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        /**获取商品关键字*/
+        String word = request.getParameter("word");
+
+        /**设置当前页的页码(默认是1，即第一页)*/
+        int pageNumber = 1;
+        String page_number = request.getParameter("pageNumber");
+        if ( page_number != null ){
+            pageNumber = Integer.parseInt(page_number);
+        }
+
+        /**设置每页显示4个商品*/
+        int pageSize = 4;
+
+        /**调用service层实现类查询商品*/
+        ProductService productService = new ProductServiceImpl();
+        PageBean<Product> pageBean = null;
+        try {
+            pageBean = productService.findByWord(word,pageNumber,pageSize);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        /**查询浏览历史*/
+        Cookie cookie = CookieUtils.findCookie(request.getCookies(),"history");
+        List<Product> list = null;
+        if (cookie != null){
+            list = this.browsingHistory(cookie);
+        }
+
+        request.getSession().setAttribute("pageBean",pageBean);
+        request.getSession().setAttribute("prohis",list);
+        response.sendRedirect(request.getContextPath()+"/jsp/product_search.jsp");
+
+    }
+
+    /**
+     * creater:litiecheng
      * createDate:2017-10-6
      * discription:查询历史记录中的商品
      * indetail:

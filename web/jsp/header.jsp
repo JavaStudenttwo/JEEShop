@@ -126,11 +126,11 @@
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav" id="menu"></ul>
-				<form class="navbar-form navbar-right" role="search" id="form1">
+				<form class="navbar-form navbar-right" role="search" id="form1" action="${pageContext.request.contextPath}/productServlet?method=productSearch" method="post">
 					<div class="form-group">
-						<input id="search" type="text" class="form-control" placeholder="Search">
+						<input id="search" type="text" class="form-control" placeholder="Search" name="word">
 					</div>
-					<button id="submit" type="submit" class="btn btn-default">Submit</button>
+					<button id="submit" type="submit" class="btn btn-default">查询</button>
 					<div id="completeShow">
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
 						</ul>

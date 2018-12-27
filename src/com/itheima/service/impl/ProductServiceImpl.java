@@ -94,6 +94,30 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
+    /**
+     * creater:litiecheng
+     * createDate:2018-12-27
+     * discription:根据关键字查询商品
+     * indetail:
+     *
+     * @parameter：1.商品关键字(word)，2.当前页页码，3.每页显示总数
+     * @return：pageBean对象
+     *
+     */
+    @Override
+    public PageBean<Product> findByWord(String word, int pageNumber, int pageSize) throws SQLException {
+        /**1.先差查询此类别的商品的总数*/
+        int totalRecord = productDao.findTotalRecordByWord(word);
+        /**2.分页查询*/
+        PageBean<Product> pageBean = new PageBean<Product>(pageNumber,pageSize,totalRecord);
+
+        List<Product> data = productDao.findAllByWord(word,pageBean.getStartIndex(),pageBean.getPageSize());
+
+        pageBean.setData(data);
+
+        return pageBean;
+    }
+
     @Override
     public PageBean<Product> findAll(int pageNumber, int pageSize) throws SQLException {
 

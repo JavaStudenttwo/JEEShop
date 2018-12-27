@@ -34,6 +34,10 @@ public interface ProductDao {
 
     int productAdd(Product product) throws SQLException;
 
+    int findTotalRecordByWord(String word) throws SQLException;
+
+    List<Product> findAllByWord(String word, int startIndex, int pageSize) throws SQLException;
+
     /**该方法不能使用*/
     /*List<Product> findByOid(String oid) throws SQLException;*/
 

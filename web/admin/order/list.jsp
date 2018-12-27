@@ -26,13 +26,13 @@
 					<td class="ta_01" align="center" bgColor="#afd1f3"><strong>订单管理</strong>
 					</TD>
 				</tr>
-				<tr>
-					<td class="ta_01" align="right">
-						<button type="button" id="add" name="add" value="添加"
-							class="button_add" onclick="addProduct()">
-							&#28155;&#21152;</button>
-					</td>
-				</tr>
+				<%--<tr>--%>
+					<%--<td class="ta_01" align="right">--%>
+						<%--<button type="button" id="add" name="add" value="添加"--%>
+							<%--class="button_add" onclick="addProduct()">--%>
+							<%--&#28155;&#21152;</button>--%>
+					<%--</td>--%>
+				<%--</tr>--%>
 				<tr>
 					<td class="ta_01" align="center" bgColor="#f5fafe">
 						<table cellspacing="0" cellpadding="1" rules="all"

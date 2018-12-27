@@ -26,6 +26,8 @@ public interface ProductService {
 
     PageBean<Product> findByCid(String cid, int pageNumber, int pageSize) throws SQLException;
 
+    PageBean<Product> findByWord(String word, int pageNumber, int pageSize) throws SQLException;
+
     PageBean<Product> findAll(int pageNumber, int pageSize) throws SQLException;
 
     int productDelete(String pid) throws SQLException;

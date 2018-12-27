@@ -79,8 +79,8 @@ public class ProductDaoImpl implements ProductDao{
     @Override
     public List<Product> findAllByCid(String cid, int startIndex, int pageSize) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
-        String sql = "select * from product where cid = ? and pflag = ? order by pdate desc limit ?,?";
-        List<Product> list = queryRunner.query(sql ,new BeanListHandler<Product>(Product.class),cid,0,startIndex,pageSize);
+        String sql = "select * from product where cid = ? order by pdate desc limit ?,?";
+        List<Product> list = queryRunner.query(sql ,new BeanListHandler<Product>(Product.class),cid,startIndex,pageSize);
         return list;
     }
 
@@ -142,6 +142,21 @@ public class ProductDaoImpl implements ProductDao{
         return queryRunner.update(sql,params);
     }
 
+    @Override
+    public int findTotalRecordByWord(String word) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select count(*) from product where pname like ?";
+        Long count = (Long) queryRunner.query(sql,new ScalarHandler(),"%"+word+"%");
+        return count.intValue();
+    }
+
+    @Override
+    public List<Product> findAllByWord(String word, int startIndex, int pageSize) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * from product where pname like ? order by pdate desc limit ?,?";
+        List<Product> list = queryRunner.query(sql ,new BeanListHandler<Product>(Product.class),"%"+word+"%",startIndex,pageSize);
+        return list;
+    }
 
 
 }

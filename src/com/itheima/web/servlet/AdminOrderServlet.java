@@ -33,6 +33,8 @@ public class AdminOrderServlet extends BaseServlet {
      */
     public void orderList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, InvocationTargetException, IllegalAccessException {
 
+        String state_param = request.getParameter("state");
+
         int pageNumber = 1;
         String page_number = request.getParameter("pageNumber");
         if ( page_number != null ){

@@ -2,6 +2,7 @@ package com.itheima.dao;
 
 import com.itheima.dao.impl.ProductDaoImpl;
 import com.itheima.domain.Product;
+import com.itheima.web.servlet.ProductServlet;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
@@ -115,6 +116,13 @@ public class ProductDaoImplTest {
             totalPage = totalRecord / pageSize + 1 ;
         }
         System.out.println(totalPage);
+    }
+
+    @Test
+    public void findError(){
+        ProductServlet productServlet = new ProductServlet();
+
+
     }
 
 
