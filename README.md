@@ -2,6 +2,7 @@
 本项目主要使用了JavaWeb技术，包括Jsp，Servlet，JDBC，适合刚学完JavaWeb的新手作为练习项目，巩固知识
 项目GitHub地址：https://github.com/JavaStudenttwo/JEEShop
 项目展示网址：http://47.106.99.83/JEEShop/jsp/index.jsp
+该项目使用到的数据库和页面等基础资料：链接：https://pan.baidu.com/s/1fh6FpM8KnmgFaEvSyUStdw  提取码：rqbt
 # 二.项目涉及的技术
 ### 前端：
  - 使用了BootStrap框架，展示页面
